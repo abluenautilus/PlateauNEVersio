@@ -28,14 +28,12 @@
 #ifndef DSJ_PLATEAU_HPP
 #define DSJ_PLATEAU_HPP
 
-#include "../Valley.hpp"
-#include "../gui/ValleyComponents.hpp"
 #include "Dattorro.hpp"
 #include "../dsp/shaping/NonLinear.hpp"
 #include "../dsp/modulation/LinearEnvelope.hpp"
 #include <vector>
 
-struct Plateau : Module {
+struct Plateau {
 
     enum InputIds {
         LEFT_INPUT,
@@ -199,118 +197,11 @@ struct Plateau : Module {
 
     Plateau();
 
-    void process(const ProcessArgs &args) override;
+    //void process(const ProcessArgs &args) override;
+    //Loop function that perfroms the necessary algorithms.
 
     void getParameters();
     void setLights();
-
-    void onSampleRateChange() override;
-    json_t *dataToJson() override;
-    void dataFromJson(json_t *rootJ) override;
-    void onReset(const ResetEvent& e) override;
-};
-
-struct PlateauPanelStyleItem : MenuItem {
-    Plateau* module;
-    int panelStyle;
-    void onAction(const event::Action &e) override;
-    void step() override;
-};
-
-struct PlateauPreDelayCVSensItem : MenuItem {
-    Plateau* module;
-    int preDelayCVSensState;
-    void onAction(const event::Action &e) override;
-    void step() override;
-};
-
-struct PlateauInputSensItem : MenuItem {
-    Plateau* module;
-    int inputSensitivityState;
-    void onAction(const event::Action &e) override;
-    void step() override;
-};
-
-struct PlateauOutputSaturationItem : MenuItem {
-    Plateau* module;
-    bool softDriveOutput = false;
-    void onAction(const event::Action &e) override;
-    void step() override;
-};
-
-struct PlateauWidget : ModuleWidget {
-    PlateauWidget(Plateau *module);
-    void appendContextMenu(Menu *menu) override;
-    void step() override;
-
-    // Control positions
-    Vec dryPos = Vec(52.1, 61.6);
-    Vec wetPos = Vec(102.6, 61.6);
-    Vec preDelayPos = Vec(80.106, 26.106);
-    Vec inputLowDampPos = Vec(53.1, 113.1);
-    Vec inputHighDampPos = Vec(95.1, 113.1);
-
-    Vec sizePos = Vec(32.1, 170.1);
-    Vec diffPos = Vec(74.1, 181.1);
-    Vec decayPos = Vec(116.1, 170.1);
-    Vec reverbLowDampPos = Vec(53.1, 238.1);
-    Vec reverbHighDampPos = Vec(95.1, 238.1);
-
-    Vec modRatePos = Vec(32.1, 296.1);
-    Vec modShapePos = Vec(74.1, 310.1);
-    Vec modDepthPos = Vec(116.1, 296.1);
-
-    Vec holdButtonPos = Vec(7.875, 244.85);
-    Vec clearButtonPos = Vec(157.875, 244.85);
-
-    // Attenuverter positions
-    Vec dryAttenPos = Vec(28.53, 72.6);
-    Vec wetAttenPos = Vec(132.01, 72.6);
-    Vec inputLowDampAttenPos = Vec(29.53, 111.59);
-    Vec inputHighDampAttenPos = Vec(131.01, 111.59);
-
-    Vec sizeAttenPos = Vec(5.1, 164.1);
-    Vec diffAttenPos = Vec(65.11, 158.51);
-    Vec decayAttenPos = Vec(155.1, 164.1);
-    Vec reverbLowDampAttenPos = Vec(29.1, 229.37);
-    Vec reverbHighDampAttenPos = Vec(131.1, 229.37);
-
-    Vec modRateAttenPos = Vec(5.1, 306.1);
-    Vec modShapeAttenPos = Vec(65.1, 286.2);
-    Vec modDepthAttenPos = Vec(155.1, 306.1);
-
-    // Jack positions
-    Vec leftInputPos = Vec(4.395, 28.385);
-    Vec rightInputPos = Vec(31.395, 28.385);
-    Vec leftOutputPos = Vec(127.395, 28.385);
-    Vec rightOutputPos = Vec(154.395, 28.385);
-
-    Vec dryCVPos = Vec(4.395, 78.397);
-    Vec wetCVPos = Vec(154.395, 78.397);
-    Vec preDelayCVPos = Vec(79.106, 67.0);
-    Vec inputLowDampCVPos = Vec(4.395, 103.926);
-    Vec inputHighDampCVPos = Vec(154.395, 103.926);
-
-    Vec sizeCVPos = Vec(4.395, 190.395);
-    Vec diffCVPos = Vec(94.395, 157.794);
-    Vec decayCVPos = Vec(154.395, 190.395);
-    Vec reverbLowDampCVPos = Vec(4.395, 217.383);
-    Vec reverbHighDampCVPos = Vec(154.395, 217.383);
-
-    Vec modRateCVPos = Vec(4.395, 331.395);
-    Vec modShapeCVPos = Vec(94.395, 285.51);
-    Vec modDepthCVPos = Vec(154.395, 331.395);
-
-    Vec holdCVPos = Vec(4.395, 265.42);
-    Vec clearCVPos = Vec(154.395, 265.42);
-
-    // The widgets
-    SvgPanel* darkPanel;
-    SvgPanel* lightPanel;
-
-    LightLEDButton* freezeToggleButton;
-    LightLEDButton* tunedModeButton;
-    LightLEDButton* diffuseInputButton;
 };
 
 #endif
