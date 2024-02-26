@@ -10,10 +10,6 @@ using namespace daisysp;
 
 DaisyVersio hw;
 
-const float dryMin = 0.f;
-const float dryMax = 1.f;
-const float wetMin = 0.f;
-const float wetMax = 1.f;
 const float preDelayNormSens = 0.1f;
 const float preDelayLowSens = 0.05f;
 const float sizeMin = 0.0025f;
@@ -22,16 +18,15 @@ const float diffMin = 0.f;
 const float diffMax = 1.f;
 const float decayMin = 0.1f;
 const float decayMax = 0.9999f;
-const float reverbLowDampMin = 0.f;
-const float reverbLowDampMax = 10.f;
-const float reverbHighDampMin = 0.f;
-const float reverbHIghDampMax = 10.f;
+
+const float reverbDampMin = 0.f;
+const float reverbDampMax = 10.f;
+
 const float modSpeedMin = 0.f;
 const float modSpeedMax = 1.f;
+
 const float modDepthMin = 0.f;
 const float modDepthMax = 16.f;
-const float modShapeMin = 0.001f;
-const float modShapeMax = 0.999f;
 
 constexpr float minus20dBGain = 0.1f;
 constexpr float minus18dBGain = 0.12589254f;
@@ -41,13 +36,17 @@ constexpr float saturatorPreGain = 0.111f;
 constexpr float saturatorDrive = 0.95f;
 constexpr float saturatorPostGain = 9.999f;
 
-float wet = 0.5f;
+float wet = 0.0f;
 float dry = 1.f;
+float wetValue = 0.f;
+
+
+
 float preDelay = 0.f;
 float preDelayCVSens = preDelayNormSens;
 float timeScale = 1.f;
 float diffusion = 1.f;
-float decay = 0.5f;
+float decay = 0.f;
 float inputSensitivity = minus18dBGain;
 float inputDampLow = 0.f;
 float inputDampHigh = 10.f;
@@ -85,7 +84,12 @@ float rightInput = 0.f;
 float leftOutput = 0.f;
 float rightOutput = 0.f;
 
-float initEnvelope = 0.f;
+float tempDecay = 0.f;
+float tempModSpeed = 0.f;
+float tempModDepth = 0.f;
+float tempCutoff = 0.f;
+float tempSize = 0.f;
+float tempDiffusion = 0.f;
 
 
 void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
@@ -94,43 +98,28 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
 {
     for(size_t i = 0; i < size; i += 2)
     {
-        reverb.process(in[i] * 10 * minus20dBGain * inputSensitivity,
-                in[i + 1] * 10 * minus20dBGain * inputSensitivity);
-
-        reverb.process(in[i] * 10 * minus20dBGain * inputSensitivity *
-                    envelope._value,
-                in[i + 1] * 10 * minus20dBGain * inputSensitivity *
-                    envelope._value);
+        reverb.process(in[i] * 10 * minus20dBGain * inputSensitivity * envelope._value,
+                    in[i + 1] * 10 * minus20dBGain * inputSensitivity * envelope._value);
 
         leftOutput = reverb.getLeftOutput();
         rightOutput = reverb.getRightOutput();
 
-        if(leftOutput > 6 || leftOutput < -6)
+        if(leftOutput > 10 || leftOutput < -10)
             leftOutput = 0;
 
-        if(rightOutput > 6 || rightOutput < -6)
+        if(rightOutput > 10 || rightOutput < -10)
             rightOutput = 0;
 
-        out[i] = in[i] * dry + leftOutput * 2 * wet *
-                    envelope._value;
-        out[i + 1] = in[i + 1] * dry + rightOutput * 2 * wet *
-                    envelope._value;
+        out[i] = (in[i] * dry) + 
+                (leftOutput * wet * envelope._value);
+        out[i + 1] = (in[i + 1] * dry) + 
+                (rightOutput * wet * envelope._value);
     }
 }
 
 int main(void)
 {
 	hw.Init();
-
-    // logger.Init();
-
-    // logger.StartLog(true);
-
-    // logger.PrintLine("Hello World");
-
-    // for(int i = 0; i < 32; i++)
-    //     for(int j = 0; j < 200000; j++)
-    //         sdramData[i][j] = 0;
 
     reverb.setSampleRate(48000);
     envelope.setSampleRate(48000);
@@ -151,7 +140,7 @@ int main(void)
     reverb.setTankModDepth(modDepth);
     reverb.setTankModShape(modShape);
 
-	hw.SetAudioBlockSize(48); // number of samples handled per callback
+	hw.SetAudioBlockSize(1); // Number of samples handled per callback
 	//hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ);
 
     
@@ -163,10 +152,52 @@ int main(void)
         hw.UpdateExample(); // Control the LED colors using the knobs and gate inputs
         hw.UpdateLeds();
 
-            if(initEnvelope < 1.f)
-                initEnvelope += 0.00001;
-            else
-                initEnvelope = 1.f;
+        wetValue = hw.GetKnobValue(DaisyVersio::KNOB_0);
 
+        dry = 1.f - wetValue;
+        wet = wetValue;
+
+        tempModSpeed = hw.GetKnobValue(DaisyVersio::KNOB_1);
+        if(tempModSpeed > modSpeedMax)
+            tempModSpeed = modSpeedMax;
+        if(tempModSpeed < modSpeedMin)
+            tempModSpeed = modSpeedMin;
+        reverb.setTankModSpeed(tempModSpeed);
+
+        tempCutoff = hw.GetKnobValue(DaisyVersio::KNOB_2) * 10;
+        if(tempCutoff > reverbDampMax)
+            tempCutoff = reverbDampMax;
+        if(tempCutoff < reverbDampMin)
+            tempCutoff = reverbDampMin;
+        reverb.setTankFilterLowCutFrequency(tempCutoff);
+        // reverb.setTankFilterHighCutFrequency(tempCutoff);
+
+        tempModDepth = hw.GetKnobValue(DaisyVersio::KNOB_3) * 16;
+        if(tempModDepth > modDepthMax)
+            tempModDepth = modDepthMax;
+        if(tempModDepth < modDepthMin)
+            tempModDepth = modDepthMin;
+        reverb.setTankModDepth(tempModDepth);
+
+        tempDecay = hw.GetKnobValue(DaisyVersio::KNOB_4);
+        if(tempDecay > decayMax)
+            tempDecay = decayMax;
+        if(tempDecay < decayMin)
+            tempDecay = decayMin;
+        reverb.setDecay(tempDecay);
+
+        tempSize = hw.GetKnobValue(DaisyVersio::KNOB_5) * 4;
+        if(tempSize > sizeMax)
+            tempSize = sizeMax;
+        if(tempSize < sizeMin)
+            tempSize = sizeMin;
+        reverb.setTimeScale(tempSize);
+
+        tempDiffusion = hw.GetKnobValue(DaisyVersio::KNOB_6);
+        if(tempDiffusion > diffMax)
+            tempDiffusion = diffMax;
+        if(tempDiffusion < diffMin)
+            tempDiffusion = diffMin;
+        reverb.setTankDiffusion(tempDiffusion);
     }
 }
