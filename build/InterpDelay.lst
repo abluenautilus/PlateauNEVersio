@@ -1,0 +1,103 @@
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"InterpDelay.cpp"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.global	count
+  17              		.global	data
+  18              		.global	sdramData
+  19              		.section	.bss.count,"aw",%nobits
+  20              		.align	2
+  23              	count:
+  24 0000 00000000 		.space	4
+  25              		.section	.bss.data,"aw",%nobits
+  26              		.align	2
+  29              	data:
+  30 0000 00000000 		.space	25600000
+  30      00000000 
+  30      00000000 
+  30      00000000 
+  30      00000000 
+  31              		.section	.sdram_bss,"aw"
+  32              		.align	2
+  35              	sdramData:
+  36 0000 00000000 		.space	25600000
+  36      00000000 
+  36      00000000 
+  36      00000000 
+  36      00000000 
+  37              		.text
+  38              	.Letext0:
+  39              		.file 1 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+  40              		.file 2 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+  41              		.file 3 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdint.h"
+  42              		.file 4 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stddef.h"
+  43              		.file 5 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cmath"
+  44              		.file 6 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\std_abs.h"
+  45              		.file 7 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\type_traits"
+  46              		.file 8 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\debug\\debug.h"
+  47              		.file 9 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\stl_pair.h"
+  48              		.file 10 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\exception_
+  49              		.file 11 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\arm-none-eabi\\t
+  50              		.file 12 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdint"
+  51              		.file 13 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cwchar"
+  52              		.file 14 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\clocale"
+  53              		.file 15 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdlib"
+  54              		.file 16 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdio"
+  55              		.file 17 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\basic_stri
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s 			page 2
+
+
+  56              		.file 18 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\algorithmf
+  57              		.file 19 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdarg"
+  58              		.file 20 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstring"
+  59              		.file 21 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\charconv.h
+  60              		.file 22 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\predefined
+  61              		.file 23 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_types.h"
+  62              		.file 24 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\reent.h"
+  63              		.file 25 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\lock.h"
+  64              		.file 26 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\math.h"
+  65              		.file 27 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdlib.h"
+  66              		.file 28 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\math.h"
+  67              		.file 29 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stdarg.h"
+  68              		.file 30 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\wchar.h"
+  69              		.file 31 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\locale.h"
+  70              		.file 32 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdio.h"
+  71              		.file 33 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\stdlib.h"
+  72              		.file 34 "../../libDaisy//src/daisy_core.h"
+  73              		.file 35 "../../libDaisy//src/util/wav_format.h"
+  74              		.file 36 "../../libDaisy//src/dev/max11300.h"
+  75              		.file 37 "../../libDaisy//src/daisy_seed.h"
+  76              		.file 38 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\string.h"
+  77              		.file 39 "../../DaisySP//Source/Control/adenv.h"
+  78              		.file 40 "../../DaisySP//Source/Utility/dsp.h"
+  79              		.file 41 "dsp/delays/InterpDelay.hpp"
+  80              		.file 42 "dsp/delays/InterpDelay.cpp"
+  81              		.file 43 "<built-in>"
+  82              		.file 44 "../../libDaisy//src/dev/sr_595.h"
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 InterpDelay.cpp
+C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s:23     .bss.count:00000000 count
+C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s:29     .bss.data:00000000 data
+C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s:35     .sdram_bss:00000000 sdramData
+C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s:20     .bss.count:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s:26     .bss.data:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cc6xbRVh.s:32     .sdram_bss:00000000 $d
+
+NO UNDEFINED SYMBOLS
