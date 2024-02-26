@@ -97,28 +97,25 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
         reverb.process(in[i] * 10 * minus20dBGain * inputSensitivity,
                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
 
+        reverb.process(in[i] * 10 * minus20dBGain * inputSensitivity *
+                    envelope._value,
+                in[i + 1] * 10 * minus20dBGain * inputSensitivity *
+                    envelope._value);
+
         leftOutput = reverb.getLeftOutput();
         rightOutput = reverb.getRightOutput();
 
-        // if(leftOutput > 10 || leftOutput < 10)
-        //     leftOutput = 0;
+        if(leftOutput > 6 || leftOutput < -6)
+            leftOutput = 0;
 
-        // if(rightOutput > 10 || rightOutput < 10)
-        //     rightOutput = 0;
+        if(rightOutput > 6 || rightOutput < -6)
+            rightOutput = 0;
 
-        out[i] = in[i] * dry + leftOutput * wet *
+        out[i] = in[i] * dry + leftOutput * 2 * wet *
                     envelope._value;
-        out[i + 1] = in[i + 1] * dry + rightOutput * wet *
+        out[i + 1] = in[i + 1] * dry + rightOutput * 2 * wet *
                     envelope._value;
     }
-
-    // reverb.process(in[0] * minus20dBGain * inputSensitivity * envelope._value,
-    //             in[1] * minus20dBGain * inputSensitivity * envelope._value);
-
-    // out[0] = in[0] * dry/* + reverb.getLeftOutput() * wet *
-    //                 envelope._value*/;
-    // out[1] = in[1] * dry/* + reverb.getRightOutput() * wet *
-    //                 envelope._value*/;
 }
 
 int main(void)
