@@ -8,14 +8,21 @@ and output scaling to preserve the signal while it passes through output opamps 
 ## Version 0.9a 02/27/2024
 
 Fixes: 
+
 Fixed loud initialization using hold boolean on the linear interpolating delay until the Dattorro has reached equilibrium
+
 Implemented knobs
+
 Implemented CVs
+
 Fixed some heavy static as result of unoptimized code, unstable knobs, and sample rate choices.
+
 Longer predelay buffer
 
 To-do:
+
 Implement low cut and high cut filters on the tank and on the inputs
+
 Implement freeze function
 
 
