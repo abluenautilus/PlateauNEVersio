@@ -35,8 +35,11 @@ Longer predelay buffer
 ## Version 0.8a, 02/25/2024:
 
 Working Plateau reverb code on Daisy Seed
-Bug where the output is extremely loud and distorted for 10 seconds
+
+Bug where the output is extremely loud and distorted for 10 seconds\
+
 Knobs not set up
+
 CVs not set up
 
 
