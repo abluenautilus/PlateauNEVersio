@@ -17,6 +17,7 @@ Implement low cut and high cut filters on the tank and on the inputs
 Implement freeze function
 
 Version 0.8a, 02/25/2024:
+
 Working Plateau reverb code on Daisy Seed
 Bug where the output is extremely loud and distorted for 10 seconds
 Knobs not set up
