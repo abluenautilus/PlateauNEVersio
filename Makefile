@@ -6,7 +6,6 @@ CPP_SOURCES = PlateauTest.cpp
 CPP_SOURCES += utilities/Utilities.cpp
 CPP_SOURCES += dsp/filters/OnePoleFilters.cpp
 CPP_SOURCES += dsp/delays/InterpDelay.cpp
-CPP_SOURCES += dsp/modulation/LinearEnvelope.cpp
 CPP_SOURCES += Dattorro.cpp
 
 # Library Locations

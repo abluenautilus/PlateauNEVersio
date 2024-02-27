@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   27:../../libDaisy//src/daisy_versio.h ****     {
   28:../../libDaisy//src/daisy_versio.h ****         KNOB_0,
   29:../../libDaisy//src/daisy_versio.h ****         KNOB_1,
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 2
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 2
 
 
   30:../../libDaisy//src/daisy_versio.h ****         KNOB_2,
@@ -83,8 +83,8 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-  35              	.LBB218:
-  36              	.LBI218:
+  35              	.LBB229:
+  36              	.LBI229:
   37              		.file 2 "../../libDaisy//src/hid/gatein.h"
    1:../../libDaisy//src/hid/gatein.h **** #pragma once
    2:../../libDaisy//src/hid/gatein.h **** #ifndef DSY_GATEIN_H
@@ -109,16 +109,16 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   21:../../libDaisy//src/hid/gatein.h ****     ~GateIn() {}
   38              		.loc 2 21 5 view .LVU1
   39              		.loc 2 21 5 is_stmt 0 view .LVU2
-  40              	.LBE218:
-  41              	.LBB219:
-  42              	.LBI219:
+  40              	.LBE229:
+  41              	.LBB230:
+  42              	.LBI230:
   43              		.file 3 "../../libDaisy//src/hid/switch.h"
    1:../../libDaisy//src/hid/switch.h **** #pragma once
    2:../../libDaisy//src/hid/switch.h **** #ifndef DSY_SWITCH_H
    3:../../libDaisy//src/hid/switch.h **** #define DSY_SWITCH_H
    4:../../libDaisy//src/hid/switch.h **** #include "daisy_core.h"
    5:../../libDaisy//src/hid/switch.h **** #include "per/gpio.h"
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 3
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 3
 
 
    6:../../libDaisy//src/hid/switch.h **** #include "sys/system.h"
@@ -160,9 +160,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   42:../../libDaisy//src/hid/switch.h ****     ~Switch() {}
   44              		.loc 3 42 5 is_stmt 1 view .LVU3
   45              		.loc 3 42 5 is_stmt 0 view .LVU4
-  46              	.LBE219:
-  47              	.LBB220:
-  48              	.LBI220:
+  46              	.LBE230:
+  47              	.LBB231:
+  48              	.LBI231:
   49              		.file 4 "../../libDaisy//src/daisy_seed.h"
    1:../../libDaisy//src/daisy_seed.h **** #pragma once
    2:../../libDaisy//src/daisy_seed.h **** #ifndef DSY_SEED_H
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   12:../../libDaisy//src/daisy_seed.h **** /**
   13:../../libDaisy//src/daisy_seed.h ****    @brief This is the higher-level interface for the Daisy board. \n 
   14:../../libDaisy//src/daisy_seed.h ****     All basic peripheral configuration/initialization is setup here. \n
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 4
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 4
 
 
   15:../../libDaisy//src/daisy_seed.h **** 
@@ -190,8 +190,8 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   21:../../libDaisy//src/daisy_seed.h ****     DaisySeed() {}
   22:../../libDaisy//src/daisy_seed.h ****     ~DaisySeed() {}
   50              		.loc 4 22 5 is_stmt 1 view .LVU5
-  51              	.LBB221:
-  52              	.LBI221:
+  51              	.LBB232:
+  52              	.LBI232:
   53              		.file 5 "../../libDaisy//src/sys/system.h"
    1:../../libDaisy//src/sys/system.h **** #ifndef DSY_SYSTEM_H
    2:../../libDaisy//src/sys/system.h **** #define DSY_SYSTEM_H
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   43:../../libDaisy//src/sys/system.h ****         /** Method to call on the struct to set to boost mode:
   44:../../libDaisy//src/sys/system.h ****          ** CPU Freq set to 480MHz
   45:../../libDaisy//src/sys/system.h ****          ** Cache Enabled
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 5
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 5
 
 
   46:../../libDaisy//src/sys/system.h ****          ** */
@@ -295,10 +295,10 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   97:../../libDaisy//src/sys/system.h ****     ~System() {}
   54              		.loc 5 97 5 view .LVU6
   55              		.loc 5 97 5 is_stmt 0 view .LVU7
-  56              	.LBE221:
-  57              	.LBB222:
-  58              	.LBI222:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 6
+  56              	.LBE232:
+  57              	.LBB233:
+  58              	.LBI233:
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 6
 
 
   59              		.file 6 "../../libDaisy//src/hid/usb.h"
@@ -346,9 +346,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   42:../../libDaisy//src/hid/usb.h ****     ~UsbHandle() {}
   60              		.loc 6 42 5 is_stmt 1 view .LVU8
   61              		.loc 6 42 5 is_stmt 0 view .LVU9
-  62              	.LBE222:
-  63              	.LBB223:
-  64              	.LBI223:
+  62              	.LBE233:
+  63              	.LBB234:
+  64              	.LBI234:
   65              		.file 7 "../../libDaisy//src/per/adc.h"
    1:../../libDaisy//src/per/adc.h **** #pragma once
    2:../../libDaisy//src/per/adc.h **** #ifndef DSY_ADC_H
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
    6:../../libDaisy//src/per/adc.h **** #include "daisy_core.h"
    7:../../libDaisy//src/per/adc.h **** #include "per/gpio.h"
    8:../../libDaisy//src/per/adc.h **** 
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 7
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 7
 
 
    9:../../libDaisy//src/per/adc.h **** #define DSY_ADC_MAX_CHANNELS 16 /**< Maximum number of ADC channels */
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   63:../../libDaisy//src/per/adc.h ****     Requires a CD405X Multiplexer connected to the pin.
   64:../../libDaisy//src/per/adc.h ****     You only need to supply the mux pins that are required,
   65:../../libDaisy//src/per/adc.h ****     e.g. a 4052 mux would only require mux_0 and mux_1.
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 8
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 8
 
 
   66:../../libDaisy//src/per/adc.h ****     Internal Callbacks handle the pin addressing.
@@ -468,9 +468,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  110:../../libDaisy//src/per/adc.h ****     ~AdcHandle() {}
   66              		.loc 7 110 5 is_stmt 1 view .LVU10
   67              		.loc 7 110 5 is_stmt 0 view .LVU11
-  68              	.LBE223:
-  69              	.LBB224:
-  70              	.LBI224:
+  68              	.LBE234:
+  69              	.LBB235:
+  70              	.LBI235:
   71              		.file 8 "../../libDaisy//src/hid/audio.h"
    1:../../libDaisy//src/hid/audio.h **** #ifndef DSY_AUDIO_H
    2:../../libDaisy//src/hid/audio.h **** #define DSY_AUDIO_H /**< & */
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
    4:../../libDaisy//src/hid/audio.h **** #include "per/sai.h"
    5:../../libDaisy//src/hid/audio.h **** 
    6:../../libDaisy//src/hid/audio.h **** namespace daisy
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 9
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 9
 
 
    7:../../libDaisy//src/hid/audio.h **** {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   61:../../libDaisy//src/hid/audio.h ****      * const so that the user can't modify the input
   62:../../libDaisy//src/hid/audio.h ****      */
   63:../../libDaisy//src/hid/audio.h ****     typedef const float* const* InputBuffer;
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 10
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 10
 
 
   64:../../libDaisy//src/hid/audio.h **** 
@@ -576,8 +576,8 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   96:../../libDaisy//src/hid/audio.h ****     ~AudioHandle() {}
   72              		.loc 8 96 5 is_stmt 1 view .LVU12
   73              		.loc 8 96 5 is_stmt 0 view .LVU13
-  74              	.LBE224:
-  75              	.LBE220:
+  74              	.LBE235:
+  75              	.LBE231:
   76              		.loc 1 46 21 view .LVU14
   77 0000 7047     		bx	lr
   78              		.cfi_endproc
@@ -594,746 +594,1397 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   90              		.fpu fpv5-d16
   92              	_Z13AudioCallbackPKfPfj:
   93              	.LVL1:
-  94              	.LFB4773:
+  94              	.LFB4772:
   95              		.file 9 "PlateauTest.cpp"
    1:PlateauTest.cpp **** #define DSJ_PLATEAU_HPP
    2:PlateauTest.cpp **** 
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 11
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 11
 
 
    3:PlateauTest.cpp **** #include "Dattorro.hpp"
-   4:PlateauTest.cpp **** #include "dsp/shaping/NonLinear.hpp"
-   5:PlateauTest.cpp **** #include "dsp/modulation/LinearEnvelope.hpp"
-   6:PlateauTest.cpp **** #include <vector>
-   7:PlateauTest.cpp **** 
-   8:PlateauTest.cpp **** using namespace daisy;
-   9:PlateauTest.cpp **** using namespace daisysp;
+   4:PlateauTest.cpp **** #include <vector>
+   5:PlateauTest.cpp **** 
+   6:PlateauTest.cpp **** using namespace daisy;
+   7:PlateauTest.cpp **** using namespace daisysp;
+   8:PlateauTest.cpp **** 
+   9:PlateauTest.cpp **** DaisyVersio hw;
   10:PlateauTest.cpp **** 
-  11:PlateauTest.cpp **** DaisyVersio hw;
-  12:PlateauTest.cpp **** 
-  13:PlateauTest.cpp **** const float dryMin = 0.f;
-  14:PlateauTest.cpp **** const float dryMax = 1.f;
-  15:PlateauTest.cpp **** const float wetMin = 0.f;
-  16:PlateauTest.cpp **** const float wetMax = 1.f;
-  17:PlateauTest.cpp **** const float preDelayNormSens = 0.1f;
-  18:PlateauTest.cpp **** const float preDelayLowSens = 0.05f;
-  19:PlateauTest.cpp **** const float sizeMin = 0.0025f;
-  20:PlateauTest.cpp **** const float sizeMax = 4.0f;
-  21:PlateauTest.cpp **** const float diffMin = 0.f;
-  22:PlateauTest.cpp **** const float diffMax = 1.f;
-  23:PlateauTest.cpp **** const float decayMin = 0.1f;
-  24:PlateauTest.cpp **** const float decayMax = 0.9999f;
-  25:PlateauTest.cpp **** const float reverbLowDampMin = 0.f;
-  26:PlateauTest.cpp **** const float reverbLowDampMax = 10.f;
-  27:PlateauTest.cpp **** const float reverbHighDampMin = 0.f;
-  28:PlateauTest.cpp **** const float reverbHIghDampMax = 10.f;
-  29:PlateauTest.cpp **** const float modSpeedMin = 0.f;
-  30:PlateauTest.cpp **** const float modSpeedMax = 1.f;
-  31:PlateauTest.cpp **** const float modDepthMin = 0.f;
-  32:PlateauTest.cpp **** const float modDepthMax = 16.f;
-  33:PlateauTest.cpp **** const float modShapeMin = 0.001f;
-  34:PlateauTest.cpp **** const float modShapeMax = 0.999f;
-  35:PlateauTest.cpp **** 
-  36:PlateauTest.cpp **** constexpr float minus20dBGain = 0.1f;
-  37:PlateauTest.cpp **** constexpr float minus18dBGain = 0.12589254f;
-  38:PlateauTest.cpp **** constexpr float zerodBGain = 1.f;
+  11:PlateauTest.cpp **** const float sizeMin = 0.0025f;
+  12:PlateauTest.cpp **** const float sizeMax = 4.0f;
+  13:PlateauTest.cpp **** 
+  14:PlateauTest.cpp **** const float diffMin = 0.f;
+  15:PlateauTest.cpp **** const float diffMax = 1.f;
+  16:PlateauTest.cpp **** 
+  17:PlateauTest.cpp **** const float decayMin = 0.1f;
+  18:PlateauTest.cpp **** const float decayMax = 0.9999f;
+  19:PlateauTest.cpp **** 
+  20:PlateauTest.cpp **** const float reverbDampMin = 0.f;
+  21:PlateauTest.cpp **** const float reverbDampMax = 10.f;
+  22:PlateauTest.cpp **** 
+  23:PlateauTest.cpp **** const float modSpeedMin = 0.f;
+  24:PlateauTest.cpp **** const float modSpeedMax = 20.f;
+  25:PlateauTest.cpp **** 
+  26:PlateauTest.cpp **** const float modDepthMin = 0.f;
+  27:PlateauTest.cpp **** const float modDepthMax = 16.f;
+  28:PlateauTest.cpp **** 
+  29:PlateauTest.cpp **** constexpr float minus20dBGain = 0.1f;
+  30:PlateauTest.cpp **** constexpr float zerodBGain = 1.f;
+  31:PlateauTest.cpp **** 
+  32:PlateauTest.cpp **** float wet = 0.5f;
+  33:PlateauTest.cpp **** float dry = 0.5f;
+  34:PlateauTest.cpp **** float wetValue = 0.f;
+  35:PlateauTest.cpp **** float previousWetValue = wetValue;
+  36:PlateauTest.cpp **** 
+  37:PlateauTest.cpp **** float preDelay = 0.f;
+  38:PlateauTest.cpp **** float previousPreDelay = 0.f;
   39:PlateauTest.cpp **** 
-  40:PlateauTest.cpp **** constexpr float saturatorPreGain = 0.111f;
-  41:PlateauTest.cpp **** constexpr float saturatorDrive = 0.95f;
-  42:PlateauTest.cpp **** constexpr float saturatorPostGain = 9.999f;
-  43:PlateauTest.cpp **** 
-  44:PlateauTest.cpp **** float wet = 0.5f;
-  45:PlateauTest.cpp **** float dry = 1.f;
-  46:PlateauTest.cpp **** float preDelay = 0.f;
-  47:PlateauTest.cpp **** float preDelayCVSens = preDelayNormSens;
-  48:PlateauTest.cpp **** float timeScale = 1.f;
-  49:PlateauTest.cpp **** float diffusion = 1.f;
-  50:PlateauTest.cpp **** float decay = 0.5f;
-  51:PlateauTest.cpp **** float inputSensitivity = minus18dBGain;
-  52:PlateauTest.cpp **** float inputDampLow = 0.f;
-  53:PlateauTest.cpp **** float inputDampHigh = 10.f;
-  54:PlateauTest.cpp **** float reverbDampLow = 0.f;
-  55:PlateauTest.cpp **** float reverbDampHigh = 10.f;
-  56:PlateauTest.cpp **** float modSpeed = 0.1f;
-  57:PlateauTest.cpp **** float modShape = 0.5f;
-  58:PlateauTest.cpp **** float modDepth = 0.f;
-  59:PlateauTest.cpp **** 
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 12
+  40:PlateauTest.cpp **** float inputDampLow = 0.f;
+  41:PlateauTest.cpp **** float inputDampHigh = 10.f;
+  42:PlateauTest.cpp **** 
+  43:PlateauTest.cpp **** float reverbDampLow = 0.f;
+  44:PlateauTest.cpp **** float reverbDampHigh = 10.f;
+  45:PlateauTest.cpp **** 
+  46:PlateauTest.cpp **** float previousInputDampLow = 0.f;
+  47:PlateauTest.cpp **** float previousInputDampHigh = 10.f;
+  48:PlateauTest.cpp **** 
+  49:PlateauTest.cpp **** float previousReverbDampLow = 0.f;
+  50:PlateauTest.cpp **** float previousReverbDampHigh = 10.f;
+  51:PlateauTest.cpp **** 
+  52:PlateauTest.cpp **** bool freezeButtonState = false;
+  53:PlateauTest.cpp **** bool freezeToggle = false;
+  54:PlateauTest.cpp **** bool freezeToggleButtonState = false;
+  55:PlateauTest.cpp **** bool freeze = false;
+  56:PlateauTest.cpp **** bool frozen = false;
+  57:PlateauTest.cpp **** bool tunedButtonState = false;
+  58:PlateauTest.cpp **** 
+  59:PlateauTest.cpp **** int inputSensitivityState = 0;
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 12
 
 
-  60:PlateauTest.cpp **** bool freezeButtonState = false;
-  61:PlateauTest.cpp **** bool freezeToggle = false;
-  62:PlateauTest.cpp **** bool freezeToggleButtonState = false;
-  63:PlateauTest.cpp **** bool freeze = false;
-  64:PlateauTest.cpp **** bool frozen = false;
-  65:PlateauTest.cpp **** bool tunedButtonState = false;
-  66:PlateauTest.cpp **** bool diffuseButtonState = true;
-  67:PlateauTest.cpp **** int preDelayCVSensState = 0;
-  68:PlateauTest.cpp **** int inputSensitivityState = 0;
-  69:PlateauTest.cpp **** bool softDriveOutput = 0;
+  60:PlateauTest.cpp **** 
+  61:PlateauTest.cpp **** bool clear = false;
+  62:PlateauTest.cpp **** bool cleared = true;
+  63:PlateauTest.cpp **** bool fadeOut = false;
+  64:PlateauTest.cpp **** bool fadeIn = false;
+  65:PlateauTest.cpp **** 
+  66:PlateauTest.cpp **** float leftInput = 0.f;
+  67:PlateauTest.cpp **** float rightInput = 0.f;
+  68:PlateauTest.cpp **** float leftOutput = 0.f;
+  69:PlateauTest.cpp **** float rightOutput = 0.f;
   70:PlateauTest.cpp **** 
-  71:PlateauTest.cpp **** bool clear = false;
-  72:PlateauTest.cpp **** bool cleared = true;
-  73:PlateauTest.cpp **** bool fadeOut = false;
-  74:PlateauTest.cpp **** bool fadeIn = false;
-  75:PlateauTest.cpp **** 
-  76:PlateauTest.cpp **** Dattorro reverb;
-  77:PlateauTest.cpp **** LinearEnvelope envelope;
-  78:PlateauTest.cpp **** 
-  79:PlateauTest.cpp **** int panelStyle = 0;
-  80:PlateauTest.cpp **** int tuned = 0;
-  81:PlateauTest.cpp **** int diffuseInput = 1;
+  71:PlateauTest.cpp **** float decay = 0.5f;
+  72:PlateauTest.cpp **** float previousDecay = decay;
+  73:PlateauTest.cpp **** 
+  74:PlateauTest.cpp **** float modSpeed = 0.f;
+  75:PlateauTest.cpp **** float previousModSpeed = modSpeed;
+  76:PlateauTest.cpp **** 
+  77:PlateauTest.cpp **** float modDepth = 0.f;
+  78:PlateauTest.cpp **** float previousModDepth = modDepth;
+  79:PlateauTest.cpp **** 
+  80:PlateauTest.cpp **** float timeScale = 2.f;
+  81:PlateauTest.cpp **** float previousTimeScale = timeScale;
   82:PlateauTest.cpp **** 
-  83:PlateauTest.cpp **** float leftInput = 0.f;
-  84:PlateauTest.cpp **** float rightInput = 0.f;
-  85:PlateauTest.cpp **** float leftOutput = 0.f;
-  86:PlateauTest.cpp **** float rightOutput = 0.f;
+  83:PlateauTest.cpp **** float tempCutoff = 0.f;
+  84:PlateauTest.cpp **** 
+  85:PlateauTest.cpp **** int holdCount = 0;
+  86:PlateauTest.cpp **** int paramCount = 0;
   87:PlateauTest.cpp **** 
-  88:PlateauTest.cpp **** float initEnvelope = 0.f;
+  88:PlateauTest.cpp **** Dattorro reverb;
   89:PlateauTest.cpp **** 
-  90:PlateauTest.cpp **** 
-  91:PlateauTest.cpp **** void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
-  92:PlateauTest.cpp ****               AudioHandle::InterleavingOutputBuffer out,
-  93:PlateauTest.cpp ****               size_t                                size)
-  94:PlateauTest.cpp **** {
-  96              		.loc 9 94 1 is_stmt 1 view -0
+  90:PlateauTest.cpp **** void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
+  91:PlateauTest.cpp ****               AudioHandle::InterleavingOutputBuffer out,
+  92:PlateauTest.cpp ****               size_t                                size)
+  93:PlateauTest.cpp **** {
+  96              		.loc 9 93 1 is_stmt 1 view -0
   97              		.cfi_startproc
   98              		@ args = 0, pretend = 0, frame = 8
   99              		@ frame_needed = 0, uses_anonymous_args = 0
-  95:PlateauTest.cpp ****     for(size_t i = 0; i < size; i += 2)
- 100              		.loc 9 95 5 view .LVU16
- 101              	.LBB225:
- 102              		.loc 9 95 25 view .LVU17
- 103 0000 002A     		cmp	r2, #0
- 104 0002 75D0     		beq	.L14
- 105 0004 013A     		subs	r2, r2, #1
- 106              	.LVL2:
- 107              		.loc 9 95 25 is_stmt 0 view .LVU18
- 108              	.LBE225:
   94:PlateauTest.cpp ****     for(size_t i = 0; i < size; i += 2)
- 109              		.loc 9 94 1 view .LVU19
- 110 0006 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 100              		.loc 9 94 5 view .LVU16
+ 101              	.LBB236:
+ 102              		.loc 9 94 25 view .LVU17
+ 103 0000 002A     		cmp	r2, #0
+ 104 0002 00F04B81 		beq	.L47
+ 105 0006 013A     		subs	r2, r2, #1
+ 106              	.LVL2:
+ 107              		.loc 9 94 25 is_stmt 0 view .LVU18
+ 108              	.LBE236:
+  93:PlateauTest.cpp ****     for(size_t i = 0; i < size; i += 2)
+ 109              		.loc 9 93 1 view .LVU19
+ 110 0008 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
  111              		.cfi_def_cfa_offset 36
  112              		.cfi_offset 4, -36
  113              		.cfi_offset 5, -32
  114              		.cfi_offset 6, -28
  115              		.cfi_offset 7, -24
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 13
-
-
  116              		.cfi_offset 8, -20
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 13
+
+
  117              		.cfi_offset 9, -16
  118              		.cfi_offset 10, -12
  119              		.cfi_offset 11, -8
  120              		.cfi_offset 14, -4
- 121 000a 5308     		lsrs	r3, r2, #1
- 122 000c 0446     		mov	r4, r0
- 123 000e 0D46     		mov	r5, r1
- 124              	.LBB226:
- 125              		.loc 9 95 25 view .LVU20
- 126 0010 0026     		movs	r6, #0
- 127 0012 DFF8F0B0 		ldr	fp, .L17+16
- 128 0016 DFF8F080 		ldr	r8, .L17+20
- 129 001a 364F     		ldr	r7, .L17
- 130 001c DFF8ECA0 		ldr	r10, .L17+24
- 131 0020 DFF8EC90 		ldr	r9, .L17+28
- 132              	.LBE226:
-  94:PlateauTest.cpp ****     for(size_t i = 0; i < size; i += 2)
- 133              		.loc 9 94 1 view .LVU21
- 134 0024 2DED028B 		vpush.64	{d8}
- 135              		.cfi_def_cfa_offset 44
- 136              		.cfi_offset 80, -44
- 137              		.cfi_offset 81, -40
- 138 0028 83B0     		sub	sp, sp, #12
- 139              		.cfi_def_cfa_offset 56
- 140 002a 0193     		str	r3, [sp, #4]
- 141              	.LVL3:
- 142              	.L12:
- 143              	.LBB227:
-  96:PlateauTest.cpp ****     {
-  97:PlateauTest.cpp ****         reverb.process(in[i] * 10 * minus20dBGain * inputSensitivity,
- 144              		.loc 9 97 9 is_stmt 1 view .LVU22
-  98:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 145              		.loc 9 98 27 is_stmt 0 view .LVU23
- 146 002c B2EE048A 		vmov.f32	s16, #1.0e+1
- 147 0030 D4ED010A 		vldr.32	s1, [r4, #4]
-  97:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 148              		.loc 9 97 30 view .LVU24
- 149 0034 D4ED007A 		vldr.32	s15, [r4]
- 150              		.loc 9 98 32 view .LVU25
- 151 0038 9FED2F7A 		vldr.32	s14, .L17+4
- 152              		.loc 9 98 27 view .LVU26
- 153 003c 60EE880A 		vmul.f32	s1, s1, s16
-  97:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 154              		.loc 9 97 23 view .LVU27
- 155 0040 9BED000A 		vldr.32	s0, [fp]
-  97:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 156              		.loc 9 97 30 view .LVU28
- 157 0044 67EE887A 		vmul.f32	s15, s15, s16
-  97:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 158              		.loc 9 97 23 view .LVU29
- 159 0048 2C48     		ldr	r0, .L17+8
- 160              		.loc 9 98 32 view .LVU30
- 161 004a 60EE870A 		vmul.f32	s1, s1, s14
-  97:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 162              		.loc 9 97 35 view .LVU31
- 163 004e 67EE877A 		vmul.f32	s15, s15, s14
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 14
+ 121 000c 5308     		lsrs	r3, r2, #1
+ 122 000e 0446     		mov	r4, r0
+ 123 0010 0D46     		mov	r5, r1
+ 124              	.LBB247:
+ 125              		.loc 9 94 25 view .LVU20
+ 126 0012 4FF00008 		mov	r8, #0
+ 127 0016 DFF8D8B2 		ldr	fp, .L53+80
+ 128 001a DFF8D8A2 		ldr	r10, .L53+84
+ 129 001e A04F     		ldr	r7, .L53
+ 130 0020 A04E     		ldr	r6, .L53+4
+ 131 0022 DFF8D492 		ldr	r9, .L53+88
+ 132              	.LBE247:
+  93:PlateauTest.cpp ****     for(size_t i = 0; i < size; i += 2)
+ 133              		.loc 9 93 1 view .LVU21
+ 134 0026 2DED048B 		vpush.64	{d8, d9}
+ 135              		.cfi_def_cfa_offset 52
+ 136              		.cfi_offset 80, -52
+ 137              		.cfi_offset 81, -48
+ 138              		.cfi_offset 82, -44
+ 139              		.cfi_offset 83, -40
+ 140 002a 83B0     		sub	sp, sp, #12
+ 141              		.cfi_def_cfa_offset 64
+ 142 002c 0193     		str	r3, [sp, #4]
+ 143              	.LVL3:
+ 144              	.L34:
+ 145              	.LBB248:
+  95:PlateauTest.cpp ****     {
+  96:PlateauTest.cpp ****         reverb.process(in[i] * minus20dBGain,
+ 146              		.loc 9 96 9 is_stmt 1 view .LVU22
+ 147              		.loc 9 96 23 is_stmt 0 view .LVU23
+ 148 002e DFED9E7A 		vldr.32	s15, .L53+8
+ 149 0032 D4ED010A 		vldr.32	s1, [r4, #4]
+ 150 0036 94ED000A 		vldr.32	s0, [r4]
+ 151 003a 60EEA70A 		vmul.f32	s1, s1, s15
+ 152 003e 9B48     		ldr	r0, .L53+12
+ 153 0040 20EE270A 		vmul.f32	s0, s0, s15
+ 154 0044 FFF7FEFF 		bl	_ZN8Dattorro7processEff
+ 155              	.LVL4:
+  97:PlateauTest.cpp ****                 in[i + 1] * minus20dBGain);
+  98:PlateauTest.cpp **** 
+  99:PlateauTest.cpp ****         leftOutput = (in[i] * dry) + 
+ 156              		.loc 9 99 9 is_stmt 1 view .LVU24
+ 100:PlateauTest.cpp ****                 (reverb.getLeftOutput() * 2 * wet);
+ 157              		.loc 9 100 38 is_stmt 0 view .LVU25
+ 158 0048 9848     		ldr	r0, .L53+12
+  99:PlateauTest.cpp ****                 (reverb.getLeftOutput() * 2 * wet);
+ 159              		.loc 9 99 29 view .LVU26
+ 160 004a DBED008A 		vldr.32	s17, [fp]
+  99:PlateauTest.cpp ****                 (reverb.getLeftOutput() * 2 * wet);
+ 161              		.loc 9 99 27 view .LVU27
+ 162 004e 94ED009A 		vldr.32	s18, [r4]
+ 163              		.loc 9 100 38 view .LVU28
+ 164 0052 FFF7FEFF 		bl	_ZNK8Dattorro13getLeftOutputEv
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 14
 
 
-  97:PlateauTest.cpp ****                 in[i + 1] * 10 * minus20dBGain * inputSensitivity);
- 164              		.loc 9 97 23 view .LVU32
- 165 0052 60EE800A 		vmul.f32	s1, s1, s0
- 166 0056 27EE800A 		vmul.f32	s0, s15, s0
- 167 005a FFF7FEFF 		bl	_ZN8Dattorro7processEff
- 168              	.LVL4:
-  99:PlateauTest.cpp **** 
- 100:PlateauTest.cpp ****         leftOutput = reverb.getLeftOutput();
- 169              		.loc 9 100 9 is_stmt 1 view .LVU33
- 170              		.loc 9 100 42 is_stmt 0 view .LVU34
- 171 005e 2748     		ldr	r0, .L17+8
- 172 0060 FFF7FEFF 		bl	_ZNK8Dattorro13getLeftOutputEv
- 173              	.LVL5:
- 101:PlateauTest.cpp ****         rightOutput = reverb.getRightOutput();
- 174              		.loc 9 101 44 view .LVU35
- 175 0064 2548     		ldr	r0, .L17+8
- 100:PlateauTest.cpp ****         rightOutput = reverb.getRightOutput();
- 176              		.loc 9 100 20 view .LVU36
- 177 0066 88ED000A 		vstr.32	s0, [r8]
- 178              		.loc 9 101 9 is_stmt 1 view .LVU37
- 179              		.loc 9 101 44 is_stmt 0 view .LVU38
- 180 006a FFF7FEFF 		bl	_ZNK8Dattorro14getRightOutputEv
- 181              	.LVL6:
+ 165              	.LVL5:
+ 166              		.loc 9 100 41 view .LVU29
+ 167 0056 30EE000A 		vadd.f32	s0, s0, s0
+ 168              		.loc 9 100 45 view .LVU30
+ 169 005a DAED007A 		vldr.32	s15, [r10]
+ 101:PlateauTest.cpp ****         rightOutput = (in[i + 1] * dry) + 
+ 102:PlateauTest.cpp ****                 (reverb.getRightOutput() * 2 * wet);
+ 170              		.loc 9 102 39 view .LVU31
+ 171 005e 9348     		ldr	r0, .L53+12
+ 101:PlateauTest.cpp ****         rightOutput = (in[i + 1] * dry) + 
+ 172              		.loc 9 101 34 view .LVU32
+ 173 0060 9BED008A 		vldr.32	s16, [fp]
+ 100:PlateauTest.cpp ****         rightOutput = (in[i + 1] * dry) + 
+ 174              		.loc 9 100 45 view .LVU33
+ 175 0064 20EE270A 		vmul.f32	s0, s0, s15
+  99:PlateauTest.cpp ****                 (reverb.getLeftOutput() * 2 * wet);
+ 176              		.loc 9 99 36 view .LVU34
+ 177 0068 A9EE280A 		vfma.f32	s0, s18, s17
+  99:PlateauTest.cpp ****                 (reverb.getLeftOutput() * 2 * wet);
+ 178              		.loc 9 99 20 view .LVU35
+ 179 006c 87ED000A 		vstr.32	s0, [r7]
+ 101:PlateauTest.cpp ****         rightOutput = (in[i + 1] * dry) + 
+ 180              		.loc 9 101 9 is_stmt 1 view .LVU36
+ 101:PlateauTest.cpp ****         rightOutput = (in[i + 1] * dry) + 
+ 181              		.loc 9 101 32 is_stmt 0 view .LVU37
+ 182 0070 D4ED018A 		vldr.32	s17, [r4, #4]
+ 183              		.loc 9 102 39 view .LVU38
+ 184 0074 FFF7FEFF 		bl	_ZNK8Dattorro14getRightOutputEv
+ 185              	.LVL6:
+ 186              		.loc 9 102 42 view .LVU39
+ 187 0078 30EE000A 		vadd.f32	s0, s0, s0
+ 188              		.loc 9 102 46 view .LVU40
+ 189 007c DAED006A 		vldr.32	s13, [r10]
+ 103:PlateauTest.cpp **** 
+ 104:PlateauTest.cpp ****         if(leftOutput > 10)
+ 190              		.loc 9 104 9 view .LVU41
+ 191 0080 B2EE047A 		vmov.f32	s14, #1.0e+1
+ 192              		.loc 9 104 23 view .LVU42
+ 193 0084 D7ED007A 		vldr.32	s15, [r7]
  102:PlateauTest.cpp **** 
- 103:PlateauTest.cpp ****         if(leftOutput > 10 || leftOutput < 10)
- 104:PlateauTest.cpp ****             leftOutput = 0;
- 182              		.loc 9 104 13 is_stmt 1 view .LVU39
- 105:PlateauTest.cpp **** 
- 106:PlateauTest.cpp ****         if(rightOutput > 10 || rightOutput < 10)
- 183              		.loc 9 106 9 view .LVU40
- 107:PlateauTest.cpp ****             rightOutput = 0;
- 184              		.loc 9 107 13 view .LVU41
- 108:PlateauTest.cpp **** 
- 109:PlateauTest.cpp ****         out[i] = in[i] * dry + leftOutput * wet;
- 185              		.loc 9 109 9 view .LVU42
- 103:PlateauTest.cpp ****             leftOutput = 0;
- 186              		.loc 9 103 23 is_stmt 0 view .LVU43
- 187 006e D8ED007A 		vldr.32	s15, [r8]
- 106:PlateauTest.cpp ****             rightOutput = 0;
- 188              		.loc 9 106 9 view .LVU44
- 189 0072 F0EE485A 		vmov.f32	s11, s16
- 104:PlateauTest.cpp **** 
- 190              		.loc 9 104 24 view .LVU45
- 191 0076 9FED227A 		vldr.32	s14, .L17+12
-  95:PlateauTest.cpp ****     {
- 192              		.loc 9 95 25 view .LVU46
- 193 007a 731C     		adds	r3, r6, #1
- 103:PlateauTest.cpp ****             leftOutput = 0;
- 194              		.loc 9 103 9 view .LVU47
- 195 007c F4EEC87A 		vcmpe.f32	s15, s16
- 196              		.loc 9 109 43 view .LVU48
- 197 0080 99ED006A 		vldr.32	s12, [r9]
- 198              		.loc 9 109 30 view .LVU49
- 199 0084 DAED006A 		vldr.32	s13, [r10]
- 107:PlateauTest.cpp **** 
- 200              		.loc 9 107 25 view .LVU50
- 201 0088 17EE102A 		vmov	r2, s14
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 15
+ 194              		.loc 9 102 46 view .LVU43
+ 195 0088 20EE260A 		vmul.f32	s0, s0, s13
+ 196              		.loc 9 104 9 view .LVU44
+ 197 008c F4EEC77A 		vcmpe.f32	s15, s14
+ 101:PlateauTest.cpp ****                 (reverb.getRightOutput() * 2 * wet);
+ 198              		.loc 9 101 41 view .LVU45
+ 199 0090 A8EE880A 		vfma.f32	s0, s17, s16
+ 200              		.loc 9 104 9 view .LVU46
+ 201 0094 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 101:PlateauTest.cpp ****                 (reverb.getRightOutput() * 2 * wet);
+ 202              		.loc 9 101 21 view .LVU47
+ 203 0098 86ED000A 		vstr.32	s0, [r6]
+ 204              		.loc 9 104 9 is_stmt 1 view .LVU48
+ 205 009c 06DC     		bgt	.L50
+ 105:PlateauTest.cpp ****             leftOutput = 10;
+ 106:PlateauTest.cpp **** 
+ 107:PlateauTest.cpp ****         if(leftOutput < -10)
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 15
 
 
- 101:PlateauTest.cpp **** 
- 202              		.loc 9 101 21 view .LVU51
- 203 008c 87ED000A 		vstr.32	s0, [r7]
- 103:PlateauTest.cpp ****             leftOutput = 0;
- 204              		.loc 9 103 9 is_stmt 1 view .LVU52
- 205 0090 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 206 0094 00DC     		bgt	.L5
- 103:PlateauTest.cpp ****             leftOutput = 0;
- 207              		.loc 9 103 28 is_stmt 0 discriminator 1 view .LVU53
- 208 0096 03D5     		bpl	.L6
- 209              	.L5:
- 104:PlateauTest.cpp **** 
- 210              		.loc 9 104 24 view .LVU54
- 211 0098 F0EE477A 		vmov.f32	s15, s14
- 212 009c 88ED007A 		vstr.32	s14, [r8]
- 213              	.L6:
- 106:PlateauTest.cpp ****             rightOutput = 0;
- 214              		.loc 9 106 9 view .LVU55
- 215 00a0 B4EEE50A 		vcmpe.f32	s0, s11
- 216              		.loc 9 109 43 view .LVU56
- 217 00a4 67EE867A 		vmul.f32	s15, s15, s12
- 106:PlateauTest.cpp ****             rightOutput = 0;
- 218              		.loc 9 106 9 view .LVU57
- 219 00a8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 220 00ac 00DC     		bgt	.L8
- 106:PlateauTest.cpp ****             rightOutput = 0;
- 221              		.loc 9 106 29 discriminator 1 view .LVU58
- 222 00ae 00D5     		bpl	.L9
- 223              	.L8:
- 107:PlateauTest.cpp **** 
- 224              		.loc 9 107 25 view .LVU59
- 225 00b0 3A60     		str	r2, [r7]	@ float
- 226              	.L9:
- 227              		.loc 9 109 30 discriminator 2 view .LVU60
- 228 00b2 94ED007A 		vldr.32	s14, [r4]
-  95:PlateauTest.cpp ****     {
- 229              		.loc 9 95 25 discriminator 2 view .LVU61
- 230 00b6 0835     		adds	r5, r5, #8
- 231 00b8 0834     		adds	r4, r4, #8
- 232 00ba 019A     		ldr	r2, [sp, #4]
- 233              		.loc 9 109 30 discriminator 2 view .LVU62
- 234 00bc E7EE267A 		vfma.f32	s15, s14, s13
-  95:PlateauTest.cpp ****     {
- 235              		.loc 9 95 25 discriminator 2 view .LVU63
- 236 00c0 9642     		cmp	r6, r2
- 237 00c2 1E46     		mov	r6, r3
- 238              	.LVL7:
- 239              		.loc 9 109 16 discriminator 2 view .LVU64
- 240 00c4 45ED027A 		vstr.32	s15, [r5, #-8]
- 110:PlateauTest.cpp ****         out[i + 1] = in[i + 1] * dry + rightOutput * wet;
- 241              		.loc 9 110 9 is_stmt 1 discriminator 2 view .LVU65
- 242              		.loc 9 110 52 is_stmt 0 discriminator 2 view .LVU66
- 243 00c8 D7ED007A 		vldr.32	s15, [r7]
- 244 00cc 99ED006A 		vldr.32	s12, [r9]
- 245              		.loc 9 110 38 discriminator 2 view .LVU67
- 246 00d0 54ED016A 		vldr.32	s13, [r4, #-4]
- 247              		.loc 9 110 52 discriminator 2 view .LVU68
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 16
-
-
- 248 00d4 67EE867A 		vmul.f32	s15, s15, s12
- 249              		.loc 9 110 38 discriminator 2 view .LVU69
- 250 00d8 9AED007A 		vldr.32	s14, [r10]
- 251 00dc E6EE877A 		vfma.f32	s15, s13, s14
- 252              		.loc 9 110 20 discriminator 2 view .LVU70
- 253 00e0 45ED017A 		vstr.32	s15, [r5, #-4]
-  95:PlateauTest.cpp ****     {
- 254              		.loc 9 95 5 is_stmt 1 discriminator 2 view .LVU71
- 255              	.LVL8:
-  95:PlateauTest.cpp ****     {
- 256              		.loc 9 95 25 discriminator 2 view .LVU72
- 257 00e4 A2D1     		bne	.L12
- 258              	.LBE227:
- 111:PlateauTest.cpp ****     }
- 112:PlateauTest.cpp **** 
- 113:PlateauTest.cpp ****     // reverb.process(in[0] * minus20dBGain * inputSensitivity * envelope._value,
- 114:PlateauTest.cpp ****     //             in[1] * minus20dBGain * inputSensitivity * envelope._value);
+ 206              		.loc 9 107 9 view .LVU49
+ 207 009e BAEE047A 		vmov.f32	s14, #-1.0e+1
+ 208 00a2 F4EEC77A 		vcmpe.f32	s15, s14
+ 209 00a6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 210 00aa 03D5     		bpl	.L7
+ 211              	.L50:
+ 108:PlateauTest.cpp ****             leftOutput = -10;
+ 212              		.loc 9 108 13 view .LVU50
+ 213 00ac F0EE477A 		vmov.f32	s15, s14
+ 214              		.loc 9 108 24 is_stmt 0 view .LVU51
+ 215 00b0 87ED007A 		vstr.32	s14, [r7]
+ 216              	.L7:
+ 109:PlateauTest.cpp **** 
+ 110:PlateauTest.cpp ****         if(rightOutput > 10)
+ 217              		.loc 9 110 9 is_stmt 1 view .LVU52
+ 218 00b4 B2EE047A 		vmov.f32	s14, #1.0e+1
+ 219 00b8 B4EEC70A 		vcmpe.f32	s0, s14
+ 220 00bc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 221 00c0 06DC     		bgt	.L51
+ 111:PlateauTest.cpp ****             rightOutput = 10;
+ 112:PlateauTest.cpp ****         
+ 113:PlateauTest.cpp ****         if(rightOutput < -10)
+ 222              		.loc 9 113 9 view .LVU53
+ 223 00c2 BAEE047A 		vmov.f32	s14, #-1.0e+1
+ 224 00c6 B4EEC70A 		vcmpe.f32	s0, s14
+ 225 00ca F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 226 00ce 01D5     		bpl	.L11
+ 227              	.L51:
+ 114:PlateauTest.cpp ****             rightOutput = -10;
+ 228              		.loc 9 114 13 view .LVU54
+ 229              		.loc 9 114 25 is_stmt 0 view .LVU55
+ 230 00d0 86ED007A 		vstr.32	s14, [r6]
+ 231              	.L11:
  115:PlateauTest.cpp **** 
- 116:PlateauTest.cpp ****     // out[0] = in[0] * dry/* + reverb.getLeftOutput() * wet *
- 117:PlateauTest.cpp ****     //                 envelope._value*/;
- 118:PlateauTest.cpp ****     // out[1] = in[1] * dry/* + reverb.getRightOutput() * wet *
- 119:PlateauTest.cpp ****     //                 envelope._value*/;
- 120:PlateauTest.cpp **** }
- 259              		.loc 9 120 1 is_stmt 0 view .LVU73
- 260 00e6 03B0     		add	sp, sp, #12
- 261              		.cfi_def_cfa_offset 44
- 262              		@ sp needed
- 263 00e8 BDEC028B 		vldm	sp!, {d8}
- 264              		.cfi_restore 80
- 265              		.cfi_restore 81
- 266              		.cfi_def_cfa_offset 36
- 267 00ec BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 268              	.LVL9:
- 269              	.L14:
- 270              		.cfi_def_cfa_offset 0
- 271              		.cfi_restore 4
- 272              		.cfi_restore 5
- 273              		.cfi_restore 6
- 274              		.cfi_restore 7
- 275              		.cfi_restore 8
- 276              		.cfi_restore 9
- 277              		.cfi_restore 10
- 278              		.cfi_restore 11
- 279              		.cfi_restore 14
- 280              		.loc 9 120 1 view .LVU74
- 281 00f0 7047     		bx	lr
- 282              	.L18:
- 283 00f2 00BF     		.align	2
- 284              	.L17:
- 285 00f4 00000000 		.word	.LANCHOR3
- 286 00f8 CDCCCC3D 		.word	1036831949
- 287 00fc 00000000 		.word	.LANCHOR1
- 288 0100 00000000 		.word	0
- 289 0104 00000000 		.word	.LANCHOR0
- 290 0108 00000000 		.word	.LANCHOR2
- 291 010c 00000000 		.word	.LANCHOR4
- 292 0110 00000000 		.word	.LANCHOR5
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 17
-
-
- 293              		.cfi_endproc
- 294              	.LFE4773:
- 296              		.section	.text.startup.main,"ax",%progbits
- 297              		.align	1
- 298              		.p2align 2,,3
- 299              		.global	main
- 300              		.syntax unified
- 301              		.thumb
- 302              		.thumb_func
- 303              		.fpu fpv5-d16
- 305              	main:
- 306              	.LFB4774:
+ 116:PlateauTest.cpp ****         out[i] = leftOutput;
+ 232              		.loc 9 116 9 is_stmt 1 view .LVU56
+ 233              		.loc 9 116 16 is_stmt 0 view .LVU57
+ 234 00d4 C5ED007A 		vstr.32	s15, [r5]
+ 117:PlateauTest.cpp ****         out[i + 1] = rightOutput;
+ 235              		.loc 9 117 9 is_stmt 1 view .LVU58
+ 236              		.loc 9 117 20 is_stmt 0 view .LVU59
+ 237 00d8 3368     		ldr	r3, [r6]	@ float
+ 118:PlateauTest.cpp **** 
+ 119:PlateauTest.cpp ****         hw.ProcessAnalogControls();
+ 238              		.loc 9 119 33 view .LVU60
+ 239 00da 7548     		ldr	r0, .L53+16
+ 117:PlateauTest.cpp ****         out[i + 1] = rightOutput;
+ 240              		.loc 9 117 20 view .LVU61
+ 241 00dc 6B60     		str	r3, [r5, #4]	@ float
+ 242              		.loc 9 119 9 is_stmt 1 view .LVU62
+ 243              		.loc 9 119 33 is_stmt 0 view .LVU63
+ 244 00de FFF7FEFF 		bl	_ZN5daisy11DaisyVersio21ProcessAnalogControlsEv
+ 245              	.LVL7:
+ 120:PlateauTest.cpp ****         // hw.UpdateLeds();
  121:PlateauTest.cpp **** 
- 122:PlateauTest.cpp **** int main(void)
- 123:PlateauTest.cpp **** {
- 307              		.loc 9 123 1 is_stmt 1 view -0
- 308              		.cfi_startproc
- 309              		@ Volatile: function does not return.
- 310              		@ args = 0, pretend = 0, frame = 0
- 311              		@ frame_needed = 0, uses_anonymous_args = 0
- 124:PlateauTest.cpp **** 	hw.Init();
- 312              		.loc 9 124 2 view .LVU76
- 313              		.loc 9 124 9 is_stmt 0 view .LVU77
- 314 0000 0021     		movs	r1, #0
+ 122:PlateauTest.cpp ****         if(holdCount < 192000)
+ 246              		.loc 9 122 9 is_stmt 1 view .LVU64
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 16
+
+
+ 247              		.loc 9 122 22 is_stmt 0 view .LVU65
+ 248 00e2 7449     		ldr	r1, .L53+20
+ 249              		.loc 9 122 9 view .LVU66
+ 250 00e4 744A     		ldr	r2, .L53+24
+ 251              		.loc 9 122 22 view .LVU67
+ 252 00e6 0B68     		ldr	r3, [r1]
+ 253              		.loc 9 122 9 view .LVU68
+ 254 00e8 9342     		cmp	r3, r2
+ 255 00ea 00F3C680 		bgt	.L13
+ 123:PlateauTest.cpp ****             ++holdCount;
+ 256              		.loc 9 123 13 is_stmt 1 view .LVU69
+ 257 00ee 0133     		adds	r3, r3, #1
+ 258 00f0 0B60     		str	r3, [r1]
+ 259              	.L14:
+ 124:PlateauTest.cpp ****         else
+ 125:PlateauTest.cpp ****             hold = true;
+ 126:PlateauTest.cpp **** 
+ 127:PlateauTest.cpp ****         //If reverb is too grungy, add this section into the switch statement below.
+ 128:PlateauTest.cpp ****         //It was necessary for the time scale, size, to respond smoothly to modulation,
+ 129:PlateauTest.cpp ****         //hence its placement outside the following switch statement.
+ 130:PlateauTest.cpp ****         timeScale = hw.GetKnobValue(DaisyVersio::KNOB_5) * 4.f;
+ 260              		.loc 9 130 9 view .LVU70
+ 261              		.loc 9 130 36 is_stmt 0 view .LVU71
+ 262 00f2 0521     		movs	r1, #5
+ 263 00f4 6E48     		ldr	r0, .L53+16
+ 264 00f6 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio12GetKnobValueEi
+ 265              	.LVL8:
+ 266              		.loc 9 130 58 view .LVU72
+ 267 00fa F1EE007A 		vmov.f32	s15, #4.0e+0
+ 268              		.loc 9 130 19 view .LVU73
+ 269 00fe 6F4B     		ldr	r3, .L53+28
+ 131:PlateauTest.cpp ****             reverb.setTimeScale(timeScale); 
+ 270              		.loc 9 131 32 view .LVU74
+ 271 0100 6A48     		ldr	r0, .L53+12
+ 130:PlateauTest.cpp ****             reverb.setTimeScale(timeScale); 
+ 272              		.loc 9 130 58 view .LVU75
+ 273 0102 20EE270A 		vmul.f32	s0, s0, s15
+ 130:PlateauTest.cpp ****             reverb.setTimeScale(timeScale); 
+ 274              		.loc 9 130 19 view .LVU76
+ 275 0106 83ED000A 		vstr.32	s0, [r3]
+ 276              		.loc 9 131 13 is_stmt 1 view .LVU77
+ 277              		.loc 9 131 32 is_stmt 0 view .LVU78
+ 278 010a FFF7FEFF 		bl	_ZN8Dattorro12setTimeScaleEf
+ 279              	.LVL9:
+ 132:PlateauTest.cpp **** 
+ 133:PlateauTest.cpp ****         //Caused some artifacting when in the main while loop, using this method to offload some st
+ 134:PlateauTest.cpp ****         //Knobs are generally unstable so nose of the following will track smoothly.
+ 135:PlateauTest.cpp ****         //If you want things to track nicer then it is recommented to lower the 0.01f, but this may
+ 136:PlateauTest.cpp ****         //unwanted artifacting.
+ 137:PlateauTest.cpp ****         switch (paramCount) {
+ 280              		.loc 9 137 9 is_stmt 1 view .LVU79
+ 281 010e D9F80030 		ldr	r3, [r9]
+ 282 0112 052B     		cmp	r3, #5
+ 283 0114 07D8     		bhi	.L15
+ 284 0116 DFE803F0 		tbb	[pc, r3]
+ 285              	.L17:
+ 286 011a 2C       		.byte	(.L22-.L17)/2
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 17
+
+
+ 287 011b 10       		.byte	(.L21-.L17)/2
+ 288 011c 6D       		.byte	(.L20-.L17)/2
+ 289 011d 4C       		.byte	(.L19-.L17)/2
+ 290 011e 8E       		.byte	(.L18-.L17)/2
+ 291 011f 03       		.byte	(.L16-.L17)/2
+ 292              		.p2align 1
+ 293              	.L16:
+ 138:PlateauTest.cpp ****             case 0:
+ 139:PlateauTest.cpp ****                 wetValue = hw.GetKnobValue(DaisyVersio::KNOB_0);
+ 140:PlateauTest.cpp ****                 if(abs(wetValue - previousWetValue) > 0.1f) {
+ 141:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 142:PlateauTest.cpp ****                     wet = wetValue;
+ 143:PlateauTest.cpp ****                     previousWetValue = wetValue;
+ 144:PlateauTest.cpp ****                 }
+ 145:PlateauTest.cpp ****                 ++paramCount;
+ 146:PlateauTest.cpp ****                 break;
+ 147:PlateauTest.cpp ****             case 1:
+ 148:PlateauTest.cpp ****                 decay = hw.GetKnobValue(DaisyVersio::KNOB_4);
+ 149:PlateauTest.cpp ****                 if(abs(decay - previousDecay) > 0.01f) {
+ 150:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 151:PlateauTest.cpp ****                     previousDecay = decay;
+ 152:PlateauTest.cpp ****                 }
+ 153:PlateauTest.cpp ****                 ++paramCount;
+ 154:PlateauTest.cpp ****                 break;
+ 155:PlateauTest.cpp ****             case 2:
+ 156:PlateauTest.cpp ****                 modSpeed = hw.GetKnobValue(DaisyVersio::KNOB_1) * 10.f;
+ 157:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 158:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 159:PlateauTest.cpp ****                     previousModSpeed = modSpeed;
+ 160:PlateauTest.cpp ****                 }
+ 161:PlateauTest.cpp ****                 ++paramCount;
+ 162:PlateauTest.cpp ****                 break;
+ 163:PlateauTest.cpp ****             case 3:
+ 164:PlateauTest.cpp ****                 modDepth = hw.GetKnobValue(DaisyVersio::KNOB_3) * 16.f;
+ 165:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 166:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 167:PlateauTest.cpp ****                     previousModDepth = modDepth;
+ 168:PlateauTest.cpp ****                 }
+ 169:PlateauTest.cpp ****                 ++paramCount;
+ 170:PlateauTest.cpp ****                 break;
+ 171:PlateauTest.cpp ****             case 4:
+ 172:PlateauTest.cpp ****                 preDelay = hw.GetKnobValue(DaisyVersio::KNOB_6) * 4;
+ 173:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 174:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ 175:PlateauTest.cpp ****                     previousPreDelay = preDelay;
+ 176:PlateauTest.cpp ****                 }
+ 177:PlateauTest.cpp ****                 ++paramCount;
+ 178:PlateauTest.cpp ****                 break;
+ 179:PlateauTest.cpp ****             case 5:
+ 294              		.loc 9 179 13 view .LVU80
+ 180:PlateauTest.cpp ****                 paramCount = 0;
+ 295              		.loc 9 180 17 view .LVU81
+ 296              		.loc 9 180 28 is_stmt 0 view .LVU82
+ 297 0120 0023     		movs	r3, #0
+ 298 0122 C9F80030 		str	r3, [r9]
+ 181:PlateauTest.cpp ****                 break;
+ 299              		.loc 9 181 17 is_stmt 1 view .LVU83
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 18
+
+
+ 300              	.L15:
+  94:PlateauTest.cpp ****     {
+ 301              		.loc 9 94 5 discriminator 2 view .LVU84
+ 302              	.LVL10:
+  94:PlateauTest.cpp ****     {
+ 303              		.loc 9 94 25 discriminator 2 view .LVU85
+ 304 0126 019A     		ldr	r2, [sp, #4]
+ 305 0128 08F10103 		add	r3, r8, #1
+ 306 012c 0834     		adds	r4, r4, #8
+ 307 012e 0835     		adds	r5, r5, #8
+ 308 0130 9045     		cmp	r8, r2
+ 309 0132 00F0A680 		beq	.L3
+ 310 0136 9846     		mov	r8, r3
+ 311              	.LVL11:
+  94:PlateauTest.cpp ****     {
+ 312              		.loc 9 94 25 is_stmt 0 discriminator 2 view .LVU86
+ 313 0138 79E7     		b	.L34
+ 314              	.LVL12:
+ 315              	.L21:
+ 147:PlateauTest.cpp ****                 decay = hw.GetKnobValue(DaisyVersio::KNOB_4);
+ 316              		.loc 9 147 13 is_stmt 1 view .LVU87
+ 148:PlateauTest.cpp ****                 if(abs(decay - previousDecay) > 0.01f) {
+ 317              		.loc 9 148 17 view .LVU88
+ 148:PlateauTest.cpp ****                 if(abs(decay - previousDecay) > 0.01f) {
+ 318              		.loc 9 148 40 is_stmt 0 view .LVU89
+ 319 013a 0421     		movs	r1, #4
+ 320 013c 5C48     		ldr	r0, .L53+16
+ 321 013e FFF7FEFF 		bl	_ZN5daisy11DaisyVersio12GetKnobValueEi
+ 322              	.LVL13:
+ 149:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 323              		.loc 9 149 23 view .LVU90
+ 324 0142 5F4B     		ldr	r3, .L53+32
+ 149:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 325              		.loc 9 149 17 view .LVU91
+ 326 0144 DFED5F6A 		vldr.32	s13, .L53+36
+ 149:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 327              		.loc 9 149 23 view .LVU92
+ 328 0148 D3ED007A 		vldr.32	s15, [r3]
+ 148:PlateauTest.cpp ****                 if(abs(decay - previousDecay) > 0.01f) {
+ 329              		.loc 9 148 23 view .LVU93
+ 330 014c 5E4A     		ldr	r2, .L53+40
+ 149:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 331              		.loc 9 149 23 view .LVU94
+ 332 014e 70EE677A 		vsub.f32	s15, s0, s15
+ 148:PlateauTest.cpp ****                 if(abs(decay - previousDecay) > 0.01f) {
+ 333              		.loc 9 148 23 view .LVU95
+ 334 0152 82ED000A 		vstr.32	s0, [r2]
+ 149:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 335              		.loc 9 149 17 is_stmt 1 view .LVU96
+ 336              	.LVL14:
+ 337              	.LBB237:
+ 338              	.LBI237:
+ 339              		.file 10 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\std_abs.h"
+   1:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // -*- C++ -*- C library enhancements header.
+   2:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+   3:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // Copyright (C) 2016-2020 Free Software Foundation, Inc.
+   4:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** //
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 19
+
+
+   5:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // software; you can redistribute it and/or modify it under the
+   7:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // terms of the GNU General Public License as published by the
+   8:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // Free Software Foundation; either version 3, or (at your option)
+   9:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // any later version.
+  10:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  11:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // This library is distributed in the hope that it will be useful,
+  12:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // GNU General Public License for more details.
+  15:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  16:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // Under Section 7 of GPL version 3, you are granted additional
+  17:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // permissions described in the GCC Runtime Library Exception, version
+  18:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // 3.1, as published by the Free Software Foundation.
+  19:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  20:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // You should have received a copy of the GNU General Public License and
+  21:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // <http://www.gnu.org/licenses/>.
+  24:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  25:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** /** @file include/bits/std_abs.h
+  26:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****  *  This is an internal header file, included by other library headers.
+  27:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****  *  Do not attempt to use it directly. @headername{cmath, cstdlib}
+  28:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****  */
+  29:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  30:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #ifndef _GLIBCXX_BITS_STD_ABS_H
+  31:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #define _GLIBCXX_BITS_STD_ABS_H
+  32:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  33:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #pragma GCC system_header
+  34:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  35:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #include <bits/c++config.h>
+  36:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  37:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #define _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  38:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #include_next <stdlib.h>
+  39:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #ifdef __CORRECT_ISO_CPP_MATH_H_PROTO
+  40:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** # include_next <math.h>
+  41:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #endif
+  42:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  43:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  44:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #undef abs
+  45:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  46:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** extern "C++"
+  47:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** {
+  48:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** namespace std _GLIBCXX_VISIBILITY(default)
+  49:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** {
+  50:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  51:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  52:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   using ::abs;
+  53:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  54:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #ifndef __CORRECT_ISO_CPP_STDLIB_H_PROTO
+  55:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   inline long
+  56:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   abs(long __i) { return __builtin_labs(__i); }
+  57:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #endif
+  58:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  59:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #ifdef _GLIBCXX_USE_LONG_LONG
+  60:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   inline long long
+  61:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   abs(long long __x) { return __builtin_llabs (__x); }
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 20
+
+
+  62:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #endif
+  63:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  64:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // _GLIBCXX_RESOLVE_LIB_DEFECTS
+  65:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // 2192. Validity and return type of std::abs(0u) is unclear
+  66:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // 2294. <cstdlib> should declare abs(double)
+  67:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** // 2735. std::abs(short), std::abs(signed char) and others should return int
+  68:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  69:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+  70:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   inline _GLIBCXX_CONSTEXPR double
+  71:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   abs(double __x)
+  72:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   { return __builtin_fabs(__x); }
+  73:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h **** 
+  74:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   inline _GLIBCXX_CONSTEXPR float
+  75:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   abs(float __x)
+ 340              		.loc 10 75 3 view .LVU97
+ 341              	.LBB238:
+  76:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   { return __builtin_fabsf(__x); }
+ 342              		.loc 10 76 5 view .LVU98
+ 343              		.loc 10 76 31 is_stmt 0 view .LVU99
+ 344 0156 F0EEE77A 		vabs.f32	s15, s15
+ 345              	.LBE238:
+ 346              	.LBE237:
+ 149:PlateauTest.cpp ****                     reverb.setDecay(decay);
+ 347              		.loc 9 149 17 view .LVU100
+ 348 015a F4EEE67A 		vcmpe.f32	s15, s13
+ 349 015e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 350 0162 00F39380 		bgt	.L52
+ 351              	.L31:
+ 177:PlateauTest.cpp ****                 break;
+ 352              		.loc 9 177 17 is_stmt 1 view .LVU101
+ 353 0166 D9F80030 		ldr	r3, [r9]
+ 354 016a 0133     		adds	r3, r3, #1
+ 355 016c C9F80030 		str	r3, [r9]
+ 178:PlateauTest.cpp ****             case 5:
+ 356              		.loc 9 178 17 view .LVU102
+ 357 0170 D9E7     		b	.L15
+ 358              	.L22:
+ 138:PlateauTest.cpp ****                 wetValue = hw.GetKnobValue(DaisyVersio::KNOB_0);
+ 359              		.loc 9 138 13 view .LVU103
+ 139:PlateauTest.cpp ****                 if(abs(wetValue - previousWetValue) > 0.1f) {
+ 360              		.loc 9 139 17 view .LVU104
+ 139:PlateauTest.cpp ****                 if(abs(wetValue - previousWetValue) > 0.1f) {
+ 361              		.loc 9 139 43 is_stmt 0 view .LVU105
+ 362 0172 0021     		movs	r1, #0
+ 363 0174 4E48     		ldr	r0, .L53+16
+ 364 0176 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio12GetKnobValueEi
+ 365              	.LVL15:
+ 140:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 366              		.loc 9 140 23 view .LVU106
+ 367 017a 544B     		ldr	r3, .L53+44
+ 140:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 368              		.loc 9 140 17 view .LVU107
+ 369 017c 9FED4A7A 		vldr.32	s14, .L53+8
+ 140:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 370              		.loc 9 140 23 view .LVU108
+ 371 0180 D3ED007A 		vldr.32	s15, [r3]
+ 139:PlateauTest.cpp ****                 if(abs(wetValue - previousWetValue) > 0.1f) {
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 21
+
+
+ 372              		.loc 9 139 26 view .LVU109
+ 373 0184 524A     		ldr	r2, .L53+48
+ 140:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 374              		.loc 9 140 23 view .LVU110
+ 375 0186 70EE677A 		vsub.f32	s15, s0, s15
+ 139:PlateauTest.cpp ****                 if(abs(wetValue - previousWetValue) > 0.1f) {
+ 376              		.loc 9 139 26 view .LVU111
+ 377 018a 82ED000A 		vstr.32	s0, [r2]
+ 140:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 378              		.loc 9 140 17 is_stmt 1 view .LVU112
+ 379              	.LVL16:
+ 380              	.LBB239:
+ 381              	.LBI239:
+  75:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   { return __builtin_fabsf(__x); }
+ 382              		.loc 10 75 3 view .LVU113
+ 383              	.LBB240:
+ 384              		.loc 10 76 5 view .LVU114
+ 385              		.loc 10 76 31 is_stmt 0 view .LVU115
+ 386 018e F0EEE77A 		vabs.f32	s15, s15
+ 387              	.LBE240:
+ 388              	.LBE239:
+ 140:PlateauTest.cpp ****                     dry = 1.f - wetValue;
+ 389              		.loc 9 140 17 view .LVU116
+ 390 0192 F4EEC77A 		vcmpe.f32	s15, s14
+ 391 0196 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 392 019a E4DD     		ble	.L31
+ 141:PlateauTest.cpp ****                     wet = wetValue;
+ 393              		.loc 9 141 21 is_stmt 1 view .LVU117
+ 141:PlateauTest.cpp ****                     wet = wetValue;
+ 394              		.loc 9 141 31 is_stmt 0 view .LVU118
+ 395 019c F7EE007A 		vmov.f32	s15, #1.0e+0
+ 143:PlateauTest.cpp ****                 }
+ 396              		.loc 9 143 38 view .LVU119
+ 397 01a0 83ED000A 		vstr.32	s0, [r3]
+ 142:PlateauTest.cpp ****                     previousWetValue = wetValue;
+ 398              		.loc 9 142 25 view .LVU120
+ 399 01a4 8AED000A 		vstr.32	s0, [r10]
+ 141:PlateauTest.cpp ****                     wet = wetValue;
+ 400              		.loc 9 141 31 view .LVU121
+ 401 01a8 37EEC00A 		vsub.f32	s0, s15, s0
+ 141:PlateauTest.cpp ****                     wet = wetValue;
+ 402              		.loc 9 141 25 view .LVU122
+ 403 01ac 8BED000A 		vstr.32	s0, [fp]
+ 142:PlateauTest.cpp ****                     previousWetValue = wetValue;
+ 404              		.loc 9 142 21 is_stmt 1 view .LVU123
+ 143:PlateauTest.cpp ****                 }
+ 405              		.loc 9 143 21 view .LVU124
+ 145:PlateauTest.cpp ****                 break;
+ 406              		.loc 9 145 17 view .LVU125
+ 407 01b0 D9E7     		b	.L31
+ 408              	.L19:
+ 163:PlateauTest.cpp ****                 modDepth = hw.GetKnobValue(DaisyVersio::KNOB_3) * 16.f;
+ 409              		.loc 9 163 13 view .LVU126
+ 164:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 410              		.loc 9 164 17 view .LVU127
+ 164:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 411              		.loc 9 164 43 is_stmt 0 view .LVU128
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 22
+
+
+ 412 01b2 0321     		movs	r1, #3
+ 413 01b4 3E48     		ldr	r0, .L53+16
+ 414 01b6 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio12GetKnobValueEi
+ 415              	.LVL17:
+ 164:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 416              		.loc 9 164 65 view .LVU129
+ 417 01ba F3EE007A 		vmov.f32	s15, #1.6e+1
+ 165:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 418              		.loc 9 165 23 view .LVU130
+ 419 01be 454B     		ldr	r3, .L53+52
+ 165:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 420              		.loc 9 165 17 view .LVU131
+ 421 01c0 9FED397A 		vldr.32	s14, .L53+8
+ 164:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 422              		.loc 9 164 65 view .LVU132
+ 423 01c4 20EE270A 		vmul.f32	s0, s0, s15
+ 165:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 424              		.loc 9 165 23 view .LVU133
+ 425 01c8 D3ED007A 		vldr.32	s15, [r3]
+ 164:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 426              		.loc 9 164 26 view .LVU134
+ 427 01cc 424A     		ldr	r2, .L53+56
+ 165:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 428              		.loc 9 165 23 view .LVU135
+ 429 01ce 70EE677A 		vsub.f32	s15, s0, s15
+ 164:PlateauTest.cpp ****                 if(abs(modDepth - previousModDepth) > 0.1f) {
+ 430              		.loc 9 164 26 view .LVU136
+ 431 01d2 82ED000A 		vstr.32	s0, [r2]
+ 165:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 432              		.loc 9 165 17 is_stmt 1 view .LVU137
+ 433              	.LVL18:
+ 434              	.LBB241:
+ 435              	.LBI241:
+  75:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   { return __builtin_fabsf(__x); }
+ 436              		.loc 10 75 3 view .LVU138
+ 437              	.LBB242:
+ 438              		.loc 10 76 5 view .LVU139
+ 439              		.loc 10 76 31 is_stmt 0 view .LVU140
+ 440 01d6 F0EEE77A 		vabs.f32	s15, s15
+ 441              	.LBE242:
+ 442              	.LBE241:
+ 165:PlateauTest.cpp ****                     reverb.setTankModDepth(modDepth);
+ 443              		.loc 9 165 17 view .LVU141
+ 444 01da F4EEC77A 		vcmpe.f32	s15, s14
+ 445 01de F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 446 01e2 C0DD     		ble	.L31
+ 166:PlateauTest.cpp ****                     previousModDepth = modDepth;
+ 447              		.loc 9 166 21 is_stmt 1 view .LVU142
+ 166:PlateauTest.cpp ****                     previousModDepth = modDepth;
+ 448              		.loc 9 166 43 is_stmt 0 view .LVU143
+ 449 01e4 3148     		ldr	r0, .L53+12
+ 450 01e6 FFF7FEFF 		bl	_ZN8Dattorro15setTankModDepthEf
+ 451              	.LVL19:
+ 167:PlateauTest.cpp ****                 }
+ 452              		.loc 9 167 21 is_stmt 1 view .LVU144
+ 167:PlateauTest.cpp ****                 }
+ 453              		.loc 9 167 38 is_stmt 0 view .LVU145
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 23
+
+
+ 454 01ea 3B4A     		ldr	r2, .L53+56
+ 455 01ec 394B     		ldr	r3, .L53+52
+ 456 01ee 1268     		ldr	r2, [r2]	@ float
+ 457 01f0 1A60     		str	r2, [r3]	@ float
+ 169:PlateauTest.cpp ****                 break;
+ 458              		.loc 9 169 17 is_stmt 1 view .LVU146
+ 459 01f2 B8E7     		b	.L31
+ 460              	.L20:
+ 155:PlateauTest.cpp ****                 modSpeed = hw.GetKnobValue(DaisyVersio::KNOB_1) * 10.f;
+ 461              		.loc 9 155 13 view .LVU147
+ 156:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 462              		.loc 9 156 17 view .LVU148
+ 156:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 463              		.loc 9 156 43 is_stmt 0 view .LVU149
+ 464 01f4 0121     		movs	r1, #1
+ 465 01f6 2E48     		ldr	r0, .L53+16
+ 466 01f8 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio12GetKnobValueEi
+ 467              	.LVL20:
+ 156:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 468              		.loc 9 156 65 view .LVU150
+ 469 01fc F2EE047A 		vmov.f32	s15, #1.0e+1
+ 157:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 470              		.loc 9 157 23 view .LVU151
+ 471 0200 364B     		ldr	r3, .L53+60
+ 157:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 472              		.loc 9 157 17 view .LVU152
+ 473 0202 9FED297A 		vldr.32	s14, .L53+8
+ 156:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 474              		.loc 9 156 65 view .LVU153
+ 475 0206 20EE270A 		vmul.f32	s0, s0, s15
+ 157:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 476              		.loc 9 157 23 view .LVU154
+ 477 020a D3ED007A 		vldr.32	s15, [r3]
+ 156:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 478              		.loc 9 156 26 view .LVU155
+ 479 020e 344A     		ldr	r2, .L53+64
+ 157:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 480              		.loc 9 157 23 view .LVU156
+ 481 0210 70EE677A 		vsub.f32	s15, s0, s15
+ 156:PlateauTest.cpp ****                 if(abs(modSpeed - previousModSpeed) > 0.1f) {
+ 482              		.loc 9 156 26 view .LVU157
+ 483 0214 82ED000A 		vstr.32	s0, [r2]
+ 157:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 484              		.loc 9 157 17 is_stmt 1 view .LVU158
+ 485              	.LVL21:
+ 486              	.LBB243:
+ 487              	.LBI243:
+  75:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   { return __builtin_fabsf(__x); }
+ 488              		.loc 10 75 3 view .LVU159
+ 489              	.LBB244:
+ 490              		.loc 10 76 5 view .LVU160
+ 491              		.loc 10 76 31 is_stmt 0 view .LVU161
+ 492 0218 F0EEE77A 		vabs.f32	s15, s15
+ 493              	.LBE244:
+ 494              	.LBE243:
+ 157:PlateauTest.cpp ****                     reverb.setTankModSpeed(modSpeed);
+ 495              		.loc 9 157 17 view .LVU162
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 24
+
+
+ 496 021c F4EEC77A 		vcmpe.f32	s15, s14
+ 497 0220 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 498 0224 9FDD     		ble	.L31
+ 158:PlateauTest.cpp ****                     previousModSpeed = modSpeed;
+ 499              		.loc 9 158 21 is_stmt 1 view .LVU163
+ 158:PlateauTest.cpp ****                     previousModSpeed = modSpeed;
+ 500              		.loc 9 158 43 is_stmt 0 view .LVU164
+ 501 0226 2148     		ldr	r0, .L53+12
+ 502 0228 FFF7FEFF 		bl	_ZN8Dattorro15setTankModSpeedEf
+ 503              	.LVL22:
+ 159:PlateauTest.cpp ****                 }
+ 504              		.loc 9 159 21 is_stmt 1 view .LVU165
+ 159:PlateauTest.cpp ****                 }
+ 505              		.loc 9 159 38 is_stmt 0 view .LVU166
+ 506 022c 2C4A     		ldr	r2, .L53+64
+ 507 022e 2B4B     		ldr	r3, .L53+60
+ 508 0230 1268     		ldr	r2, [r2]	@ float
+ 509 0232 1A60     		str	r2, [r3]	@ float
+ 161:PlateauTest.cpp ****                 break;
+ 510              		.loc 9 161 17 is_stmt 1 view .LVU167
+ 511 0234 97E7     		b	.L31
+ 512              	.L18:
+ 171:PlateauTest.cpp ****                 preDelay = hw.GetKnobValue(DaisyVersio::KNOB_6) * 4;
+ 513              		.loc 9 171 13 view .LVU168
+ 172:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 514              		.loc 9 172 17 view .LVU169
+ 172:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 515              		.loc 9 172 43 is_stmt 0 view .LVU170
+ 516 0236 0621     		movs	r1, #6
+ 517 0238 1D48     		ldr	r0, .L53+16
+ 518 023a FFF7FEFF 		bl	_ZN5daisy11DaisyVersio12GetKnobValueEi
+ 519              	.LVL23:
+ 172:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 520              		.loc 9 172 65 view .LVU171
+ 521 023e F1EE007A 		vmov.f32	s15, #4.0e+0
+ 173:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ 522              		.loc 9 173 23 view .LVU172
+ 523 0242 284B     		ldr	r3, .L53+68
+ 173:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ 524              		.loc 9 173 17 view .LVU173
+ 525 0244 9FED1F7A 		vldr.32	s14, .L53+36
+ 172:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 526              		.loc 9 172 65 view .LVU174
+ 527 0248 20EE270A 		vmul.f32	s0, s0, s15
+ 173:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ 528              		.loc 9 173 23 view .LVU175
+ 529 024c D3ED007A 		vldr.32	s15, [r3]
+ 172:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 530              		.loc 9 172 26 view .LVU176
+ 531 0250 254A     		ldr	r2, .L53+72
+ 173:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ 532              		.loc 9 173 23 view .LVU177
+ 533 0252 70EE677A 		vsub.f32	s15, s0, s15
+ 172:PlateauTest.cpp ****                 if(abs(preDelay - previousPreDelay) > 0.01f) {
+ 534              		.loc 9 172 26 view .LVU178
+ 535 0256 82ED000A 		vstr.32	s0, [r2]
+ 173:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 25
+
+
+ 536              		.loc 9 173 17 is_stmt 1 view .LVU179
+ 537              	.LVL24:
+ 538              	.LBB245:
+ 539              	.LBI245:
+  75:c:\program files\daisytoolchain\arm-none-eabi\include\c++\10.2.1\bits\std_abs.h ****   { return __builtin_fabsf(__x); }
+ 540              		.loc 10 75 3 view .LVU180
+ 541              	.LBB246:
+ 542              		.loc 10 76 5 view .LVU181
+ 543              		.loc 10 76 31 is_stmt 0 view .LVU182
+ 544 025a F0EEE77A 		vabs.f32	s15, s15
+ 545              	.LBE246:
+ 546              	.LBE245:
+ 173:PlateauTest.cpp ****                     reverb.setPreDelay(preDelay);
+ 547              		.loc 9 173 17 view .LVU183
+ 548 025e F4EEC77A 		vcmpe.f32	s15, s14
+ 549 0262 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 550 0266 7FF77EAF 		ble	.L31
+ 174:PlateauTest.cpp ****                     previousPreDelay = preDelay;
+ 551              		.loc 9 174 21 is_stmt 1 view .LVU184
+ 174:PlateauTest.cpp ****                     previousPreDelay = preDelay;
+ 552              		.loc 9 174 39 is_stmt 0 view .LVU185
+ 553 026a 1048     		ldr	r0, .L53+12
+ 554 026c FFF7FEFF 		bl	_ZN8Dattorro11setPreDelayEf
+ 555              	.LVL25:
+ 175:PlateauTest.cpp ****                 }
+ 556              		.loc 9 175 21 is_stmt 1 view .LVU186
+ 175:PlateauTest.cpp ****                 }
+ 557              		.loc 9 175 38 is_stmt 0 view .LVU187
+ 558 0270 1D4A     		ldr	r2, .L53+72
+ 559 0272 1C4B     		ldr	r3, .L53+68
+ 560 0274 1268     		ldr	r2, [r2]	@ float
+ 561 0276 1A60     		str	r2, [r3]	@ float
+ 562 0278 75E7     		b	.L31
+ 563              	.L13:
  125:PlateauTest.cpp **** 
- 126:PlateauTest.cpp ****     // logger.Init();
- 127:PlateauTest.cpp **** 
- 128:PlateauTest.cpp ****     // logger.StartLog(true);
- 129:PlateauTest.cpp **** 
- 130:PlateauTest.cpp ****     // logger.PrintLine("Hello World");
- 131:PlateauTest.cpp **** 
- 132:PlateauTest.cpp ****     // for(int i = 0; i < 32; i++)
- 133:PlateauTest.cpp ****     //     for(int j = 0; j < 200000; j++)
- 134:PlateauTest.cpp ****     //         sdramData[i][j] = 0;
- 135:PlateauTest.cpp **** 
- 136:PlateauTest.cpp ****     reverb.setSampleRate(48000);
- 137:PlateauTest.cpp ****     envelope.setSampleRate(48000);
- 315              		.loc 9 137 27 view .LVU78
- 316 0002 594D     		ldr	r5, .L29+8
- 124:PlateauTest.cpp **** 	hw.Init();
- 317              		.loc 9 124 9 view .LVU79
- 318 0004 5948     		ldr	r0, .L29+12
- 138:PlateauTest.cpp ****     envelope.setTime(0.004f);
- 139:PlateauTest.cpp ****     envelope._value = 1.f;
- 319              		.loc 9 139 21 view .LVU80
- 320 0006 B7EE008A 		vmov.f32	s16, #1.0e+0
- 321 000a 594C     		ldr	r4, .L29+16
- 123:PlateauTest.cpp **** 	hw.Init();
- 322              		.loc 9 123 1 view .LVU81
- 323 000c 08B5     		push	{r3, lr}
- 324              		.cfi_def_cfa_offset 8
- 325              		.cfi_offset 3, -8
- 326              		.cfi_offset 14, -4
- 124:PlateauTest.cpp **** 
- 327              		.loc 9 124 9 view .LVU82
- 328 000e FFF7FEFF 		bl	_ZN5daisy11DaisyVersio4InitEb
- 329              	.LVL10:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 18
+ 564              		.loc 9 125 13 is_stmt 1 view .LVU188
+ 125:PlateauTest.cpp **** 
+ 565              		.loc 9 125 18 is_stmt 0 view .LVU189
+ 566 027a 1C4B     		ldr	r3, .L53+76
+ 567 027c 0122     		movs	r2, #1
+ 568 027e 1A70     		strb	r2, [r3]
+ 569 0280 37E7     		b	.L14
+ 570              	.LVL26:
+ 571              	.L3:
+ 125:PlateauTest.cpp **** 
+ 572              		.loc 9 125 18 view .LVU190
+ 573              	.LBE248:
+ 182:PlateauTest.cpp ****         }
+ 183:PlateauTest.cpp ****     }
+ 184:PlateauTest.cpp **** }
+ 574              		.loc 9 184 1 view .LVU191
+ 575 0282 03B0     		add	sp, sp, #12
+ 576              		.cfi_remember_state
+ 577              		.cfi_def_cfa_offset 52
+ 578              		@ sp needed
+ 579 0284 BDEC048B 		vldm	sp!, {d8-d9}
+ 580              		.cfi_restore 82
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 26
 
 
- 136:PlateauTest.cpp ****     envelope.setSampleRate(48000);
- 330              		.loc 9 136 5 is_stmt 1 view .LVU83
- 136:PlateauTest.cpp ****     envelope.setSampleRate(48000);
- 331              		.loc 9 136 25 is_stmt 0 view .LVU84
- 332 0012 9FED580A 		vldr.32	s0, .L29+20
- 333 0016 5848     		ldr	r0, .L29+24
- 334 0018 FFF7FEFF 		bl	_ZN8Dattorro13setSampleRateEf
- 335              	.LVL11:
- 137:PlateauTest.cpp ****     envelope.setTime(0.004f);
- 336              		.loc 9 137 5 is_stmt 1 view .LVU85
- 137:PlateauTest.cpp ****     envelope.setTime(0.004f);
- 337              		.loc 9 137 27 is_stmt 0 view .LVU86
- 338 001c 9FED550A 		vldr.32	s0, .L29+20
- 339 0020 2846     		mov	r0, r5
- 340 0022 FFF7FEFF 		bl	_ZN14LinearEnvelope13setSampleRateEf
- 341              	.LVL12:
- 138:PlateauTest.cpp ****     envelope._value = 1.f;
- 342              		.loc 9 138 5 is_stmt 1 view .LVU87
- 138:PlateauTest.cpp ****     envelope._value = 1.f;
- 343              		.loc 9 138 21 is_stmt 0 view .LVU88
- 344 0026 9FED550A 		vldr.32	s0, .L29+28
- 345 002a 2846     		mov	r0, r5
- 346 002c FFF7FEFF 		bl	_ZN14LinearEnvelope7setTimeEf
- 347              	.LVL13:
- 348              		.loc 9 139 5 is_stmt 1 view .LVU89
- 140:PlateauTest.cpp **** 
- 141:PlateauTest.cpp ****     reverb.setTimeScale(timeScale);
- 349              		.loc 9 141 24 is_stmt 0 view .LVU90
- 350 0030 534B     		ldr	r3, .L29+32
- 351 0032 5148     		ldr	r0, .L29+24
- 352 0034 93ED000A 		vldr.32	s0, [r3]
- 139:PlateauTest.cpp **** 
- 353              		.loc 9 139 21 view .LVU91
- 354 0038 85ED008A 		vstr.32	s16, [r5]
- 355              		.loc 9 141 5 is_stmt 1 view .LVU92
- 356              		.loc 9 141 24 is_stmt 0 view .LVU93
- 357 003c FFF7FEFF 		bl	_ZN8Dattorro12setTimeScaleEf
- 358              	.LVL14:
- 142:PlateauTest.cpp ****     // Clamps predelay between 0 and 1
- 143:PlateauTest.cpp ****     reverb.setPreDelay(((preDelay > 0.f) * (preDelay < 1.f) * preDelay) + (preDelay > 1.f));
- 359              		.loc 9 143 5 is_stmt 1 view .LVU94
- 360              		.loc 9 143 35 is_stmt 0 view .LVU95
- 361 0040 504B     		ldr	r3, .L29+36
- 362              		.loc 9 143 23 view .LVU96
- 363 0042 9FED510A 		vldr.32	s0, .L29+40
- 364              		.loc 9 143 35 view .LVU97
- 365 0046 93ED007A 		vldr.32	s14, [r3]
- 366              		.loc 9 143 23 view .LVU98
- 367 004a 4B48     		ldr	r0, .L29+24
- 368              		.loc 9 143 35 view .LVU99
- 369 004c B4EEC07A 		vcmpe.f32	s14, s0
- 370 0050 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 371              		.loc 9 143 54 view .LVU100
- 372 0054 B4EEC87A 		vcmpe.f32	s14, s16
- 373              		.loc 9 143 35 view .LVU101
- 374 0058 CCBF     		ite	gt
- 375 005a 0123     		movgt	r3, #1
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 19
+ 581              		.cfi_restore 83
+ 582              		.cfi_restore 80
+ 583              		.cfi_restore 81
+ 584              		.cfi_def_cfa_offset 36
+ 585 0288 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 586              	.LVL27:
+ 587              	.L52:
+ 588              		.cfi_restore_state
+ 589              	.LBB249:
+ 150:PlateauTest.cpp ****                     previousDecay = decay;
+ 590              		.loc 9 150 21 is_stmt 1 view .LVU192
+ 150:PlateauTest.cpp ****                     previousDecay = decay;
+ 591              		.loc 9 150 36 is_stmt 0 view .LVU193
+ 592 028c 0748     		ldr	r0, .L53+12
+ 593 028e FFF7FEFF 		bl	_ZN8Dattorro8setDecayEf
+ 594              	.LVL28:
+ 151:PlateauTest.cpp ****                 }
+ 595              		.loc 9 151 21 is_stmt 1 view .LVU194
+ 151:PlateauTest.cpp ****                 }
+ 596              		.loc 9 151 35 is_stmt 0 view .LVU195
+ 597 0292 0D4A     		ldr	r2, .L53+40
+ 598 0294 0A4B     		ldr	r3, .L53+32
+ 599 0296 1268     		ldr	r2, [r2]	@ float
+ 600 0298 1A60     		str	r2, [r3]	@ float
+ 153:PlateauTest.cpp ****                 break;
+ 601              		.loc 9 153 17 is_stmt 1 view .LVU196
+ 602 029a 64E7     		b	.L31
+ 603              	.LVL29:
+ 604              	.L47:
+ 605              		.cfi_def_cfa_offset 0
+ 606              		.cfi_restore 4
+ 607              		.cfi_restore 5
+ 608              		.cfi_restore 6
+ 609              		.cfi_restore 7
+ 610              		.cfi_restore 8
+ 611              		.cfi_restore 9
+ 612              		.cfi_restore 10
+ 613              		.cfi_restore 11
+ 614              		.cfi_restore 14
+ 615              		.cfi_restore 80
+ 616              		.cfi_restore 81
+ 617              		.cfi_restore 82
+ 618              		.cfi_restore 83
+ 153:PlateauTest.cpp ****                 break;
+ 619              		.loc 9 153 17 is_stmt 0 view .LVU197
+ 620 029c 7047     		bx	lr
+ 621              	.L54:
+ 622 029e 00BF     		.align	2
+ 623              	.L53:
+ 624 02a0 00000000 		.word	.LANCHOR3
+ 625 02a4 00000000 		.word	.LANCHOR4
+ 626 02a8 CDCCCC3D 		.word	1036831949
+ 627 02ac 00000000 		.word	.LANCHOR0
+ 628 02b0 00000000 		.word	.LANCHOR5
+ 629 02b4 00000000 		.word	.LANCHOR6
+ 630 02b8 FFED0200 		.word	191999
+ 631 02bc 00000000 		.word	.LANCHOR7
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 27
 
 
- 376 005c 0023     		movle	r3, #0
- 377              		.loc 9 143 54 view .LVU102
- 378 005e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 379              		.loc 9 143 42 view .LVU103
- 380 0062 03F00103 		and	r3, r3, #1
- 381 0066 58BF     		it	pl
- 382 0068 0023     		movpl	r3, #0
- 383              		.loc 9 143 23 view .LVU104
- 384 006a 38FE000A 		vselgt.f32	s0, s16, s0
- 385              		.loc 9 143 42 view .LVU105
- 386 006e 07EE903A 		vmov	s15, r3	@ int
- 387              		.loc 9 143 61 view .LVU106
- 388 0072 F8EEE77A 		vcvt.f32.s32	s15, s15
- 389 0076 67EE877A 		vmul.f32	s15, s15, s14
- 390              		.loc 9 143 23 view .LVU107
- 391 007a 37EE800A 		vadd.f32	s0, s15, s0
- 392 007e FFF7FEFF 		bl	_ZN8Dattorro11setPreDelayEf
- 393              	.LVL15:
- 144:PlateauTest.cpp ****     reverb.setInputFilterLowCutoffPitch(inputDampLow);
- 394              		.loc 9 144 5 is_stmt 1 view .LVU108
- 395              		.loc 9 144 40 is_stmt 0 view .LVU109
- 396 0082 424B     		ldr	r3, .L29+44
- 397 0084 3C48     		ldr	r0, .L29+24
- 398 0086 93ED000A 		vldr.32	s0, [r3]
- 399 008a FFF7FEFF 		bl	_ZN8Dattorro28setInputFilterLowCutoffPitchEf
- 400              	.LVL16:
- 145:PlateauTest.cpp ****     reverb.setInputFilterHighCutoffPitch(inputDampHigh);
- 401              		.loc 9 145 5 is_stmt 1 view .LVU110
- 402              		.loc 9 145 41 is_stmt 0 view .LVU111
- 403 008e 404B     		ldr	r3, .L29+48
- 404 0090 3948     		ldr	r0, .L29+24
- 405 0092 93ED000A 		vldr.32	s0, [r3]
- 406 0096 FFF7FEFF 		bl	_ZN8Dattorro29setInputFilterHighCutoffPitchEf
- 407              	.LVL17:
- 146:PlateauTest.cpp ****     reverb.enableInputDiffusion(diffuseInput > 0.5f);
- 408              		.loc 9 146 5 is_stmt 1 view .LVU112
- 409              		.loc 9 146 32 is_stmt 0 view .LVU113
- 410 009a 3E4B     		ldr	r3, .L29+52
- 411 009c B6EE007A 		vmov.f32	s14, #5.0e-1
- 412 00a0 3548     		ldr	r0, .L29+24
- 413 00a2 D3ED007A 		vldr.32	s15, [r3]	@ int
- 414 00a6 F8EEE77A 		vcvt.f32.s32	s15, s15
- 415 00aa F4EEC77A 		vcmpe.f32	s15, s14
- 416 00ae F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 417 00b2 CCBF     		ite	gt
- 418 00b4 0121     		movgt	r1, #1
- 419 00b6 0021     		movle	r1, #0
- 420 00b8 FFF7FEFF 		bl	_ZN8Dattorro20enableInputDiffusionEb
- 421              	.LVL18:
- 147:PlateauTest.cpp ****     reverb.setDecay(decay);
- 422              		.loc 9 147 5 is_stmt 1 view .LVU114
- 423              		.loc 9 147 20 is_stmt 0 view .LVU115
- 424 00bc 364B     		ldr	r3, .L29+56
- 425 00be 2E48     		ldr	r0, .L29+24
- 426 00c0 93ED000A 		vldr.32	s0, [r3]
- 427 00c4 FFF7FEFF 		bl	_ZN8Dattorro8setDecayEf
- 428              	.LVL19:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 20
+ 632 02c0 00000000 		.word	.LANCHOR12
+ 633 02c4 0AD7233C 		.word	1008981770
+ 634 02c8 00000000 		.word	.LANCHOR11
+ 635 02cc 00000000 		.word	.LANCHOR10
+ 636 02d0 00000000 		.word	.LANCHOR9
+ 637 02d4 00000000 		.word	.LANCHOR16
+ 638 02d8 00000000 		.word	.LANCHOR15
+ 639 02dc 00000000 		.word	.LANCHOR14
+ 640 02e0 00000000 		.word	.LANCHOR13
+ 641 02e4 00000000 		.word	.LANCHOR18
+ 642 02e8 00000000 		.word	.LANCHOR17
+ 643 02ec 00000000 		.word	hold
+ 644 02f0 00000000 		.word	.LANCHOR1
+ 645 02f4 00000000 		.word	.LANCHOR2
+ 646 02f8 00000000 		.word	.LANCHOR8
+ 647              	.LBE249:
+ 648              		.cfi_endproc
+ 649              	.LFE4772:
+ 651              		.section	.text.startup.main,"ax",%progbits
+ 652              		.align	1
+ 653              		.p2align 2,,3
+ 654              		.global	main
+ 655              		.syntax unified
+ 656              		.thumb
+ 657              		.thumb_func
+ 658              		.fpu fpv5-d16
+ 660              	main:
+ 661              	.LFB4773:
+ 185:PlateauTest.cpp **** 
+ 186:PlateauTest.cpp **** int main(void)
+ 187:PlateauTest.cpp **** {
+ 662              		.loc 9 187 1 is_stmt 1 view -0
+ 663              		.cfi_startproc
+ 664              		@ Volatile: function does not return.
+ 665              		@ args = 0, pretend = 0, frame = 0
+ 666              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188:PlateauTest.cpp **** 	hw.Init(true);
+ 667              		.loc 9 188 2 view .LVU199
+ 187:PlateauTest.cpp **** 	hw.Init(true);
+ 668              		.loc 9 187 1 is_stmt 0 view .LVU200
+ 669 0000 80B5     		push	{r7, lr}
+ 670              		.cfi_def_cfa_offset 8
+ 671              		.cfi_offset 7, -8
+ 672              		.cfi_offset 14, -4
+ 673              		.loc 9 188 9 view .LVU201
+ 674 0002 0121     		movs	r1, #1
+ 675 0004 4448     		ldr	r0, .L58
+ 676 0006 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio4InitEb
+ 677              	.LVL30:
+ 189:PlateauTest.cpp **** 
+ 190:PlateauTest.cpp ****     reverb.setSampleRate(32000);
+ 678              		.loc 9 190 5 is_stmt 1 view .LVU202
+ 679              		.loc 9 190 25 is_stmt 0 view .LVU203
+ 680 000a 9FED440A 		vldr.32	s0, .L58+4
+ 681 000e 4448     		ldr	r0, .L58+8
+ 191:PlateauTest.cpp **** 
+ 192:PlateauTest.cpp **** 	hw.SetAudioBlockSize(1); // Number of samples handled per callback
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 28
 
 
- 148:PlateauTest.cpp ****     reverb.setTankDiffusion(diffusion);
- 429              		.loc 9 148 5 is_stmt 1 view .LVU116
- 430              		.loc 9 148 28 is_stmt 0 view .LVU117
- 431 00c8 344B     		ldr	r3, .L29+60
- 432 00ca 2B48     		ldr	r0, .L29+24
- 433 00cc 93ED000A 		vldr.32	s0, [r3]
- 434 00d0 FFF7FEFF 		bl	_ZN8Dattorro16setTankDiffusionEf
- 435              	.LVL20:
- 149:PlateauTest.cpp ****     reverb.setTankFilterLowCutFrequency(reverbDampLow);
- 436              		.loc 9 149 5 is_stmt 1 view .LVU118
- 437              		.loc 9 149 40 is_stmt 0 view .LVU119
- 438 00d4 324B     		ldr	r3, .L29+64
- 439 00d6 2848     		ldr	r0, .L29+24
- 440 00d8 93ED000A 		vldr.32	s0, [r3]
- 441 00dc FFF7FEFF 		bl	_ZN8Dattorro28setTankFilterLowCutFrequencyEf
- 442              	.LVL21:
- 150:PlateauTest.cpp ****     reverb.setTankFilterHighCutFrequency(reverbDampHigh);
- 443              		.loc 9 150 5 is_stmt 1 view .LVU120
- 444              		.loc 9 150 41 is_stmt 0 view .LVU121
- 445 00e0 304B     		ldr	r3, .L29+68
- 446 00e2 2548     		ldr	r0, .L29+24
- 447 00e4 93ED000A 		vldr.32	s0, [r3]
- 448 00e8 FFF7FEFF 		bl	_ZN8Dattorro29setTankFilterHighCutFrequencyEf
- 449              	.LVL22:
- 151:PlateauTest.cpp ****     reverb.setTankModSpeed(modSpeed);
- 450              		.loc 9 151 5 is_stmt 1 view .LVU122
- 451              		.loc 9 151 27 is_stmt 0 view .LVU123
- 452 00ec 2E4B     		ldr	r3, .L29+72
- 453 00ee 2248     		ldr	r0, .L29+24
- 454 00f0 93ED000A 		vldr.32	s0, [r3]
- 455 00f4 FFF7FEFF 		bl	_ZN8Dattorro15setTankModSpeedEf
- 456              	.LVL23:
- 152:PlateauTest.cpp ****     reverb.setTankModDepth(modDepth);
- 457              		.loc 9 152 5 is_stmt 1 view .LVU124
- 458              		.loc 9 152 27 is_stmt 0 view .LVU125
- 459 00f8 2C4B     		ldr	r3, .L29+76
- 460 00fa 1F48     		ldr	r0, .L29+24
- 461 00fc 93ED000A 		vldr.32	s0, [r3]
- 462 0100 FFF7FEFF 		bl	_ZN8Dattorro15setTankModDepthEf
- 463              	.LVL24:
- 153:PlateauTest.cpp ****     reverb.setTankModShape(modShape);
- 464              		.loc 9 153 5 is_stmt 1 view .LVU126
- 465              		.loc 9 153 27 is_stmt 0 view .LVU127
- 466 0104 2A4B     		ldr	r3, .L29+80
- 467 0106 1C48     		ldr	r0, .L29+24
- 468 0108 93ED000A 		vldr.32	s0, [r3]
- 469 010c FFF7FEFF 		bl	_ZN8Dattorro15setTankModShapeEf
- 470              	.LVL25:
- 154:PlateauTest.cpp **** 
- 155:PlateauTest.cpp **** 	hw.SetAudioBlockSize(48); // number of samples handled per callback
- 471              		.loc 9 155 2 is_stmt 1 view .LVU128
- 472              		.loc 9 155 22 is_stmt 0 view .LVU129
- 473 0110 3021     		movs	r1, #48
- 474 0112 1648     		ldr	r0, .L29+12
- 475 0114 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio17SetAudioBlockSizeEj
- 476              	.LVL26:
- 156:PlateauTest.cpp **** 	//hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ);
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 21
+ 193:PlateauTest.cpp **** 	hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_32KHZ);
+ 194:PlateauTest.cpp ****     
+ 195:PlateauTest.cpp ****     hw.StartAudio(AudioCallback);
+ 196:PlateauTest.cpp **** 
+ 197:PlateauTest.cpp ****     reverb.setTimeScale(timeScale);
+ 198:PlateauTest.cpp ****     reverb.setPreDelay(preDelay);
+ 199:PlateauTest.cpp ****     
+ 200:PlateauTest.cpp ****     reverb.setInputFilterLowCutoffPitch(inputDampLow);
+ 201:PlateauTest.cpp ****     reverb.setInputFilterHighCutoffPitch(inputDampHigh);
+ 202:PlateauTest.cpp **** 
+ 203:PlateauTest.cpp ****     reverb.enableInputDiffusion(true);
+ 204:PlateauTest.cpp ****     reverb.setDecay(decay);
+ 205:PlateauTest.cpp ****     reverb.setTankDiffusion(1.f);
+ 206:PlateauTest.cpp ****     reverb.setTankFilterLowCutFrequency(reverbDampLow);
+ 207:PlateauTest.cpp ****     reverb.setTankFilterHighCutFrequency(reverbDampHigh);
+ 208:PlateauTest.cpp **** 
+ 209:PlateauTest.cpp ****     reverb.setTankModSpeed(modSpeed);
+ 210:PlateauTest.cpp ****     reverb.setTankModDepth(modDepth);
+ 211:PlateauTest.cpp **** 
+ 212:PlateauTest.cpp ****     reverb.setTankModShape(0.5);
+ 213:PlateauTest.cpp **** 
+ 214:PlateauTest.cpp ****     hw.StartAdc();
+ 215:PlateauTest.cpp **** 
+ 216:PlateauTest.cpp ****     hw.leds[1].Set(0, 0, inputDampHigh/10.f);
+ 682              		.loc 9 216 19 view .LVU204
+ 683 0010 B2EE048A 		vmov.f32	s16, #1.0e+1
+ 190:PlateauTest.cpp **** 
+ 684              		.loc 9 190 25 view .LVU205
+ 685 0014 FFF7FEFF 		bl	_ZN8Dattorro13setSampleRateEf
+ 686              	.LVL31:
+ 192:PlateauTest.cpp **** 	hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_32KHZ);
+ 687              		.loc 9 192 2 is_stmt 1 view .LVU206
+ 192:PlateauTest.cpp **** 	hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_32KHZ);
+ 688              		.loc 9 192 22 is_stmt 0 view .LVU207
+ 689 0018 0121     		movs	r1, #1
+ 690 001a 3F48     		ldr	r0, .L58
+ 691 001c FFF7FEFF 		bl	_ZN5daisy11DaisyVersio17SetAudioBlockSizeEj
+ 692              	.LVL32:
+ 193:PlateauTest.cpp ****     
+ 693              		.loc 9 193 2 is_stmt 1 view .LVU208
+ 193:PlateauTest.cpp ****     
+ 694              		.loc 9 193 23 is_stmt 0 view .LVU209
+ 695 0020 0221     		movs	r1, #2
+ 696 0022 3D48     		ldr	r0, .L58
+ 697 0024 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio18SetAudioSampleRateENS_9SaiHandle6Config10SampleRateE
+ 698              	.LVL33:
+ 195:PlateauTest.cpp **** 
+ 699              		.loc 9 195 5 is_stmt 1 view .LVU210
+ 195:PlateauTest.cpp **** 
+ 700              		.loc 9 195 18 is_stmt 0 view .LVU211
+ 701 0028 3E49     		ldr	r1, .L58+12
+ 702 002a 3B48     		ldr	r0, .L58
+ 703 002c FFF7FEFF 		bl	_ZN5daisy11DaisyVersio10StartAudioEPFvPKfPfjE
+ 704              	.LVL34:
+ 197:PlateauTest.cpp ****     reverb.setPreDelay(preDelay);
+ 705              		.loc 9 197 5 is_stmt 1 view .LVU212
+ 197:PlateauTest.cpp ****     reverb.setPreDelay(preDelay);
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 29
 
 
- 157:PlateauTest.cpp **** 
- 158:PlateauTest.cpp ****     
- 159:PlateauTest.cpp ****     hw.StartAudio(AudioCallback);
- 477              		.loc 9 159 5 is_stmt 1 view .LVU130
- 478              		.loc 9 159 18 is_stmt 0 view .LVU131
- 479 0118 1448     		ldr	r0, .L29+12
- 480 011a 2649     		ldr	r1, .L29+84
- 481 011c FFF7FEFF 		bl	_ZN5daisy11DaisyVersio10StartAudioEPFvPKfPfjE
- 482              	.LVL27:
- 160:PlateauTest.cpp **** 	hw.StartAdc();
- 483              		.loc 9 160 2 is_stmt 1 view .LVU132
- 484              		.loc 9 160 13 is_stmt 0 view .LVU133
- 485 0120 1248     		ldr	r0, .L29+12
- 486 0122 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio8StartAdcEv
- 487              	.LVL28:
- 488              	.L21:
- 161:PlateauTest.cpp **** 
- 162:PlateauTest.cpp **** 	while(1) {
- 489              		.loc 9 162 2 is_stmt 1 view .LVU134
- 163:PlateauTest.cpp ****         hw.ProcessAnalogControls();
- 490              		.loc 9 163 9 view .LVU135
- 491              		.loc 9 163 33 is_stmt 0 view .LVU136
- 492 0126 1148     		ldr	r0, .L29+12
- 493 0128 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio21ProcessAnalogControlsEv
- 494              	.LVL29:
- 164:PlateauTest.cpp ****         hw.UpdateExample(); // Control the LED colors using the knobs and gate inputs
- 495              		.loc 9 164 9 is_stmt 1 view .LVU137
- 496              		.loc 9 164 25 is_stmt 0 view .LVU138
- 497 012c 0F48     		ldr	r0, .L29+12
- 498 012e FFF7FEFF 		bl	_ZN5daisy11DaisyVersio13UpdateExampleEv
- 499              	.LVL30:
- 165:PlateauTest.cpp ****         hw.UpdateLeds();
- 500              		.loc 9 165 9 is_stmt 1 view .LVU139
- 501              		.loc 9 165 22 is_stmt 0 view .LVU140
- 502 0132 0E48     		ldr	r0, .L29+12
- 503 0134 FFF7FEFF 		bl	_ZN5daisy11DaisyVersio10UpdateLedsEv
- 504              	.LVL31:
- 166:PlateauTest.cpp **** 
- 167:PlateauTest.cpp ****             if(initEnvelope < 1.f)
- 505              		.loc 9 167 13 is_stmt 1 view .LVU141
- 168:PlateauTest.cpp ****                 initEnvelope += 0.00001;
- 506              		.loc 9 168 17 view .LVU142
- 167:PlateauTest.cpp ****                 initEnvelope += 0.00001;
- 507              		.loc 9 167 13 is_stmt 0 view .LVU143
- 508 0138 F7EE007A 		vmov.f32	s15, #1.0e+0
- 167:PlateauTest.cpp ****                 initEnvelope += 0.00001;
- 509              		.loc 9 167 29 view .LVU144
- 510 013c 94ED007A 		vldr.32	s14, [r4]
- 167:PlateauTest.cpp ****                 initEnvelope += 0.00001;
- 511              		.loc 9 167 13 view .LVU145
- 512 0140 B4EEE77A 		vcmpe.f32	s14, s15
- 513              		.loc 9 168 30 view .LVU146
- 514 0144 9FED066B 		vldr.64	d6, .L29
- 167:PlateauTest.cpp ****                 initEnvelope += 0.00001;
- 515              		.loc 9 167 13 view .LVU147
- 516 0148 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 517 014c 05D5     		bpl	.L22
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 22
+ 706              		.loc 9 197 24 is_stmt 0 view .LVU213
+ 707 0030 3D4B     		ldr	r3, .L58+16
+ 708 0032 3B48     		ldr	r0, .L58+8
+ 709 0034 93ED000A 		vldr.32	s0, [r3]
+ 710 0038 FFF7FEFF 		bl	_ZN8Dattorro12setTimeScaleEf
+ 711              	.LVL35:
+ 198:PlateauTest.cpp ****     
+ 712              		.loc 9 198 5 is_stmt 1 view .LVU214
+ 198:PlateauTest.cpp ****     
+ 713              		.loc 9 198 23 is_stmt 0 view .LVU215
+ 714 003c 3B4B     		ldr	r3, .L58+20
+ 200:PlateauTest.cpp ****     reverb.setInputFilterHighCutoffPitch(inputDampHigh);
+ 715              		.loc 9 200 40 view .LVU216
+ 716 003e 3C4E     		ldr	r6, .L58+24
+ 198:PlateauTest.cpp ****     
+ 717              		.loc 9 198 23 view .LVU217
+ 718 0040 93ED000A 		vldr.32	s0, [r3]
+ 201:PlateauTest.cpp **** 
+ 719              		.loc 9 201 41 view .LVU218
+ 720 0044 3B4F     		ldr	r7, .L58+28
+ 198:PlateauTest.cpp ****     
+ 721              		.loc 9 198 23 view .LVU219
+ 722 0046 3648     		ldr	r0, .L58+8
+ 723 0048 FFF7FEFF 		bl	_ZN8Dattorro11setPreDelayEf
+ 724              	.LVL36:
+ 200:PlateauTest.cpp ****     reverb.setInputFilterHighCutoffPitch(inputDampHigh);
+ 725              		.loc 9 200 5 is_stmt 1 view .LVU220
+ 200:PlateauTest.cpp ****     reverb.setInputFilterHighCutoffPitch(inputDampHigh);
+ 726              		.loc 9 200 40 is_stmt 0 view .LVU221
+ 727 004c 96ED000A 		vldr.32	s0, [r6]
+ 728 0050 3348     		ldr	r0, .L58+8
+ 729 0052 FFF7FEFF 		bl	_ZN8Dattorro28setInputFilterLowCutoffPitchEf
+ 730              	.LVL37:
+ 201:PlateauTest.cpp **** 
+ 731              		.loc 9 201 5 is_stmt 1 view .LVU222
+ 201:PlateauTest.cpp **** 
+ 732              		.loc 9 201 41 is_stmt 0 view .LVU223
+ 733 0056 97ED000A 		vldr.32	s0, [r7]
+ 734 005a 3148     		ldr	r0, .L58+8
+ 735 005c FFF7FEFF 		bl	_ZN8Dattorro29setInputFilterHighCutoffPitchEf
+ 736              	.LVL38:
+ 203:PlateauTest.cpp ****     reverb.setDecay(decay);
+ 737              		.loc 9 203 5 is_stmt 1 view .LVU224
+ 203:PlateauTest.cpp ****     reverb.setDecay(decay);
+ 738              		.loc 9 203 32 is_stmt 0 view .LVU225
+ 739 0060 0121     		movs	r1, #1
+ 740 0062 2F48     		ldr	r0, .L58+8
+ 741 0064 FFF7FEFF 		bl	_ZN8Dattorro20enableInputDiffusionEb
+ 742              	.LVL39:
+ 204:PlateauTest.cpp ****     reverb.setTankDiffusion(1.f);
+ 743              		.loc 9 204 5 is_stmt 1 view .LVU226
+ 204:PlateauTest.cpp ****     reverb.setTankDiffusion(1.f);
+ 744              		.loc 9 204 20 is_stmt 0 view .LVU227
+ 745 0068 334B     		ldr	r3, .L58+32
+ 206:PlateauTest.cpp ****     reverb.setTankFilterHighCutFrequency(reverbDampHigh);
+ 746              		.loc 9 206 40 view .LVU228
+ 747 006a 344C     		ldr	r4, .L58+36
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 30
 
 
- 518              		.loc 9 168 30 view .LVU148
- 519 014e B7EEC77A 		vcvt.f64.f32	d7, s14
- 520 0152 37EE067B 		vadd.f64	d7, d7, d6
- 521 0156 F7EEC77B 		vcvt.f32.f64	s15, d7
- 522              	.L22:
- 523 015a C4ED007A 		vstr.32	s15, [r4]
- 524 015e E2E7     		b	.L21
- 525              	.L30:
- 526              		.align	3
- 527              	.L29:
- 528 0160 F168E388 		.word	-1998362383
- 529 0164 B5F8E43E 		.word	1055193269
- 530 0168 00000000 		.word	.LANCHOR7
- 531 016c 00000000 		.word	.LANCHOR6
- 532 0170 00000000 		.word	.LANCHOR20
- 533 0174 00803B47 		.word	1195081728
- 534 0178 00000000 		.word	.LANCHOR1
- 535 017c 6F12833B 		.word	998445679
- 536 0180 00000000 		.word	.LANCHOR8
- 537 0184 00000000 		.word	.LANCHOR9
- 538 0188 00000000 		.word	0
- 539 018c 00000000 		.word	.LANCHOR10
- 540 0190 00000000 		.word	.LANCHOR11
- 541 0194 00000000 		.word	.LANCHOR12
- 542 0198 00000000 		.word	.LANCHOR13
- 543 019c 00000000 		.word	.LANCHOR14
- 544 01a0 00000000 		.word	.LANCHOR15
- 545 01a4 00000000 		.word	.LANCHOR16
- 546 01a8 00000000 		.word	.LANCHOR17
- 547 01ac 00000000 		.word	.LANCHOR18
- 548 01b0 00000000 		.word	.LANCHOR19
- 549 01b4 00000000 		.word	_Z13AudioCallbackPKfPfj
- 550              		.cfi_endproc
- 551              	.LFE4774:
- 553              		.section	.text.startup._GLOBAL__sub_I_hw,"ax",%progbits
- 554              		.align	1
- 555              		.p2align 2,,3
- 556              		.syntax unified
- 557              		.thumb
- 558              		.thumb_func
- 559              		.fpu fpv5-d16
- 561              	_GLOBAL__sub_I_hw:
- 562              	.LFB5426:
- 169:PlateauTest.cpp ****             else
- 170:PlateauTest.cpp ****                 initEnvelope = 1.f;
- 171:PlateauTest.cpp **** 
- 172:PlateauTest.cpp ****     }
- 173:PlateauTest.cpp **** }
- 563              		.loc 9 173 1 is_stmt 1 view -0
- 564              		.cfi_startproc
- 565              		@ args = 0, pretend = 0, frame = 0
- 566              		@ frame_needed = 0, uses_anonymous_args = 0
- 567              	.LBB269:
- 568              	.LBI269:
- 569              		.loc 9 173 1 view .LVU150
- 570              	.LVL32:
- 571              	.LBB270:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 23
+ 204:PlateauTest.cpp ****     reverb.setTankDiffusion(1.f);
+ 748              		.loc 9 204 20 view .LVU229
+ 749 006c 93ED000A 		vldr.32	s0, [r3]
+ 750 0070 2B48     		ldr	r0, .L58+8
+ 751 0072 FFF7FEFF 		bl	_ZN8Dattorro8setDecayEf
+ 752              	.LVL40:
+ 205:PlateauTest.cpp ****     reverb.setTankFilterLowCutFrequency(reverbDampLow);
+ 753              		.loc 9 205 5 is_stmt 1 view .LVU230
+ 207:PlateauTest.cpp **** 
+ 754              		.loc 9 207 41 is_stmt 0 view .LVU231
+ 755 0076 324D     		ldr	r5, .L58+40
+ 205:PlateauTest.cpp ****     reverb.setTankFilterLowCutFrequency(reverbDampLow);
+ 756              		.loc 9 205 28 view .LVU232
+ 757 0078 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 758 007c 2848     		ldr	r0, .L58+8
+ 759 007e FFF7FEFF 		bl	_ZN8Dattorro16setTankDiffusionEf
+ 760              	.LVL41:
+ 206:PlateauTest.cpp ****     reverb.setTankFilterHighCutFrequency(reverbDampHigh);
+ 761              		.loc 9 206 5 is_stmt 1 view .LVU233
+ 206:PlateauTest.cpp ****     reverb.setTankFilterHighCutFrequency(reverbDampHigh);
+ 762              		.loc 9 206 40 is_stmt 0 view .LVU234
+ 763 0082 94ED000A 		vldr.32	s0, [r4]
+ 764 0086 2648     		ldr	r0, .L58+8
+ 765 0088 FFF7FEFF 		bl	_ZN8Dattorro28setTankFilterLowCutFrequencyEf
+ 766              	.LVL42:
+ 207:PlateauTest.cpp **** 
+ 767              		.loc 9 207 5 is_stmt 1 view .LVU235
+ 207:PlateauTest.cpp **** 
+ 768              		.loc 9 207 41 is_stmt 0 view .LVU236
+ 769 008c 95ED000A 		vldr.32	s0, [r5]
+ 770 0090 2348     		ldr	r0, .L58+8
+ 771 0092 FFF7FEFF 		bl	_ZN8Dattorro29setTankFilterHighCutFrequencyEf
+ 772              	.LVL43:
+ 209:PlateauTest.cpp ****     reverb.setTankModDepth(modDepth);
+ 773              		.loc 9 209 5 is_stmt 1 view .LVU237
+ 209:PlateauTest.cpp ****     reverb.setTankModDepth(modDepth);
+ 774              		.loc 9 209 27 is_stmt 0 view .LVU238
+ 775 0096 2B4B     		ldr	r3, .L58+44
+ 776 0098 2148     		ldr	r0, .L58+8
+ 777 009a 93ED000A 		vldr.32	s0, [r3]
+ 778 009e FFF7FEFF 		bl	_ZN8Dattorro15setTankModSpeedEf
+ 779              	.LVL44:
+ 210:PlateauTest.cpp **** 
+ 780              		.loc 9 210 5 is_stmt 1 view .LVU239
+ 210:PlateauTest.cpp **** 
+ 781              		.loc 9 210 27 is_stmt 0 view .LVU240
+ 782 00a2 294B     		ldr	r3, .L58+48
+ 783 00a4 1E48     		ldr	r0, .L58+8
+ 784 00a6 93ED000A 		vldr.32	s0, [r3]
+ 785 00aa FFF7FEFF 		bl	_ZN8Dattorro15setTankModDepthEf
+ 786              	.LVL45:
+ 212:PlateauTest.cpp **** 
+ 787              		.loc 9 212 5 is_stmt 1 view .LVU241
+ 212:PlateauTest.cpp **** 
+ 788              		.loc 9 212 27 is_stmt 0 view .LVU242
+ 789 00ae B6EE000A 		vmov.f32	s0, #5.0e-1
+ 790 00b2 1B48     		ldr	r0, .L58+8
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 31
 
 
- 572              	.LBB271:
- 573              	.LBI271:
+ 791 00b4 FFF7FEFF 		bl	_ZN8Dattorro15setTankModShapeEf
+ 792              	.LVL46:
+ 214:PlateauTest.cpp **** 
+ 793              		.loc 9 214 5 is_stmt 1 view .LVU243
+ 214:PlateauTest.cpp **** 
+ 794              		.loc 9 214 16 is_stmt 0 view .LVU244
+ 795 00b8 1748     		ldr	r0, .L58
+ 796 00ba FFF7FEFF 		bl	_ZN5daisy11DaisyVersio8StartAdcEv
+ 797              	.LVL47:
+ 798              		.loc 9 216 5 is_stmt 1 view .LVU245
+ 799              		.loc 9 216 19 is_stmt 0 view .LVU246
+ 800 00be DFED230A 		vldr.32	s1, .L58+52
+ 801 00c2 97ED001A 		vldr.32	s2, [r7]
+ 802 00c6 B0EE600A 		vmov.f32	s0, s1
+ 803 00ca 2148     		ldr	r0, .L58+56
+ 804 00cc 81EE081A 		vdiv.f32	s2, s2, s16
+ 805 00d0 FFF7FEFF 		bl	_ZN5daisy6RgbLed3SetEfff
+ 806              	.LVL48:
+ 217:PlateauTest.cpp ****     hw.leds[0].Set(0, 0, inputDampLow/10.f);
+ 807              		.loc 9 217 5 is_stmt 1 view .LVU247
+ 808              		.loc 9 217 19 is_stmt 0 view .LVU248
+ 809 00d4 DFED1D0A 		vldr.32	s1, .L58+52
+ 810 00d8 96ED001A 		vldr.32	s2, [r6]
+ 811 00dc 1D48     		ldr	r0, .L58+60
+ 812 00de B0EE600A 		vmov.f32	s0, s1
+ 813 00e2 81EE081A 		vdiv.f32	s2, s2, s16
+ 814 00e6 FFF7FEFF 		bl	_ZN5daisy6RgbLed3SetEfff
+ 815              	.LVL49:
+ 218:PlateauTest.cpp ****     hw.leds[3].Set(0, 0, reverbDampHigh/10.f);
+ 816              		.loc 9 218 5 is_stmt 1 view .LVU249
+ 817              		.loc 9 218 19 is_stmt 0 view .LVU250
+ 818 00ea DFED180A 		vldr.32	s1, .L58+52
+ 819 00ee 95ED001A 		vldr.32	s2, [r5]
+ 820 00f2 1948     		ldr	r0, .L58+64
+ 821 00f4 B0EE600A 		vmov.f32	s0, s1
+ 822 00f8 81EE081A 		vdiv.f32	s2, s2, s16
+ 823 00fc FFF7FEFF 		bl	_ZN5daisy6RgbLed3SetEfff
+ 824              	.LVL50:
+ 219:PlateauTest.cpp ****     hw.leds[2].Set(0, 0, reverbDampLow/10.f);
+ 825              		.loc 9 219 5 is_stmt 1 view .LVU251
+ 826              		.loc 9 219 19 is_stmt 0 view .LVU252
+ 827 0100 94ED001A 		vldr.32	s2, [r4]
+ 828 0104 DFED110A 		vldr.32	s1, .L58+52
+ 829 0108 1448     		ldr	r0, .L58+68
+ 830 010a 81EE081A 		vdiv.f32	s2, s2, s16
+ 831 010e B0EE600A 		vmov.f32	s0, s1
+ 832 0112 FFF7FEFF 		bl	_ZN5daisy6RgbLed3SetEfff
+ 833              	.LVL51:
+ 834              	.L56:
+ 220:PlateauTest.cpp **** 
+ 221:PlateauTest.cpp **** 	while(1) {
+ 835              		.loc 9 221 2 is_stmt 1 discriminator 1 view .LVU253
+ 836              		.loc 9 221 2 discriminator 1 view .LVU254
+ 837              		.loc 9 221 2 discriminator 1 view .LVU255
+ 838              		.loc 9 221 2 discriminator 1 view .LVU256
+ 839 0116 FEE7     		b	.L56
+ 840              	.L59:
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 32
+
+
+ 841              		.align	2
+ 842              	.L58:
+ 843 0118 00000000 		.word	.LANCHOR5
+ 844 011c 0000FA46 		.word	1190789120
+ 845 0120 00000000 		.word	.LANCHOR0
+ 846 0124 00000000 		.word	_Z13AudioCallbackPKfPfj
+ 847 0128 00000000 		.word	.LANCHOR7
+ 848 012c 00000000 		.word	.LANCHOR17
+ 849 0130 00000000 		.word	.LANCHOR19
+ 850 0134 00000000 		.word	.LANCHOR20
+ 851 0138 00000000 		.word	.LANCHOR11
+ 852 013c 00000000 		.word	.LANCHOR21
+ 853 0140 00000000 		.word	.LANCHOR22
+ 854 0144 00000000 		.word	.LANCHOR13
+ 855 0148 00000000 		.word	.LANCHOR15
+ 856 014c 00000000 		.word	0
+ 857 0150 94000000 		.word	.LANCHOR5+148
+ 858 0154 40000000 		.word	.LANCHOR5+64
+ 859 0158 3C010000 		.word	.LANCHOR5+316
+ 860 015c E8000000 		.word	.LANCHOR5+232
+ 861              		.cfi_endproc
+ 862              	.LFE4773:
+ 864              		.section	.text.startup._GLOBAL__sub_I_hw,"ax",%progbits
+ 865              		.align	1
+ 866              		.p2align 2,,3
+ 867              		.syntax unified
+ 868              		.thumb
+ 869              		.thumb_func
+ 870              		.fpu fpv5-d16
+ 872              	_GLOBAL__sub_I_hw:
+ 873              	.LFB5425:
+ 222:PlateauTest.cpp **** 
+ 223:PlateauTest.cpp ****         // if(hw.sw[0].Read() == 2) {
+ 224:PlateauTest.cpp ****         //     if(hw.sw[1].Read() == 1) {
+ 225:PlateauTest.cpp ****         //         inputDampHigh = hw.GetKnobValue(DaisyVersio::KNOB_2) * 10;
+ 226:PlateauTest.cpp ****         //         if(abs(inputDampHigh - previousInputDampHigh) < 0.1) {
+ 227:PlateauTest.cpp ****         //             if(inputDampHigh > reverbDampMax)
+ 228:PlateauTest.cpp ****         //                 inputDampHigh = reverbDampMax;
+ 229:PlateauTest.cpp ****         //             if(inputDampHigh < reverbDampMin)
+ 230:PlateauTest.cpp ****         //                 inputDampHigh = reverbDampMin;
+ 231:PlateauTest.cpp ****         //             previousInputDampHigh = inputDampHigh;
+ 232:PlateauTest.cpp ****         //             reverb.setInputFilterHighCutoffPitch(inputDampHigh);
+ 233:PlateauTest.cpp ****         //             hw.leds[1].Set(0, 0, inputDampHigh/10.f);
+ 234:PlateauTest.cpp ****         //         }
+ 235:PlateauTest.cpp ****         //     } else if (hw.sw[1].Read() == 2) {
+ 236:PlateauTest.cpp ****         //         reverbDampHigh = hw.GetKnobValue(DaisyVersio::KNOB_2) * 10;
+ 237:PlateauTest.cpp ****         //         if(abs(reverbDampHigh - previousReverbDampHigh) < 0.1) {
+ 238:PlateauTest.cpp ****         //             if(reverbDampHigh > reverbDampMax)
+ 239:PlateauTest.cpp ****         //                 reverbDampHigh = reverbDampMax;
+ 240:PlateauTest.cpp ****         //             if(reverbDampHigh < reverbDampMin)
+ 241:PlateauTest.cpp ****         //                 reverbDampHigh = reverbDampMin;
+ 242:PlateauTest.cpp ****         //             previousReverbDampHigh = reverbDampHigh;
+ 243:PlateauTest.cpp ****         //             reverb.setTankFilterHighCutFrequency(reverbDampHigh);
+ 244:PlateauTest.cpp ****         //             hw.leds[3].Set(0, 0, reverbDampHigh/10.f);
+ 245:PlateauTest.cpp ****         //         }
+ 246:PlateauTest.cpp ****         //     }
+ 247:PlateauTest.cpp ****         // } else if(hw.sw[0].Read() == 1) {
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 33
+
+
+ 248:PlateauTest.cpp ****         //     if(hw.sw[1].Read() == 1) {
+ 249:PlateauTest.cpp ****         //         inputDampLow = hw.GetKnobValue(DaisyVersio::KNOB_2) * 10;
+ 250:PlateauTest.cpp ****         //         if(abs(inputDampLow - previousInputDampLow) < 0.1) {
+ 251:PlateauTest.cpp ****         //             if(inputDampLow > reverbDampMax)
+ 252:PlateauTest.cpp ****         //                 inputDampLow = reverbDampMax;
+ 253:PlateauTest.cpp ****         //             if(inputDampLow < reverbDampMin)
+ 254:PlateauTest.cpp ****         //                 inputDampLow = reverbDampMin;
+ 255:PlateauTest.cpp ****         //             previousInputDampLow = inputDampLow;
+ 256:PlateauTest.cpp ****         //             reverb.setInputFilterLowCutoffPitch(inputDampLow);
+ 257:PlateauTest.cpp ****         //             hw.leds[0].Set(0, 0, inputDampLow/10.f);
+ 258:PlateauTest.cpp ****         //         }
+ 259:PlateauTest.cpp ****         //     } else if (hw.sw[1].Read() == 2) {
+ 260:PlateauTest.cpp ****         //         reverbDampLow = hw.GetKnobValue(DaisyVersio::KNOB_2) * 10;
+ 261:PlateauTest.cpp ****         //         if(abs(reverbDampLow - previousReverbDampLow) < 0.1) {
+ 262:PlateauTest.cpp ****         //             if(reverbDampLow > reverbDampMax)
+ 263:PlateauTest.cpp ****         //                 reverbDampLow = reverbDampMax;
+ 264:PlateauTest.cpp ****         //             if(reverbDampLow < reverbDampMin)
+ 265:PlateauTest.cpp ****         //                 reverbDampLow = reverbDampMin;
+ 266:PlateauTest.cpp ****         //             previousReverbDampLow = reverbDampLow;
+ 267:PlateauTest.cpp ****         //             reverb.setTankFilterLowCutFrequency(reverbDampLow);
+ 268:PlateauTest.cpp ****         //             hw.leds[2].Set(0, 0, reverbDampLow/10.f);
+ 269:PlateauTest.cpp ****         //         }
+ 270:PlateauTest.cpp ****         //     }
+ 271:PlateauTest.cpp ****         // }
+ 272:PlateauTest.cpp ****         // //  else if(hw.sw[0].Read() == 1) { 
+ 273:PlateauTest.cpp ****         // //     inputDampLow = hw.GetKnobValue(DaisyVersio::KNOB_2) * 10;
+ 274:PlateauTest.cpp ****         // //     if(abs(inputDampLow - previousInputDampLow) < 0.1) {
+ 275:PlateauTest.cpp ****         // //         if(inputDampLow > reverbDampMax)
+ 276:PlateauTest.cpp ****         // //             inputDampLow = reverbDampMax;
+ 277:PlateauTest.cpp ****         // //         if(inputDampLow < reverbDampMin)
+ 278:PlateauTest.cpp ****         // //             inputDampLow = reverbDampMin;
+ 279:PlateauTest.cpp ****         // //         previousInputDampLow = inputDampLow;
+ 280:PlateauTest.cpp ****         // //         reverb.setInputFilterLowCutoffPitch(inputDampLow);
+ 281:PlateauTest.cpp ****         // //         hw.leds[1].Set(0, 0, inputDampLow/20.f);
+ 282:PlateauTest.cpp ****         // //     }
+ 283:PlateauTest.cpp ****         // // }
+ 284:PlateauTest.cpp ****         // // reverb.setTankFilterHighCutFrequency(inputDampHigh);
+ 285:PlateauTest.cpp ****     }
+ 286:PlateauTest.cpp **** }
+ 874              		.loc 9 286 1 view -0
+ 875              		.cfi_startproc
+ 876              		@ args = 0, pretend = 0, frame = 0
+ 877              		@ frame_needed = 0, uses_anonymous_args = 0
+ 878              	.LBB291:
+ 879              	.LBI291:
+ 880              		.loc 9 286 1 view .LVU258
+ 881              	.LVL52:
+ 882              	.LBB292:
+ 883              	.LBB293:
+ 884              	.LBI293:
   45:../../libDaisy//src/daisy_versio.h ****     ~DaisyVersio() {}
- 574              		.loc 1 45 5 view .LVU151
- 575              	.LBB272:
- 576              	.LBB273:
- 577              	.LBI273:
+ 885              		.loc 1 45 5 view .LVU259
+ 886              	.LBB294:
+ 887              	.LBB295:
+ 888              	.LBI295:
   21:../../libDaisy//src/daisy_seed.h ****     ~DaisySeed() {}
- 578              		.loc 4 21 5 view .LVU152
- 579              	.LBB274:
- 580              	.LBB275:
- 581              	.LBI275:
- 582              		.file 10 "../../libDaisy//src/per/qspi.h"
+ 889              		.loc 4 21 5 view .LVU260
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 34
+
+
+ 890              	.LBB296:
+ 891              	.LBB297:
+ 892              	.LBI297:
+ 893              		.file 11 "../../libDaisy//src/per/qspi.h"
    1:../../libDaisy//src/per/qspi.h **** #ifndef DSY_QSPI
    2:../../libDaisy//src/per/qspi.h **** #define DSY_QSPI /**< Macro */
    3:../../libDaisy//src/per/qspi.h **** 
@@ -1378,9 +2029,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   42:../../libDaisy//src/per/qspi.h ****          * 
   43:../../libDaisy//src/per/qspi.h ****          *  \param GOOD - No errors have been reported.
   44:../../libDaisy//src/per/qspi.h ****          *  \param E_HAL_ERROR - HAL code did not return HAL_OK.
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 24
-
-
   45:../../libDaisy//src/per/qspi.h ****          *  \param E_SWITCHING_MODES - An error was encountered while switching QSPI peripheral mod
   46:../../libDaisy//src/per/qspi.h ****          *  \param E_INVALID_MODE - QSPI should not be written to while the program is executing fr
   47:../../libDaisy//src/per/qspi.h ****          */
@@ -1390,6 +2038,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   51:../../libDaisy//src/per/qspi.h ****         E_HAL_ERROR,
   52:../../libDaisy//src/per/qspi.h ****         E_SWITCHING_MODES,
   53:../../libDaisy//src/per/qspi.h ****         E_INVALID_MODE,
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 35
+
+
   54:../../libDaisy//src/per/qspi.h ****     };
   55:../../libDaisy//src/per/qspi.h **** 
   56:../../libDaisy//src/per/qspi.h ****     /** Configuration structure for interfacing with QSPI Driver */
@@ -1438,9 +2089,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   99:../../libDaisy//src/per/qspi.h ****         \return Result::OK or Result::ERR
  100:../../libDaisy//src/per/qspi.h ****         */
  101:../../libDaisy//src/per/qspi.h ****     Result Init(const Config& config);
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 25
-
-
  102:../../libDaisy//src/per/qspi.h **** 
  103:../../libDaisy//src/per/qspi.h ****     /** Returns the current config. */
  104:../../libDaisy//src/per/qspi.h ****     const Config& GetConfig() const;
@@ -1450,6 +2098,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  108:../../libDaisy//src/per/qspi.h ****     /** 
  109:../../libDaisy//src/per/qspi.h ****         Deinitializes the peripheral
  110:../../libDaisy//src/per/qspi.h ****         This should be called before reinitializing QSPI in a different mode.
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 36
+
+
  111:../../libDaisy//src/per/qspi.h ****         \return Result::OK or Result::ERR
  112:../../libDaisy//src/per/qspi.h ****         */
  113:../../libDaisy//src/per/qspi.h ****     Result DeInit();
@@ -1498,9 +2149,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  156:../../libDaisy//src/per/qspi.h **** 
  157:../../libDaisy//src/per/qspi.h ****     /** Returns a pointer to the actual memory used 
  158:../../libDaisy//src/per/qspi.h ****      *  The memory at this address is read-only
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 26
-
-
  159:../../libDaisy//src/per/qspi.h ****      *  to write to it use the Write function.
  160:../../libDaisy//src/per/qspi.h ****      * 
  161:../../libDaisy//src/per/qspi.h ****      *  \param offset returns the pointer starting this 
@@ -1509,26 +2157,29 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  164:../../libDaisy//src/per/qspi.h ****     void* GetData(uint32_t offset = 0);
  165:../../libDaisy//src/per/qspi.h **** 
  166:../../libDaisy//src/per/qspi.h ****     QSPIHandle() : pimpl_(nullptr) {}
- 583              		.loc 10 166 5 view .LVU153
- 584              		.loc 10 166 5 is_stmt 0 view .LVU154
- 585              	.LBE275:
- 586              	.LBB280:
- 587              	.LBI280:
+ 894              		.loc 11 166 5 view .LVU261
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 37
+
+
+ 895              		.loc 11 166 5 is_stmt 0 view .LVU262
+ 896              	.LBE297:
+ 897              	.LBB302:
+ 898              	.LBI302:
   95:../../libDaisy//src/hid/audio.h ****     ~AudioHandle() {}
- 588              		.loc 8 95 5 is_stmt 1 view .LVU155
+ 899              		.loc 8 95 5 is_stmt 1 view .LVU263
   95:../../libDaisy//src/hid/audio.h ****     ~AudioHandle() {}
- 589              		.loc 8 95 5 is_stmt 0 view .LVU156
- 590              	.LBE280:
- 591              	.LBB283:
- 592              	.LBI283:
+ 900              		.loc 8 95 5 is_stmt 0 view .LVU264
+ 901              	.LBE302:
+ 902              	.LBB305:
+ 903              	.LBI305:
  109:../../libDaisy//src/per/adc.h ****     ~AdcHandle() {}
- 593              		.loc 7 109 5 is_stmt 1 view .LVU157
+ 904              		.loc 7 109 5 is_stmt 1 view .LVU265
  109:../../libDaisy//src/per/adc.h ****     ~AdcHandle() {}
- 594              		.loc 7 109 5 is_stmt 0 view .LVU158
- 595              	.LBE283:
- 596              	.LBB284:
- 597              	.LBI284:
- 598              		.file 11 "../../libDaisy//src/per/dac.h"
+ 905              		.loc 7 109 5 is_stmt 0 view .LVU266
+ 906              	.LBE305:
+ 907              	.LBB306:
+ 908              	.LBI306:
+ 909              		.file 12 "../../libDaisy//src/per/dac.h"
    1:../../libDaisy//src/per/dac.h **** #pragma once
    2:../../libDaisy//src/per/dac.h **** #ifndef DSY_DAC_H
    3:../../libDaisy//src/per/dac.h **** #define DSY_DAC_H
@@ -1558,9 +2209,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   27:../../libDaisy//src/per/dac.h ****         OK,
   28:../../libDaisy//src/per/dac.h ****         ERR,
   29:../../libDaisy//src/per/dac.h ****     };
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 27
-
-
   30:../../libDaisy//src/per/dac.h **** 
   31:../../libDaisy//src/per/dac.h ****     /** Selects which channel(s) will be configured for use. */
   32:../../libDaisy//src/per/dac.h ****     enum class Channel
@@ -1570,6 +2218,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   36:../../libDaisy//src/per/dac.h ****         BOTH,
   37:../../libDaisy//src/per/dac.h ****     };
   38:../../libDaisy//src/per/dac.h **** 
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 38
+
+
   39:../../libDaisy//src/per/dac.h ****     /** Sets the Mode for the DAC channels.
   40:../../libDaisy//src/per/dac.h ****      **
   41:../../libDaisy//src/per/dac.h ****      ** Polling mode uses the blocking mode to transmit a single value at a time.
@@ -1616,29 +2267,29 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   82:../../libDaisy//src/per/dac.h ****     };
   83:../../libDaisy//src/per/dac.h **** 
   84:../../libDaisy//src/per/dac.h ****     DacHandle() : pimpl_(nullptr) {}
- 599              		.loc 11 84 5 is_stmt 1 view .LVU159
- 600              		.loc 11 84 5 is_stmt 0 view .LVU160
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 28
+ 910              		.loc 12 84 5 is_stmt 1 view .LVU267
+ 911              		.loc 12 84 5 is_stmt 0 view .LVU268
+ 912              	.LBE306:
+ 913              	.LBB309:
+ 914              	.LBI309:
+  40:../../libDaisy//src/hid/usb.h **** 
+ 915              		.loc 6 40 5 is_stmt 1 view .LVU269
+  40:../../libDaisy//src/hid/usb.h **** 
+ 916              		.loc 6 40 5 is_stmt 0 view .LVU270
+ 917              	.LBE309:
+ 918              	.LBB310:
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 39
 
 
- 601              	.LBE284:
- 602              	.LBB287:
- 603              	.LBI287:
-  40:../../libDaisy//src/hid/usb.h **** 
- 604              		.loc 6 40 5 is_stmt 1 view .LVU161
-  40:../../libDaisy//src/hid/usb.h **** 
- 605              		.loc 6 40 5 is_stmt 0 view .LVU162
- 606              	.LBE287:
- 607              	.LBB288:
- 608              	.LBI288:
+ 919              	.LBI310:
   96:../../libDaisy//src/sys/system.h ****     ~System() {}
- 609              		.loc 5 96 5 is_stmt 1 view .LVU163
+ 920              		.loc 5 96 5 is_stmt 1 view .LVU271
   96:../../libDaisy//src/sys/system.h ****     ~System() {}
- 610              		.loc 5 96 5 is_stmt 0 view .LVU164
- 611              	.LBE288:
- 612              	.LBB289:
- 613              	.LBI289:
- 614              		.file 12 "../../libDaisy//src/per/sai.h"
+ 921              		.loc 5 96 5 is_stmt 0 view .LVU272
+ 922              	.LBE310:
+ 923              	.LBB311:
+ 924              	.LBI311:
+ 925              		.file 13 "../../libDaisy//src/per/sai.h"
    1:../../libDaisy//src/per/sai.h **** #pragma once
    2:../../libDaisy//src/per/sai.h **** #ifndef DSY_SAI_H
    3:../../libDaisy//src/per/sai.h **** #define DSY_SAI_H
@@ -1678,9 +2329,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   37:../../libDaisy//src/per/sai.h ****  *  SaiHandle sai;
   38:../../libDaisy//src/per/sai.h ****  *  sai.Init(sai_config);
   39:../../libDaisy//src/per/sai.h ****  *  // Now you can use it:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 29
-
-
   40:../../libDaisy//src/per/sai.h ****  *  sai.StartDma(. . .);
   41:../../libDaisy//src/per/sai.h ****  */
   42:../../libDaisy//src/per/sai.h **** class SaiHandle
@@ -1690,6 +2338,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   46:../../libDaisy//src/per/sai.h ****     struct Config
   47:../../libDaisy//src/per/sai.h ****     {
   48:../../libDaisy//src/per/sai.h ****         /** Specifies the internal peripheral to use (mapped to different hardware pins) */
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 40
+
+
   49:../../libDaisy//src/per/sai.h ****         enum class Peripheral
   50:../../libDaisy//src/per/sai.h ****         {
   51:../../libDaisy//src/per/sai.h ****             SAI_1,
@@ -1738,9 +2389,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   94:../../libDaisy//src/per/sai.h ****         } pin_config;
   95:../../libDaisy//src/per/sai.h ****         SampleRate sr;
   96:../../libDaisy//src/per/sai.h ****         BitDepth   bit_depth;
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 30
-
-
   97:../../libDaisy//src/per/sai.h ****         Sync       a_sync, b_sync;
   98:../../libDaisy//src/per/sai.h ****         Direction  a_dir, b_dir;
   99:../../libDaisy//src/per/sai.h ****     };
@@ -1750,41 +2398,44 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  103:../../libDaisy//src/per/sai.h ****     {
  104:../../libDaisy//src/per/sai.h ****         OK,
  105:../../libDaisy//src/per/sai.h ****         ERR,
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 41
+
+
  106:../../libDaisy//src/per/sai.h ****     };
  107:../../libDaisy//src/per/sai.h **** 
  108:../../libDaisy//src/per/sai.h ****     SaiHandle() : pimpl_(nullptr) {}
- 615              		.loc 12 108 5 is_stmt 1 view .LVU165
- 616              		.loc 12 108 5 is_stmt 0 view .LVU166
- 617              	.LBE289:
- 618              	.LBE274:
- 619              	.LBE273:
- 620              	.LBE272:
- 621              	.LBE271:
- 622              	.LBE270:
- 623              	.LBE269:
+ 926              		.loc 13 108 5 is_stmt 1 view .LVU273
+ 927              		.loc 13 108 5 is_stmt 0 view .LVU274
+ 928              	.LBE311:
+ 929              	.LBE296:
+ 930              	.LBE295:
+ 931              	.LBE294:
+ 932              	.LBE293:
+ 933              	.LBE292:
+ 934              	.LBE291:
   45:../../libDaisy//src/daisy_versio.h ****     ~DaisyVersio() {}
- 624              		.loc 1 45 19 is_stmt 1 view .LVU167
+ 935              		.loc 1 45 19 is_stmt 1 view .LVU275
   45:../../libDaisy//src/daisy_versio.h ****     ~DaisyVersio() {}
- 625              		.loc 1 45 19 view .LVU168
- 626              	.LBB327:
- 627              	.LBB323:
- 628              	.LBB320:
- 629              	.LBB317:
- 630              	.LBB299:
- 631              	.LBI299:
+ 936              		.loc 1 45 19 view .LVU276
+ 937              	.LBB349:
+ 938              	.LBB345:
+ 939              	.LBB342:
+ 940              	.LBB339:
+ 941              	.LBB321:
+ 942              	.LBI321:
   41:../../libDaisy//src/hid/switch.h ****     ~Switch() {}
- 632              		.loc 3 41 5 view .LVU169
+ 943              		.loc 3 41 5 view .LVU277
   41:../../libDaisy//src/hid/switch.h ****     ~Switch() {}
- 633              		.loc 3 41 5 is_stmt 0 view .LVU170
- 634              	.LBE299:
- 635              	.LBB300:
- 636              	.LBI300:
+ 944              		.loc 3 41 5 is_stmt 0 view .LVU278
+ 945              	.LBE321:
+ 946              	.LBB322:
+ 947              	.LBI322:
   18:../../libDaisy//src/hid/gatein.h **** 
- 637              		.loc 2 18 5 is_stmt 1 view .LVU171
- 638              	.LBB301:
- 639              	.LBB302:
- 640              	.LBI302:
- 641              		.file 13 "../../libDaisy//src/per/gpio.h"
+ 948              		.loc 2 18 5 is_stmt 1 view .LVU279
+ 949              	.LBB323:
+ 950              	.LBB324:
+ 951              	.LBI324:
+ 952              		.file 14 "../../libDaisy//src/per/gpio.h"
    1:../../libDaisy//src/per/gpio.h **** #pragma once
    2:../../libDaisy//src/per/gpio.h **** #ifndef DSY_GPIO_H
    3:../../libDaisy//src/per/gpio.h **** #define DSY_GPIO_H
@@ -1798,9 +2449,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   11:../../libDaisy//src/per/gpio.h ****  *  @details peripheral control over a single GPIO
   12:../../libDaisy//src/per/gpio.h ****  *  @ingroup peripheral
   13:../../libDaisy//src/per/gpio.h ****  *   
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 31
-
-
   14:../../libDaisy//src/per/gpio.h ****  *  Button Input (with internal Pullup resistor)
   15:../../libDaisy//src/per/gpio.h ****  *  @include GPIO_Input.cpp 
   16:../../libDaisy//src/per/gpio.h ****  * 
@@ -1810,6 +2458,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   20:../../libDaisy//src/per/gpio.h **** */
   21:../../libDaisy//src/per/gpio.h **** class GPIO
   22:../../libDaisy//src/per/gpio.h **** {
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 42
+
+
   23:../../libDaisy//src/per/gpio.h ****   public:
   24:../../libDaisy//src/per/gpio.h ****     /** @brief Mode of operation for the specified GPIO */
   25:../../libDaisy//src/per/gpio.h ****     enum class Mode
@@ -1858,24 +2509,24 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   68:../../libDaisy//src/per/gpio.h ****         Config()
   69:../../libDaisy//src/per/gpio.h ****         : pin(), mode(Mode::INPUT), pull(Pull::NOPULL), speed(Speed::LOW)
   70:../../libDaisy//src/per/gpio.h ****         {
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 32
-
-
   71:../../libDaisy//src/per/gpio.h ****         }
   72:../../libDaisy//src/per/gpio.h ****     };
   73:../../libDaisy//src/per/gpio.h **** 
   74:../../libDaisy//src/per/gpio.h ****     GPIO() {}
- 642              		.loc 13 74 5 view .LVU172
- 643              	.LBB303:
- 644              	.LBB304:
- 645              	.LBI304:
+ 953              		.loc 14 74 5 view .LVU280
+ 954              	.LBB325:
+ 955              	.LBB326:
+ 956              	.LBI326:
   68:../../libDaisy//src/per/gpio.h ****         : pin(), mode(Mode::INPUT), pull(Pull::NOPULL), speed(Speed::LOW)
- 646              		.loc 13 68 9 view .LVU173
- 647              	.LBB305:
- 648              	.LBB306:
- 649              	.LBB307:
- 650              	.LBI307:
- 651              		.file 14 "../../libDaisy//src/daisy_core.h"
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 43
+
+
+ 957              		.loc 14 68 9 view .LVU281
+ 958              	.LBB327:
+ 959              	.LBB328:
+ 960              	.LBB329:
+ 961              	.LBI329:
+ 962              		.file 15 "../../libDaisy//src/daisy_core.h"
    1:../../libDaisy//src/daisy_core.h **** #pragma once
    2:../../libDaisy//src/daisy_core.h **** #ifndef DSY_CORE_HW_H
    3:../../libDaisy//src/daisy_core.h **** #define DSY_CORE_HW_H /**< & */
@@ -1918,9 +2569,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   40:../../libDaisy//src/daisy_core.h **** #define F2S16_SCALE 32767.0f          /**< (2 ** 15) - 1 */
   41:../../libDaisy//src/daisy_core.h **** #define F2S24_SCALE 8388608.0f        /**< 2 ** 23 */
   42:../../libDaisy//src/daisy_core.h **** #define S242F_SCALE 1.192092896e-07f  /**< 1 / (2 ** 23) */
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 33
-
-
   43:../../libDaisy//src/daisy_core.h **** #define S24SIGN 0x800000              /**< 2 ** 23 */
   44:../../libDaisy//src/daisy_core.h **** #define S322F_SCALE 4.6566129e-10f    /**< 1 / (2** 31) */
   45:../../libDaisy//src/daisy_core.h **** #define F2S32_SCALE 2147483647.f      /**< (2 ** 31) - 1 */
@@ -1930,6 +2578,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   49:../../libDaisy//src/daisy_core.h ****  *  channel of a non-interleaved output buffer named out */
   50:../../libDaisy//src/daisy_core.h **** #define OUT_L out[0]
   51:../../libDaisy//src/daisy_core.h **** 
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 44
+
+
   52:../../libDaisy//src/daisy_core.h **** /** shorthand macro for simplifying the reading of the right 
   53:../../libDaisy//src/daisy_core.h ****  *  channel of a non-interleaved output buffer named out */
   54:../../libDaisy//src/daisy_core.h **** #define OUT_R out[1]
@@ -1978,9 +2629,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
   97:../../libDaisy//src/daisy_core.h ****     \param x Number to be scaled.
   98:../../libDaisy//src/daisy_core.h ****     \return Scaled number.
   99:../../libDaisy//src/daisy_core.h **** */
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 34
-
-
  100:../../libDaisy//src/daisy_core.h **** FORCE_INLINE float s82f(int8_t x)
  101:../../libDaisy//src/daisy_core.h **** {
  102:../../libDaisy//src/daisy_core.h ****     return (float)x * S82F_SCALE;
@@ -1990,6 +2638,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  106:../../libDaisy//src/daisy_core.h ****     Converts float to Signed 8-bit
  107:../../libDaisy//src/daisy_core.h **** */
  108:../../libDaisy//src/daisy_core.h **** FORCE_INLINE int8_t f2s8(float x)
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 45
+
+
  109:../../libDaisy//src/daisy_core.h **** {
  110:../../libDaisy//src/daisy_core.h ****     x = x <= FBIPMIN ? FBIPMIN : x;
  111:../../libDaisy//src/daisy_core.h ****     x = x >= FBIPMAX ? FBIPMAX : x;
@@ -2038,9 +2689,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  154:../../libDaisy//src/daisy_core.h ****     Converts Signed 32-bit to float
  155:../../libDaisy//src/daisy_core.h ****  */
  156:../../libDaisy//src/daisy_core.h **** FORCE_INLINE float s322f(int32_t x)
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 35
-
-
  157:../../libDaisy//src/daisy_core.h **** {
  158:../../libDaisy//src/daisy_core.h ****     return (float)x * S322F_SCALE;
  159:../../libDaisy//src/daisy_core.h **** }
@@ -2050,6 +2698,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  163:../../libDaisy//src/daisy_core.h **** FORCE_INLINE int32_t f2s32(float x)
  164:../../libDaisy//src/daisy_core.h **** {
  165:../../libDaisy//src/daisy_core.h ****     x = x <= FBIPMIN ? FBIPMIN : x;
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 46
+
+
  166:../../libDaisy//src/daisy_core.h ****     x = x >= FBIPMAX ? FBIPMAX : x;
  167:../../libDaisy//src/daisy_core.h ****     return (int32_t)(x * F2S32_SCALE);
  168:../../libDaisy//src/daisy_core.h **** }
@@ -2098,9 +2749,6 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  211:../../libDaisy//src/daisy_core.h ****  * 
  212:../../libDaisy//src/daisy_core.h ****  *  The dsy_gpio_pin struct should no longer be used, and is only available for
  213:../../libDaisy//src/daisy_core.h ****  *  backwards compatability.
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 36
-
-
  214:../../libDaisy//src/daisy_core.h ****  * 
  215:../../libDaisy//src/daisy_core.h ****  *  Please use Pin struct instead.
  216:../../libDaisy//src/daisy_core.h **** */
@@ -2110,6 +2758,9 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  220:../../libDaisy//src/daisy_core.h ****     p.port = port;
  221:../../libDaisy//src/daisy_core.h ****     p.pin  = pin;
  222:../../libDaisy//src/daisy_core.h ****     return p;
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 47
+
+
  223:../../libDaisy//src/daisy_core.h **** }
  224:../../libDaisy//src/daisy_core.h **** 
  225:../../libDaisy//src/daisy_core.h **** /** Helper for testing sameness of two dsy_gpio_pins
@@ -2158,597 +2809,677 @@ ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 1
  268:../../libDaisy//src/daisy_core.h ****     */
  269:../../libDaisy//src/daisy_core.h ****     constexpr Pin(const GPIOPort pt, const uint8_t pn) : port(pt), pin(pn) {}
  270:../../libDaisy//src/daisy_core.h **** 
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 37
-
-
  271:../../libDaisy//src/daisy_core.h ****     /** @brief Basic Constructor creates an invalid Pin object */
  272:../../libDaisy//src/daisy_core.h ****     constexpr Pin() : port(PORTX), pin(255) {}
- 652              		.loc 14 272 15 view .LVU174
- 653              		.loc 14 272 15 is_stmt 0 view .LVU175
- 654              	.LBE307:
- 655              	.LBE306:
- 656              	.LBE305:
- 657              	.LBE304:
- 658              	.LBE303:
- 659              	.LBE302:
- 660              	.LBE301:
- 661              	.LBE300:
- 662              	.LBE317:
- 663              	.LBE320:
- 664              	.LBE323:
- 665              	.LBE327:
- 666              		.loc 9 173 1 view .LVU176
- 667 0000 10B5     		push	{r4, lr}
- 668              		.cfi_def_cfa_offset 8
- 669              		.cfi_offset 4, -8
- 670              		.cfi_offset 14, -4
- 671              	.LBB328:
- 672              	.LBB324:
- 673              	.LBB321:
- 674              	.LBB318:
- 675              	.LBB314:
- 676              	.LBB297:
- 677              	.LBB292:
- 678              	.LBB276:
- 679              	.LBB277:
- 680              		.loc 10 166 34 view .LVU177
- 681 0002 0023     		movs	r3, #0
- 682 0004 0E48     		ldr	r0, .L33
- 683              	.LBE277:
- 684              	.LBE276:
- 685              	.LBE292:
- 686              	.LBE297:
- 687              	.LBE314:
+ 963              		.loc 15 272 15 view .LVU282
+ 964              		.loc 15 272 15 is_stmt 0 view .LVU283
+ 965              	.LBE329:
+ 966              	.LBE328:
+ 967              	.LBE327:
+ 968              	.LBE326:
+ 969              	.LBE325:
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 48
+
+
+ 970              	.LBE324:
+ 971              	.LBE323:
+ 972              	.LBE322:
+ 973              	.LBE339:
+ 974              	.LBE342:
+ 975              	.LBE345:
+ 976              	.LBE349:
+ 977              		.loc 9 286 1 view .LVU284
+ 978 0000 38B5     		push	{r3, r4, r5, lr}
+ 979              		.cfi_def_cfa_offset 16
+ 980              		.cfi_offset 3, -16
+ 981              		.cfi_offset 4, -12
+ 982              		.cfi_offset 5, -8
+ 983              		.cfi_offset 14, -4
+ 984              	.LBB350:
+ 985              	.LBB346:
+ 986              	.LBB343:
+ 987              	.LBB340:
+ 988              	.LBB336:
+ 989              	.LBB319:
+ 990              	.LBB314:
+ 991              	.LBB298:
+ 992              	.LBB299:
+ 993              		.loc 11 166 34 view .LVU285
+ 994 0002 1948     		ldr	r0, .L62
+ 995 0004 0023     		movs	r3, #0
+ 996              	.LBE299:
+ 997              	.LBE298:
+ 998              	.LBE314:
+ 999              	.LBE319:
+ 1000              	.LBE336:
   45:../../libDaisy//src/daisy_versio.h ****     ~DaisyVersio() {}
- 688              		.loc 1 45 19 view .LVU178
- 689 0006 4FF60B74 		movw	r4, #65291
- 690              	.LBE318:
- 691              	.LBE321:
-  11:PlateauTest.cpp **** 
- 692              		.loc 9 11 13 view .LVU179
- 693 000a 0E4A     		ldr	r2, .L33+4
- 694 000c 0E49     		ldr	r1, .L33+8
- 695              	.LBB322:
- 696              	.LBB319:
- 697              	.LBB315:
- 698              	.LBB298:
- 699              	.LBB293:
- 700              	.LBB279:
- 701              	.LBB278:
- 702              		.loc 10 166 34 view .LVU180
- 703 000e 0360     		str	r3, [r0]
- 704              	.LBE278:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 38
+ 1001              		.loc 1 45 19 view .LVU286
+ 1002 0006 4FF60B74 		movw	r4, #65291
+ 1003              	.LBE340:
+ 1004              	.LBE343:
+  35:PlateauTest.cpp **** 
+ 1005              		.loc 9 35 7 view .LVU287
+ 1006 000a 184D     		ldr	r5, .L62+4
+   9:PlateauTest.cpp **** 
+ 1007              		.loc 9 9 13 view .LVU288
+ 1008 000c 184A     		ldr	r2, .L62+8
+ 1009 000e 1949     		ldr	r1, .L62+12
+ 1010              	.LBB344:
+ 1011              	.LBB341:
+ 1012              	.LBB337:
+ 1013              	.LBB320:
+ 1014              	.LBB315:
+ 1015              	.LBB301:
+ 1016              	.LBB300:
+ 1017              		.loc 11 166 34 view .LVU289
+ 1018 0010 0360     		str	r3, [r0]
+ 1019              	.LBE300:
+ 1020              	.LBE301:
+ 1021              	.LBE315:
+ 1022              	.LBB316:
+ 1023              	.LBB303:
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 49
 
 
- 705              	.LBE279:
- 706              	.LBE293:
- 707              	.LBB294:
- 708              	.LBB281:
- 709              	.LBB282:
+ 1024              	.LBB304:
   95:../../libDaisy//src/hid/audio.h ****     ~AudioHandle() {}
- 710              		.loc 8 95 35 view .LVU181
- 711 0010 4361     		str	r3, [r0, #20]
- 712              	.LBE282:
- 713              	.LBE281:
- 714              	.LBE294:
- 715              	.LBB295:
- 716              	.LBB285:
- 717              	.LBB286:
- 718              		.loc 11 84 33 view .LVU182
- 719 0012 0362     		str	r3, [r0, #32]
- 720              	.LBE286:
- 721              	.LBE285:
- 722              	.LBE295:
- 723              	.LBB296:
- 724              	.LBB290:
- 725              	.LBB291:
- 726              		.loc 12 108 33 view .LVU183
- 727 0014 C363     		str	r3, [r0, #60]
- 728              	.LBE291:
- 729              	.LBE290:
- 730              	.LBE296:
- 731              	.LBE298:
- 732              	.LBE315:
- 733              	.LBB316:
- 734              	.LBB313:
- 735              	.LBB312:
- 736              	.LBB311:
- 737              	.LBB310:
- 738              	.LBB309:
- 739              	.LBB308:
+ 1025              		.loc 8 95 35 view .LVU290
+ 1026 0012 4361     		str	r3, [r0, #20]
+ 1027              	.LBE304:
+ 1028              	.LBE303:
+ 1029              	.LBE316:
+ 1030              	.LBB317:
+ 1031              	.LBB307:
+ 1032              	.LBB308:
+ 1033              		.loc 12 84 33 view .LVU291
+ 1034 0014 0362     		str	r3, [r0, #32]
+ 1035              	.LBE308:
+ 1036              	.LBE307:
+ 1037              	.LBE317:
+ 1038              	.LBB318:
+ 1039              	.LBB312:
+ 1040              	.LBB313:
+ 1041              		.loc 13 108 33 view .LVU292
+ 1042 0016 C363     		str	r3, [r0, #60]
+ 1043              	.LBE313:
+ 1044              	.LBE312:
+ 1045              	.LBE318:
+ 1046              	.LBE320:
+ 1047              	.LBE337:
+ 1048              	.LBB338:
+ 1049              	.LBB335:
+ 1050              	.LBB334:
+ 1051              	.LBB333:
+ 1052              	.LBB332:
+ 1053              	.LBB331:
+ 1054              	.LBB330:
   69:../../libDaisy//src/per/gpio.h ****         {
- 740              		.loc 13 69 73 view .LVU184
- 741 0016 C0E9A043 		strd	r4, r3, [r0, #640]
- 742 001a C0E9A233 		strd	r3, r3, [r0, #648]
- 743              	.LVL33:
+ 1055              		.loc 14 69 73 view .LVU293
+ 1056 0018 C0E9A043 		strd	r4, r3, [r0, #640]
+ 1057 001c C0E9A233 		strd	r3, r3, [r0, #648]
+ 1058              	.LVL53:
   69:../../libDaisy//src/per/gpio.h ****         {
- 744              		.loc 13 69 73 view .LVU185
- 745              	.LBE308:
- 746              	.LBE309:
- 747              	.LBE310:
- 748              	.LBE311:
- 749              	.LBE312:
- 750              	.LBE313:
- 751              	.LBE316:
- 752              	.LBE319:
- 753              	.LBE322:
- 754              	.LBE324:
- 755              	.LBE328:
+ 1059              		.loc 14 69 73 view .LVU294
+ 1060              	.LBE330:
+ 1061              	.LBE331:
+ 1062              	.LBE332:
+ 1063              	.LBE333:
+ 1064              	.LBE334:
+ 1065              	.LBE335:
+ 1066              	.LBE338:
+ 1067              	.LBE341:
+ 1068              	.LBE344:
+ 1069              	.LBE346:
+ 1070              	.LBE350:
   45:../../libDaisy//src/daisy_versio.h ****     ~DaisyVersio() {}
- 756              		.loc 1 45 19 is_stmt 1 view .LVU186
- 757              	.LBB329:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 39
+ 1071              		.loc 1 45 19 is_stmt 1 view .LVU295
+ 1072              	.LBB351:
+ 1073              	.LBB347:
+   9:PlateauTest.cpp **** 
+ 1074              		.loc 9 9 13 is_stmt 0 view .LVU296
+ 1075 0020 FFF7FEFF 		bl	__aeabi_atexit
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 50
 
 
- 758              	.LBB325:
-  11:PlateauTest.cpp **** 
- 759              		.loc 9 11 13 is_stmt 0 view .LVU187
- 760 001e FFF7FEFF 		bl	__aeabi_atexit
- 761              	.LVL34:
-  76:PlateauTest.cpp **** LinearEnvelope envelope;
- 762              		.loc 9 76 10 view .LVU188
- 763 0022 B7EE001A 		vmov.f32	s2, #1.0e+0
- 764 0026 F3EE000A 		vmov.f32	s1, #1.6e+1
- 765 002a 9FED080A 		vldr.32	s0, .L33+12
- 766 002e 0848     		ldr	r0, .L33+16
- 767 0030 FFF7FEFF 		bl	_ZN8DattorroC1Efff
- 768              	.LVL35:
-  77:PlateauTest.cpp **** 
- 769              		.loc 9 77 16 view .LVU189
- 770 0034 0748     		ldr	r0, .L33+20
- 771              	.LBE325:
- 772              	.LBE329:
- 773              		.loc 9 173 1 view .LVU190
- 774 0036 BDE81040 		pop	{r4, lr}
- 775              		.cfi_restore 14
- 776              		.cfi_restore 4
- 777              		.cfi_def_cfa_offset 0
- 778              	.LBB330:
- 779              	.LBB326:
-  77:PlateauTest.cpp **** 
- 780              		.loc 9 77 16 view .LVU191
- 781 003a FFF7FEBF 		b	_ZN14LinearEnvelopeC1Ev
- 782              	.LVL36:
- 783              	.L34:
- 784 003e 00BF     		.align	2
- 785              	.L33:
- 786 0040 00000000 		.word	.LANCHOR6
- 787 0044 00000000 		.word	__dso_handle
- 788 0048 00000000 		.word	_ZN5daisy11DaisyVersioD1Ev
- 789 004c 00803B47 		.word	1195081728
- 790 0050 00000000 		.word	.LANCHOR1
- 791 0054 00000000 		.word	.LANCHOR7
- 792              	.LBE326:
- 793              	.LBE330:
- 794              		.cfi_endproc
- 795              	.LFE5426:
- 797              		.section	.init_array,"aw",%init_array
- 798              		.align	2
- 799 0000 00000000 		.word	_GLOBAL__sub_I_hw(target1)
- 800              		.global	initEnvelope
- 801              		.global	rightOutput
- 802              		.global	leftOutput
- 803              		.global	rightInput
- 804              		.global	leftInput
- 805              		.global	diffuseInput
- 806              		.global	tuned
- 807              		.global	panelStyle
- 808              		.global	envelope
- 809              		.global	reverb
- 810              		.global	fadeIn
- 811              		.global	fadeOut
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 40
+ 1076              	.LVL54:
+  35:PlateauTest.cpp **** 
+ 1077              		.loc 9 35 7 view .LVU297
+ 1078 0024 D5F800C0 		ldr	ip, [r5]	@ float
+ 1079 0028 134B     		ldr	r3, .L62+16
+  88:PlateauTest.cpp **** 
+ 1080              		.loc 9 88 10 view .LVU298
+ 1081 002a B7EE001A 		vmov.f32	s2, #1.0e+0
+  72:PlateauTest.cpp **** 
+ 1082              		.loc 9 72 7 view .LVU299
+ 1083 002e 1348     		ldr	r0, .L62+20
+  88:PlateauTest.cpp **** 
+ 1084              		.loc 9 88 10 view .LVU300
+ 1085 0030 F3EE000A 		vmov.f32	s1, #1.6e+1
+  35:PlateauTest.cpp **** 
+ 1086              		.loc 9 35 7 view .LVU301
+ 1087 0034 C3F800C0 		str	ip, [r3]	@ float
+  72:PlateauTest.cpp **** 
+ 1088              		.loc 9 72 7 view .LVU302
+ 1089 0038 0068     		ldr	r0, [r0]	@ float
+ 1090 003a 114B     		ldr	r3, .L62+24
+  75:PlateauTest.cpp **** 
+ 1091              		.loc 9 75 7 view .LVU303
+ 1092 003c 1149     		ldr	r1, .L62+28
+  72:PlateauTest.cpp **** 
+ 1093              		.loc 9 72 7 view .LVU304
+ 1094 003e 1860     		str	r0, [r3]	@ float
+  75:PlateauTest.cpp **** 
+ 1095              		.loc 9 75 7 view .LVU305
+ 1096 0040 0968     		ldr	r1, [r1]	@ float
+ 1097 0042 114B     		ldr	r3, .L62+32
+  81:PlateauTest.cpp **** 
+ 1098              		.loc 9 81 7 view .LVU306
+ 1099 0044 114A     		ldr	r2, .L62+36
+  78:PlateauTest.cpp **** 
+ 1100              		.loc 9 78 7 view .LVU307
+ 1101 0046 124C     		ldr	r4, .L62+40
+  75:PlateauTest.cpp **** 
+ 1102              		.loc 9 75 7 view .LVU308
+ 1103 0048 1960     		str	r1, [r3]	@ float
+  81:PlateauTest.cpp **** 
+ 1104              		.loc 9 81 7 view .LVU309
+ 1105 004a 1268     		ldr	r2, [r2]	@ float
+ 1106 004c 114B     		ldr	r3, .L62+44
+  78:PlateauTest.cpp **** 
+ 1107              		.loc 9 78 7 view .LVU310
+ 1108 004e D4F800C0 		ldr	ip, [r4]	@ float
+ 1109 0052 1149     		ldr	r1, .L62+48
+  81:PlateauTest.cpp **** 
+ 1110              		.loc 9 81 7 view .LVU311
+ 1111 0054 1A60     		str	r2, [r3]	@ float
+  88:PlateauTest.cpp **** 
+ 1112              		.loc 9 88 10 view .LVU312
+ 1113 0056 9FED110A 		vldr.32	s0, .L62+52
+ 1114 005a 1148     		ldr	r0, .L62+56
+  78:PlateauTest.cpp **** 
+ 1115              		.loc 9 78 7 view .LVU313
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 51
 
 
- 812              		.global	cleared
- 813              		.global	clear
- 814              		.global	softDriveOutput
- 815              		.global	inputSensitivityState
- 816              		.global	preDelayCVSensState
- 817              		.global	diffuseButtonState
- 818              		.global	tunedButtonState
- 819              		.global	frozen
- 820              		.global	freeze
- 821              		.global	freezeToggleButtonState
- 822              		.global	freezeToggle
- 823              		.global	freezeButtonState
- 824              		.global	modDepth
- 825              		.global	modShape
- 826              		.global	modSpeed
- 827              		.global	reverbDampHigh
- 828              		.global	reverbDampLow
- 829              		.global	inputDampHigh
- 830              		.global	inputDampLow
- 831              		.global	inputSensitivity
- 832              		.global	decay
- 833              		.global	diffusion
- 834              		.global	timeScale
- 835              		.global	preDelayCVSens
- 836              		.global	preDelay
- 837              		.global	dry
- 838              		.global	wet
- 839              		.global	hw
- 840              		.section	.bss.clear,"aw",%nobits
- 843              	clear:
- 844 0000 00       		.space	1
- 845              		.section	.bss.envelope,"aw",%nobits
- 846              		.align	2
- 847              		.set	.LANCHOR7,. + 0
- 850              	envelope:
- 851 0000 00000000 		.space	40
- 851      00000000 
- 851      00000000 
- 851      00000000 
- 851      00000000 
- 852              		.section	.bss.fadeIn,"aw",%nobits
- 855              	fadeIn:
- 856 0000 00       		.space	1
- 857              		.section	.bss.fadeOut,"aw",%nobits
- 860              	fadeOut:
- 861 0000 00       		.space	1
- 862              		.section	.bss.freeze,"aw",%nobits
- 865              	freeze:
- 866 0000 00       		.space	1
- 867              		.section	.bss.freezeButtonState,"aw",%nobits
- 870              	freezeButtonState:
- 871 0000 00       		.space	1
- 872              		.section	.bss.freezeToggle,"aw",%nobits
- 875              	freezeToggle:
- 876 0000 00       		.space	1
- 877              		.section	.bss.freezeToggleButtonState,"aw",%nobits
- 880              	freezeToggleButtonState:
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 41
+ 1116 005c C1F800C0 		str	ip, [r1]	@ float
+ 1117              	.LBE347:
+ 1118              	.LBE351:
+ 1119              		.loc 9 286 1 view .LVU314
+ 1120 0060 BDE83840 		pop	{r3, r4, r5, lr}
+ 1121              		.cfi_restore 14
+ 1122              		.cfi_restore 5
+ 1123              		.cfi_restore 4
+ 1124              		.cfi_restore 3
+ 1125              		.cfi_def_cfa_offset 0
+ 1126              	.LBB352:
+ 1127              	.LBB348:
+  88:PlateauTest.cpp **** 
+ 1128              		.loc 9 88 10 view .LVU315
+ 1129 0064 FFF7FEBF 		b	_ZN8DattorroC1Efff
+ 1130              	.LVL55:
+ 1131              	.L63:
+ 1132              		.align	2
+ 1133              	.L62:
+ 1134 0068 00000000 		.word	.LANCHOR5
+ 1135 006c 00000000 		.word	.LANCHOR9
+ 1136 0070 00000000 		.word	__dso_handle
+ 1137 0074 00000000 		.word	_ZN5daisy11DaisyVersioD1Ev
+ 1138 0078 00000000 		.word	.LANCHOR10
+ 1139 007c 00000000 		.word	.LANCHOR11
+ 1140 0080 00000000 		.word	.LANCHOR12
+ 1141 0084 00000000 		.word	.LANCHOR13
+ 1142 0088 00000000 		.word	.LANCHOR14
+ 1143 008c 00000000 		.word	.LANCHOR7
+ 1144 0090 00000000 		.word	.LANCHOR15
+ 1145 0094 00000000 		.word	.LANCHOR23
+ 1146 0098 00000000 		.word	.LANCHOR16
+ 1147 009c 0000FA46 		.word	1190789120
+ 1148 00a0 00000000 		.word	.LANCHOR0
+ 1149              	.LBE348:
+ 1150              	.LBE352:
+ 1151              		.cfi_endproc
+ 1152              	.LFE5425:
+ 1154              		.section	.init_array,"aw",%init_array
+ 1155              		.align	2
+ 1156 0000 00000000 		.word	_GLOBAL__sub_I_hw(target1)
+ 1157              		.global	reverb
+ 1158              		.global	paramCount
+ 1159              		.global	holdCount
+ 1160              		.global	tempCutoff
+ 1161              		.global	previousTimeScale
+ 1162              		.global	timeScale
+ 1163              		.global	previousModDepth
+ 1164              		.global	modDepth
+ 1165              		.global	previousModSpeed
+ 1166              		.global	modSpeed
+ 1167              		.global	previousDecay
+ 1168              		.global	decay
+ 1169              		.global	rightOutput
+ 1170              		.global	leftOutput
+ 1171              		.global	rightInput
+ 1172              		.global	leftInput
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 52
 
 
- 881 0000 00       		.space	1
- 882              		.section	.bss.frozen,"aw",%nobits
- 885              	frozen:
- 886 0000 00       		.space	1
- 887              		.section	.bss.hw,"aw",%nobits
- 888              		.align	2
- 889              		.set	.LANCHOR6,. + 0
- 892              	hw:
- 893 0000 00000000 		.space	680
- 893      00000000 
- 893      00000000 
- 893      00000000 
- 893      00000000 
- 894              		.section	.bss.initEnvelope,"aw",%nobits
- 895              		.align	2
- 896              		.set	.LANCHOR20,. + 0
- 899              	initEnvelope:
- 900 0000 00000000 		.space	4
- 901              		.section	.bss.inputDampLow,"aw",%nobits
- 902              		.align	2
- 903              		.set	.LANCHOR10,. + 0
- 906              	inputDampLow:
- 907 0000 00000000 		.space	4
- 908              		.section	.bss.inputSensitivityState,"aw",%nobits
- 909              		.align	2
- 912              	inputSensitivityState:
- 913 0000 00000000 		.space	4
- 914              		.section	.bss.leftInput,"aw",%nobits
- 915              		.align	2
- 918              	leftInput:
- 919 0000 00000000 		.space	4
- 920              		.section	.bss.leftOutput,"aw",%nobits
- 921              		.align	2
- 922              		.set	.LANCHOR2,. + 0
- 925              	leftOutput:
- 926 0000 00000000 		.space	4
- 927              		.section	.bss.modDepth,"aw",%nobits
- 928              		.align	2
- 929              		.set	.LANCHOR18,. + 0
- 932              	modDepth:
- 933 0000 00000000 		.space	4
- 934              		.section	.bss.panelStyle,"aw",%nobits
- 935              		.align	2
- 938              	panelStyle:
- 939 0000 00000000 		.space	4
- 940              		.section	.bss.preDelay,"aw",%nobits
- 941              		.align	2
- 942              		.set	.LANCHOR9,. + 0
- 945              	preDelay:
- 946 0000 00000000 		.space	4
- 947              		.section	.bss.preDelayCVSensState,"aw",%nobits
- 948              		.align	2
- 951              	preDelayCVSensState:
- 952 0000 00000000 		.space	4
- 953              		.section	.bss.reverb,"aw",%nobits
- 954              		.align	2
- 955              		.set	.LANCHOR1,. + 0
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 42
+ 1173              		.global	fadeIn
+ 1174              		.global	fadeOut
+ 1175              		.global	cleared
+ 1176              		.global	clear
+ 1177              		.global	inputSensitivityState
+ 1178              		.global	tunedButtonState
+ 1179              		.global	frozen
+ 1180              		.global	freeze
+ 1181              		.global	freezeToggleButtonState
+ 1182              		.global	freezeToggle
+ 1183              		.global	freezeButtonState
+ 1184              		.global	previousReverbDampHigh
+ 1185              		.global	previousReverbDampLow
+ 1186              		.global	previousInputDampHigh
+ 1187              		.global	previousInputDampLow
+ 1188              		.global	reverbDampHigh
+ 1189              		.global	reverbDampLow
+ 1190              		.global	inputDampHigh
+ 1191              		.global	inputDampLow
+ 1192              		.global	previousPreDelay
+ 1193              		.global	preDelay
+ 1194              		.global	previousWetValue
+ 1195              		.global	wetValue
+ 1196              		.global	dry
+ 1197              		.global	wet
+ 1198              		.global	hw
+ 1199              		.section	.bss.clear,"aw",%nobits
+ 1202              	clear:
+ 1203 0000 00       		.space	1
+ 1204              		.section	.bss.fadeIn,"aw",%nobits
+ 1207              	fadeIn:
+ 1208 0000 00       		.space	1
+ 1209              		.section	.bss.fadeOut,"aw",%nobits
+ 1212              	fadeOut:
+ 1213 0000 00       		.space	1
+ 1214              		.section	.bss.freeze,"aw",%nobits
+ 1217              	freeze:
+ 1218 0000 00       		.space	1
+ 1219              		.section	.bss.freezeButtonState,"aw",%nobits
+ 1222              	freezeButtonState:
+ 1223 0000 00       		.space	1
+ 1224              		.section	.bss.freezeToggle,"aw",%nobits
+ 1227              	freezeToggle:
+ 1228 0000 00       		.space	1
+ 1229              		.section	.bss.freezeToggleButtonState,"aw",%nobits
+ 1232              	freezeToggleButtonState:
+ 1233 0000 00       		.space	1
+ 1234              		.section	.bss.frozen,"aw",%nobits
+ 1237              	frozen:
+ 1238 0000 00       		.space	1
+ 1239              		.section	.bss.holdCount,"aw",%nobits
+ 1240              		.align	2
+ 1241              		.set	.LANCHOR6,. + 0
+ 1244              	holdCount:
+ 1245 0000 00000000 		.space	4
+ 1246              		.section	.bss.hw,"aw",%nobits
+ 1247              		.align	2
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 53
 
 
- 958              	reverb:
- 959 0000 00000000 		.space	1384
- 959      00000000 
- 959      00000000 
- 959      00000000 
- 959      00000000 
- 960              		.section	.bss.reverbDampLow,"aw",%nobits
- 961              		.align	2
- 962              		.set	.LANCHOR15,. + 0
- 965              	reverbDampLow:
- 966 0000 00000000 		.space	4
- 967              		.section	.bss.rightInput,"aw",%nobits
- 968              		.align	2
- 971              	rightInput:
- 972 0000 00000000 		.space	4
- 973              		.section	.bss.rightOutput,"aw",%nobits
- 974              		.align	2
- 975              		.set	.LANCHOR3,. + 0
- 978              	rightOutput:
- 979 0000 00000000 		.space	4
- 980              		.section	.bss.softDriveOutput,"aw",%nobits
- 983              	softDriveOutput:
- 984 0000 00       		.space	1
- 985              		.section	.bss.tuned,"aw",%nobits
- 986              		.align	2
- 989              	tuned:
- 990 0000 00000000 		.space	4
- 991              		.section	.bss.tunedButtonState,"aw",%nobits
- 994              	tunedButtonState:
- 995 0000 00       		.space	1
- 996              		.section	.data.cleared,"aw"
- 999              	cleared:
- 1000 0000 01       		.byte	1
- 1001              		.section	.data.decay,"aw"
- 1002              		.align	2
- 1003              		.set	.LANCHOR13,. + 0
- 1006              	decay:
- 1007 0000 0000003F 		.word	1056964608
- 1008              		.section	.data.diffuseButtonState,"aw"
- 1011              	diffuseButtonState:
- 1012 0000 01       		.byte	1
- 1013              		.section	.data.diffuseInput,"aw"
- 1014              		.align	2
- 1015              		.set	.LANCHOR12,. + 0
- 1018              	diffuseInput:
- 1019 0000 01000000 		.word	1
- 1020              		.section	.data.diffusion,"aw"
- 1021              		.align	2
- 1022              		.set	.LANCHOR14,. + 0
- 1025              	diffusion:
- 1026 0000 0000803F 		.word	1065353216
- 1027              		.section	.data.dry,"aw"
- 1028              		.align	2
- 1029              		.set	.LANCHOR4,. + 0
- 1032              	dry:
- 1033 0000 0000803F 		.word	1065353216
- 1034              		.section	.data.inputDampHigh,"aw"
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 43
+ 1248              		.set	.LANCHOR5,. + 0
+ 1251              	hw:
+ 1252 0000 00000000 		.space	680
+ 1252      00000000 
+ 1252      00000000 
+ 1252      00000000 
+ 1252      00000000 
+ 1253              		.section	.bss.inputDampLow,"aw",%nobits
+ 1254              		.align	2
+ 1255              		.set	.LANCHOR19,. + 0
+ 1258              	inputDampLow:
+ 1259 0000 00000000 		.space	4
+ 1260              		.section	.bss.inputSensitivityState,"aw",%nobits
+ 1261              		.align	2
+ 1264              	inputSensitivityState:
+ 1265 0000 00000000 		.space	4
+ 1266              		.section	.bss.leftInput,"aw",%nobits
+ 1267              		.align	2
+ 1270              	leftInput:
+ 1271 0000 00000000 		.space	4
+ 1272              		.section	.bss.leftOutput,"aw",%nobits
+ 1273              		.align	2
+ 1274              		.set	.LANCHOR3,. + 0
+ 1277              	leftOutput:
+ 1278 0000 00000000 		.space	4
+ 1279              		.section	.bss.modDepth,"aw",%nobits
+ 1280              		.align	2
+ 1281              		.set	.LANCHOR15,. + 0
+ 1284              	modDepth:
+ 1285 0000 00000000 		.space	4
+ 1286              		.section	.bss.modSpeed,"aw",%nobits
+ 1287              		.align	2
+ 1288              		.set	.LANCHOR13,. + 0
+ 1291              	modSpeed:
+ 1292 0000 00000000 		.space	4
+ 1293              		.section	.bss.paramCount,"aw",%nobits
+ 1294              		.align	2
+ 1295              		.set	.LANCHOR8,. + 0
+ 1298              	paramCount:
+ 1299 0000 00000000 		.space	4
+ 1300              		.section	.bss.preDelay,"aw",%nobits
+ 1301              		.align	2
+ 1302              		.set	.LANCHOR17,. + 0
+ 1305              	preDelay:
+ 1306 0000 00000000 		.space	4
+ 1307              		.section	.bss.previousDecay,"aw",%nobits
+ 1308              		.align	2
+ 1309              		.set	.LANCHOR12,. + 0
+ 1312              	previousDecay:
+ 1313 0000 00000000 		.space	4
+ 1314              		.section	.bss.previousInputDampLow,"aw",%nobits
+ 1315              		.align	2
+ 1318              	previousInputDampLow:
+ 1319 0000 00000000 		.space	4
+ 1320              		.section	.bss.previousModDepth,"aw",%nobits
+ 1321              		.align	2
+ 1322              		.set	.LANCHOR16,. + 0
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 54
 
 
- 1035              		.align	2
- 1036              		.set	.LANCHOR11,. + 0
- 1039              	inputDampHigh:
- 1040 0000 00002041 		.word	1092616192
- 1041              		.section	.data.inputSensitivity,"aw"
- 1042              		.align	2
- 1043              		.set	.LANCHOR0,. + 0
- 1046              	inputSensitivity:
- 1047 0000 F9E9003E 		.word	1040247289
- 1048              		.section	.data.modShape,"aw"
- 1049              		.align	2
- 1050              		.set	.LANCHOR19,. + 0
- 1053              	modShape:
- 1054 0000 0000003F 		.word	1056964608
- 1055              		.section	.data.modSpeed,"aw"
- 1056              		.align	2
- 1057              		.set	.LANCHOR17,. + 0
- 1060              	modSpeed:
- 1061 0000 CDCCCC3D 		.word	1036831949
- 1062              		.section	.data.preDelayCVSens,"aw"
- 1063              		.align	2
- 1066              	preDelayCVSens:
- 1067 0000 CDCCCC3D 		.word	1036831949
- 1068              		.section	.data.reverbDampHigh,"aw"
- 1069              		.align	2
- 1070              		.set	.LANCHOR16,. + 0
- 1073              	reverbDampHigh:
- 1074 0000 00002041 		.word	1092616192
- 1075              		.section	.data.timeScale,"aw"
- 1076              		.align	2
- 1077              		.set	.LANCHOR8,. + 0
- 1080              	timeScale:
- 1081 0000 0000803F 		.word	1065353216
- 1082              		.section	.data.wet,"aw"
- 1083              		.align	2
- 1084              		.set	.LANCHOR5,. + 0
- 1087              	wet:
- 1088 0000 0000003F 		.word	1056964608
- 1089              		.text
- 1090              	.Letext0:
- 1091              		.file 15 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 1092              		.file 16 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 1093              		.file 17 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdint.h"
- 1094              		.file 18 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stddef.h"
- 1095              		.file 19 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cmath"
- 1096              		.file 20 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\std_abs.h"
- 1097              		.file 21 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\arm-none-eabi\\t
- 1098              		.file 22 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\type_traits"
- 1099              		.file 23 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\debug\\debug.h"
- 1100              		.file 24 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\stl_pair.h
- 1101              		.file 25 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\exception_
- 1102              		.file 26 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdint"
- 1103              		.file 27 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cwchar"
- 1104              		.file 28 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\clocale"
- 1105              		.file 29 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdlib"
- 1106              		.file 30 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdio"
- 1107              		.file 31 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\basic_stri
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 44
+ 1325              	previousModDepth:
+ 1326 0000 00000000 		.space	4
+ 1327              		.section	.bss.previousModSpeed,"aw",%nobits
+ 1328              		.align	2
+ 1329              		.set	.LANCHOR14,. + 0
+ 1332              	previousModSpeed:
+ 1333 0000 00000000 		.space	4
+ 1334              		.section	.bss.previousPreDelay,"aw",%nobits
+ 1335              		.align	2
+ 1336              		.set	.LANCHOR18,. + 0
+ 1339              	previousPreDelay:
+ 1340 0000 00000000 		.space	4
+ 1341              		.section	.bss.previousReverbDampLow,"aw",%nobits
+ 1342              		.align	2
+ 1345              	previousReverbDampLow:
+ 1346 0000 00000000 		.space	4
+ 1347              		.section	.bss.previousTimeScale,"aw",%nobits
+ 1348              		.align	2
+ 1349              		.set	.LANCHOR23,. + 0
+ 1352              	previousTimeScale:
+ 1353 0000 00000000 		.space	4
+ 1354              		.section	.bss.previousWetValue,"aw",%nobits
+ 1355              		.align	2
+ 1356              		.set	.LANCHOR10,. + 0
+ 1359              	previousWetValue:
+ 1360 0000 00000000 		.space	4
+ 1361              		.section	.bss.reverb,"aw",%nobits
+ 1362              		.align	2
+ 1363              		.set	.LANCHOR0,. + 0
+ 1366              	reverb:
+ 1367 0000 00000000 		.space	1644
+ 1367      00000000 
+ 1367      00000000 
+ 1367      00000000 
+ 1367      00000000 
+ 1368              		.section	.bss.reverbDampLow,"aw",%nobits
+ 1369              		.align	2
+ 1370              		.set	.LANCHOR21,. + 0
+ 1373              	reverbDampLow:
+ 1374 0000 00000000 		.space	4
+ 1375              		.section	.bss.rightInput,"aw",%nobits
+ 1376              		.align	2
+ 1379              	rightInput:
+ 1380 0000 00000000 		.space	4
+ 1381              		.section	.bss.rightOutput,"aw",%nobits
+ 1382              		.align	2
+ 1383              		.set	.LANCHOR4,. + 0
+ 1386              	rightOutput:
+ 1387 0000 00000000 		.space	4
+ 1388              		.section	.bss.tempCutoff,"aw",%nobits
+ 1389              		.align	2
+ 1392              	tempCutoff:
+ 1393 0000 00000000 		.space	4
+ 1394              		.section	.bss.tunedButtonState,"aw",%nobits
+ 1397              	tunedButtonState:
+ 1398 0000 00       		.space	1
+ 1399              		.section	.bss.wetValue,"aw",%nobits
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 55
 
 
- 1108              		.file 32 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\algorithmf
- 1109              		.file 33 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdarg"
- 1110              		.file 34 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstring"
- 1111              		.file 35 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\charconv.h
- 1112              		.file 36 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\array"
- 1113              		.file 37 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\predefined
- 1114              		.file 38 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_types.h"
- 1115              		.file 39 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\reent.h"
- 1116              		.file 40 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\lock.h"
- 1117              		.file 41 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\math.h"
- 1118              		.file 42 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdlib.h"
- 1119              		.file 43 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\math.h"
- 1120              		.file 44 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stdarg.h"
- 1121              		.file 45 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\wchar.h"
- 1122              		.file 46 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\locale.h"
- 1123              		.file 47 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdio.h"
- 1124              		.file 48 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\stdlib.h"
- 1125              		.file 49 "../../libDaisy//src/per/tim.h"
- 1126              		.file 50 "../../libDaisy//src/hid/switch3.h"
- 1127              		.file 51 "../../libDaisy//src/hid/ctrl.h"
- 1128              		.file 52 "../../libDaisy//src/util/wav_format.h"
- 1129              		.file 53 "../../libDaisy//src/hid/led.h"
- 1130              		.file 54 "../../libDaisy//src/util/color.h"
- 1131              		.file 55 "../../libDaisy//src/hid/rgb_led.h"
- 1132              		.file 56 "../../libDaisy//src/dev/max11300.h"
- 1133              		.file 57 "../../libDaisy//src/dev/sdram.h"
- 1134              		.file 58 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\string.h"
- 1135              		.file 59 "../../DaisySP//Source/Control/adenv.h"
- 1136              		.file 60 "../../DaisySP//Source/Utility/dsp.h"
- 1137              		.file 61 "dsp/delays/InterpDelay.hpp"
- 1138              		.file 62 "dsp/delays/AllpassFilter.hpp"
- 1139              		.file 63 "dsp/filters/OnePoleFilters.hpp"
- 1140              		.file 64 "dsp/modulation/LFO.hpp"
- 1141              		.file 65 "Dattorro.hpp"
- 1142              		.file 66 "dsp/modulation/LinearEnvelope.hpp"
- 1143              		.file 67 "../../libDaisy//src/dev/sr_595.h"
- 1144              		.file 68 "<built-in>"
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 45
+ 1400              		.align	2
+ 1401              		.set	.LANCHOR9,. + 0
+ 1404              	wetValue:
+ 1405 0000 00000000 		.space	4
+ 1406              		.section	.data.cleared,"aw"
+ 1409              	cleared:
+ 1410 0000 01       		.byte	1
+ 1411              		.section	.data.decay,"aw"
+ 1412              		.align	2
+ 1413              		.set	.LANCHOR11,. + 0
+ 1416              	decay:
+ 1417 0000 0000003F 		.word	1056964608
+ 1418              		.section	.data.dry,"aw"
+ 1419              		.align	2
+ 1420              		.set	.LANCHOR1,. + 0
+ 1423              	dry:
+ 1424 0000 0000003F 		.word	1056964608
+ 1425              		.section	.data.inputDampHigh,"aw"
+ 1426              		.align	2
+ 1427              		.set	.LANCHOR20,. + 0
+ 1430              	inputDampHigh:
+ 1431 0000 00002041 		.word	1092616192
+ 1432              		.section	.data.previousInputDampHigh,"aw"
+ 1433              		.align	2
+ 1436              	previousInputDampHigh:
+ 1437 0000 00002041 		.word	1092616192
+ 1438              		.section	.data.previousReverbDampHigh,"aw"
+ 1439              		.align	2
+ 1442              	previousReverbDampHigh:
+ 1443 0000 00002041 		.word	1092616192
+ 1444              		.section	.data.reverbDampHigh,"aw"
+ 1445              		.align	2
+ 1446              		.set	.LANCHOR22,. + 0
+ 1449              	reverbDampHigh:
+ 1450 0000 00002041 		.word	1092616192
+ 1451              		.section	.data.timeScale,"aw"
+ 1452              		.align	2
+ 1453              		.set	.LANCHOR7,. + 0
+ 1456              	timeScale:
+ 1457 0000 00000040 		.word	1073741824
+ 1458              		.section	.data.wet,"aw"
+ 1459              		.align	2
+ 1460              		.set	.LANCHOR2,. + 0
+ 1463              	wet:
+ 1464 0000 0000003F 		.word	1056964608
+ 1465              		.text
+ 1466              	.Letext0:
+ 1467              		.file 16 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1468              		.file 17 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1469              		.file 18 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdint.h"
+ 1470              		.file 19 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stddef.h"
+ 1471              		.file 20 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cmath"
+ 1472              		.file 21 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\arm-none-eabi\\t
+ 1473              		.file 22 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\type_traits"
+ 1474              		.file 23 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\debug\\debug.h"
+ 1475              		.file 24 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\stl_pair.h
+ 1476              		.file 25 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\exception_
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 56
+
+
+ 1477              		.file 26 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdint"
+ 1478              		.file 27 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cwchar"
+ 1479              		.file 28 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\clocale"
+ 1480              		.file 29 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdlib"
+ 1481              		.file 30 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdio"
+ 1482              		.file 31 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\basic_stri
+ 1483              		.file 32 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\algorithmf
+ 1484              		.file 33 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstdarg"
+ 1485              		.file 34 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\cstring"
+ 1486              		.file 35 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\charconv.h
+ 1487              		.file 36 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\array"
+ 1488              		.file 37 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\bits\\predefined
+ 1489              		.file 38 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\_types.h"
+ 1490              		.file 39 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\reent.h"
+ 1491              		.file 40 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\sys\\lock.h"
+ 1492              		.file 41 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\math.h"
+ 1493              		.file 42 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdlib.h"
+ 1494              		.file 43 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\math.h"
+ 1495              		.file 44 "c:\\program files\\daisytoolchain\\lib\\gcc\\arm-none-eabi\\10.2.1\\include\\stdarg.h"
+ 1496              		.file 45 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\wchar.h"
+ 1497              		.file 46 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\locale.h"
+ 1498              		.file 47 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\stdio.h"
+ 1499              		.file 48 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\c++\\10.2.1\\stdlib.h"
+ 1500              		.file 49 "../../libDaisy//src/per/tim.h"
+ 1501              		.file 50 "../../libDaisy//src/hid/switch3.h"
+ 1502              		.file 51 "../../libDaisy//src/hid/ctrl.h"
+ 1503              		.file 52 "../../libDaisy//src/util/wav_format.h"
+ 1504              		.file 53 "../../libDaisy//src/hid/led.h"
+ 1505              		.file 54 "../../libDaisy//src/util/color.h"
+ 1506              		.file 55 "../../libDaisy//src/hid/rgb_led.h"
+ 1507              		.file 56 "../../libDaisy//src/dev/max11300.h"
+ 1508              		.file 57 "../../libDaisy//src/dev/sdram.h"
+ 1509              		.file 58 "c:\\program files\\daisytoolchain\\arm-none-eabi\\include\\string.h"
+ 1510              		.file 59 "../../DaisySP//Source/Control/adenv.h"
+ 1511              		.file 60 "../../DaisySP//Source/Utility/dsp.h"
+ 1512              		.file 61 "dsp/delays/InterpDelay.hpp"
+ 1513              		.file 62 "dsp/delays/AllpassFilter.hpp"
+ 1514              		.file 63 "dsp/filters/OnePoleFilters.hpp"
+ 1515              		.file 64 "dsp/modulation/LFO.hpp"
+ 1516              		.file 65 "Dattorro.hpp"
+ 1517              		.file 66 "../../libDaisy//src/dev/sr_595.h"
+ 1518              		.file 67 "<built-in>"
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 57
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 PlateauTest.cpp
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:17     .text._ZN5daisy11DaisyVersioD2Ev:00000000 $t
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:26     .text._ZN5daisy11DaisyVersioD2Ev:00000000 _ZN5daisy11DaisyVersioD2Ev
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:26     .text._ZN5daisy11DaisyVersioD2Ev:00000000 _ZN5daisy11DaisyVersioD1Ev
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:84     .text._Z13AudioCallbackPKfPfj:00000000 $t
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:92     .text._Z13AudioCallbackPKfPfj:00000000 _Z13AudioCallbackPKfPfj
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:285    .text._Z13AudioCallbackPKfPfj:000000f4 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:297    .text.startup.main:00000000 $t
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:305    .text.startup.main:00000000 main
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:528    .text.startup.main:00000160 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:554    .text.startup._GLOBAL__sub_I_hw:00000000 $t
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:561    .text.startup._GLOBAL__sub_I_hw:00000000 _GLOBAL__sub_I_hw
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:786    .text.startup._GLOBAL__sub_I_hw:00000040 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:798    .init_array:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:899    .bss.initEnvelope:00000000 initEnvelope
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:978    .bss.rightOutput:00000000 rightOutput
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:925    .bss.leftOutput:00000000 leftOutput
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:971    .bss.rightInput:00000000 rightInput
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:918    .bss.leftInput:00000000 leftInput
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1018   .data.diffuseInput:00000000 diffuseInput
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:989    .bss.tuned:00000000 tuned
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:938    .bss.panelStyle:00000000 panelStyle
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:850    .bss.envelope:00000000 envelope
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:958    .bss.reverb:00000000 reverb
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:855    .bss.fadeIn:00000000 fadeIn
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:860    .bss.fadeOut:00000000 fadeOut
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:999    .data.cleared:00000000 cleared
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:843    .bss.clear:00000000 clear
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:983    .bss.softDriveOutput:00000000 softDriveOutput
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:912    .bss.inputSensitivityState:00000000 inputSensitivityState
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:951    .bss.preDelayCVSensState:00000000 preDelayCVSensState
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1011   .data.diffuseButtonState:00000000 diffuseButtonState
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:994    .bss.tunedButtonState:00000000 tunedButtonState
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:885    .bss.frozen:00000000 frozen
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:865    .bss.freeze:00000000 freeze
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:880    .bss.freezeToggleButtonState:00000000 freezeToggleButtonState
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:875    .bss.freezeToggle:00000000 freezeToggle
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:870    .bss.freezeButtonState:00000000 freezeButtonState
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:932    .bss.modDepth:00000000 modDepth
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1053   .data.modShape:00000000 modShape
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1060   .data.modSpeed:00000000 modSpeed
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1073   .data.reverbDampHigh:00000000 reverbDampHigh
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:965    .bss.reverbDampLow:00000000 reverbDampLow
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1039   .data.inputDampHigh:00000000 inputDampHigh
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:906    .bss.inputDampLow:00000000 inputDampLow
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1046   .data.inputSensitivity:00000000 inputSensitivity
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1006   .data.decay:00000000 decay
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1025   .data.diffusion:00000000 diffusion
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1080   .data.timeScale:00000000 timeScale
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1066   .data.preDelayCVSens:00000000 preDelayCVSens
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:945    .bss.preDelay:00000000 preDelay
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1032   .data.dry:00000000 dry
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1087   .data.wet:00000000 wet
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:892    .bss.hw:00000000 hw
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:844    .bss.clear:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:846    .bss.envelope:00000000 $d
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 46
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:17     .text._ZN5daisy11DaisyVersioD2Ev:00000000 $t
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:26     .text._ZN5daisy11DaisyVersioD2Ev:00000000 _ZN5daisy11DaisyVersioD2Ev
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:26     .text._ZN5daisy11DaisyVersioD2Ev:00000000 _ZN5daisy11DaisyVersioD1Ev
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:84     .text._Z13AudioCallbackPKfPfj:00000000 $t
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:92     .text._Z13AudioCallbackPKfPfj:00000000 _Z13AudioCallbackPKfPfj
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:286    .text._Z13AudioCallbackPKfPfj:0000011a $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:292    .text._Z13AudioCallbackPKfPfj:00000120 $t
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:624    .text._Z13AudioCallbackPKfPfj:000002a0 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:652    .text.startup.main:00000000 $t
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:660    .text.startup.main:00000000 main
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:843    .text.startup.main:00000118 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:865    .text.startup._GLOBAL__sub_I_hw:00000000 $t
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:872    .text.startup._GLOBAL__sub_I_hw:00000000 _GLOBAL__sub_I_hw
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1134   .text.startup._GLOBAL__sub_I_hw:00000068 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1155   .init_array:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1366   .bss.reverb:00000000 reverb
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1298   .bss.paramCount:00000000 paramCount
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1244   .bss.holdCount:00000000 holdCount
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1392   .bss.tempCutoff:00000000 tempCutoff
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1352   .bss.previousTimeScale:00000000 previousTimeScale
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1456   .data.timeScale:00000000 timeScale
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1325   .bss.previousModDepth:00000000 previousModDepth
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1284   .bss.modDepth:00000000 modDepth
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1332   .bss.previousModSpeed:00000000 previousModSpeed
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1291   .bss.modSpeed:00000000 modSpeed
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1312   .bss.previousDecay:00000000 previousDecay
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1416   .data.decay:00000000 decay
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1386   .bss.rightOutput:00000000 rightOutput
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1277   .bss.leftOutput:00000000 leftOutput
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1379   .bss.rightInput:00000000 rightInput
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1270   .bss.leftInput:00000000 leftInput
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1207   .bss.fadeIn:00000000 fadeIn
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1212   .bss.fadeOut:00000000 fadeOut
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1409   .data.cleared:00000000 cleared
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1202   .bss.clear:00000000 clear
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1264   .bss.inputSensitivityState:00000000 inputSensitivityState
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1397   .bss.tunedButtonState:00000000 tunedButtonState
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1237   .bss.frozen:00000000 frozen
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1217   .bss.freeze:00000000 freeze
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1232   .bss.freezeToggleButtonState:00000000 freezeToggleButtonState
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1227   .bss.freezeToggle:00000000 freezeToggle
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1222   .bss.freezeButtonState:00000000 freezeButtonState
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1442   .data.previousReverbDampHigh:00000000 previousReverbDampHigh
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1345   .bss.previousReverbDampLow:00000000 previousReverbDampLow
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1436   .data.previousInputDampHigh:00000000 previousInputDampHigh
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1318   .bss.previousInputDampLow:00000000 previousInputDampLow
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1449   .data.reverbDampHigh:00000000 reverbDampHigh
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1373   .bss.reverbDampLow:00000000 reverbDampLow
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1430   .data.inputDampHigh:00000000 inputDampHigh
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1258   .bss.inputDampLow:00000000 inputDampLow
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1339   .bss.previousPreDelay:00000000 previousPreDelay
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1305   .bss.preDelay:00000000 preDelay
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1359   .bss.previousWetValue:00000000 previousWetValue
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1404   .bss.wetValue:00000000 wetValue
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1423   .data.dry:00000000 dry
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 58
 
 
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:856    .bss.fadeIn:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:861    .bss.fadeOut:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:866    .bss.freeze:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:871    .bss.freezeButtonState:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:876    .bss.freezeToggle:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:881    .bss.freezeToggleButtonState:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:886    .bss.frozen:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:888    .bss.hw:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:895    .bss.initEnvelope:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:902    .bss.inputDampLow:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:909    .bss.inputSensitivityState:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:915    .bss.leftInput:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:921    .bss.leftOutput:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:928    .bss.modDepth:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:935    .bss.panelStyle:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:941    .bss.preDelay:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:948    .bss.preDelayCVSensState:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:954    .bss.reverb:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:961    .bss.reverbDampLow:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:968    .bss.rightInput:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:974    .bss.rightOutput:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:984    .bss.softDriveOutput:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:986    .bss.tuned:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:995    .bss.tunedButtonState:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1002   .data.decay:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1014   .data.diffuseInput:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1021   .data.diffusion:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1028   .data.dry:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1035   .data.inputDampHigh:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1042   .data.inputSensitivity:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1049   .data.modShape:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1056   .data.modSpeed:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1063   .data.preDelayCVSens:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1069   .data.reverbDampHigh:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1076   .data.timeScale:00000000 $d
-C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s:1083   .data.wet:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1463   .data.wet:00000000 wet
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1251   .bss.hw:00000000 hw
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1203   .bss.clear:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1208   .bss.fadeIn:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1213   .bss.fadeOut:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1218   .bss.freeze:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1223   .bss.freezeButtonState:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1228   .bss.freezeToggle:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1233   .bss.freezeToggleButtonState:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1238   .bss.frozen:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1240   .bss.holdCount:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1247   .bss.hw:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1254   .bss.inputDampLow:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1261   .bss.inputSensitivityState:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1267   .bss.leftInput:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1273   .bss.leftOutput:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1280   .bss.modDepth:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1287   .bss.modSpeed:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1294   .bss.paramCount:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1301   .bss.preDelay:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1308   .bss.previousDecay:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1315   .bss.previousInputDampLow:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1321   .bss.previousModDepth:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1328   .bss.previousModSpeed:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1335   .bss.previousPreDelay:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1342   .bss.previousReverbDampLow:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1348   .bss.previousTimeScale:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1355   .bss.previousWetValue:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1362   .bss.reverb:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1369   .bss.reverbDampLow:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1376   .bss.rightInput:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1382   .bss.rightOutput:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1389   .bss.tempCutoff:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1398   .bss.tunedButtonState:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1400   .bss.wetValue:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1412   .data.decay:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1419   .data.dry:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1426   .data.inputDampHigh:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1433   .data.previousInputDampHigh:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1439   .data.previousReverbDampHigh:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1445   .data.reverbDampHigh:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1452   .data.timeScale:00000000 $d
+C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s:1459   .data.wet:00000000 $d
                            .group:00000000 _ZN5daisy11DaisyVersioD5Ev
 
 UNDEFINED SYMBOLS
 _ZN8Dattorro7processEff
 _ZNK8Dattorro13getLeftOutputEv
 _ZNK8Dattorro14getRightOutputEv
+_ZN5daisy11DaisyVersio21ProcessAnalogControlsEv
+_ZN5daisy11DaisyVersio12GetKnobValueEi
+_ZN8Dattorro12setTimeScaleEf
+_ZN8Dattorro15setTankModDepthEf
+_ZN8Dattorro15setTankModSpeedEf
+_ZN8Dattorro11setPreDelayEf
+_ZN8Dattorro8setDecayEf
+hold
+ARM GAS  C:\Users\digit\AppData\Local\Temp\cckv2Gvu.s 			page 59
+
+
 _ZN5daisy11DaisyVersio4InitEb
 _ZN8Dattorro13setSampleRateEf
-_ZN14LinearEnvelope13setSampleRateEf
-_ZN14LinearEnvelope7setTimeEf
-_ZN8Dattorro12setTimeScaleEf
-_ZN8Dattorro11setPreDelayEf
+_ZN5daisy11DaisyVersio17SetAudioBlockSizeEj
+_ZN5daisy11DaisyVersio18SetAudioSampleRateENS_9SaiHandle6Config10SampleRateE
+_ZN5daisy11DaisyVersio10StartAudioEPFvPKfPfjE
 _ZN8Dattorro28setInputFilterLowCutoffPitchEf
 _ZN8Dattorro29setInputFilterHighCutoffPitchEf
 _ZN8Dattorro20enableInputDiffusionEb
-_ZN8Dattorro8setDecayEf
 _ZN8Dattorro16setTankDiffusionEf
 _ZN8Dattorro28setTankFilterLowCutFrequencyEf
 _ZN8Dattorro29setTankFilterHighCutFrequencyEf
-_ZN8Dattorro15setTankModSpeedEf
-_ZN8Dattorro15setTankModDepthEf
-ARM GAS  C:\Users\digit\AppData\Local\Temp\ccRuGVuJ.s 			page 47
-
-
 _ZN8Dattorro15setTankModShapeEf
-_ZN5daisy11DaisyVersio17SetAudioBlockSizeEj
-_ZN5daisy11DaisyVersio10StartAudioEPFvPKfPfjE
 _ZN5daisy11DaisyVersio8StartAdcEv
-_ZN5daisy11DaisyVersio21ProcessAnalogControlsEv
-_ZN5daisy11DaisyVersio13UpdateExampleEv
-_ZN5daisy11DaisyVersio10UpdateLedsEv
+_ZN5daisy6RgbLed3SetEfff
 __aeabi_atexit
 _ZN8DattorroC1Efff
-_ZN14LinearEnvelopeC1Ev
 __dso_handle

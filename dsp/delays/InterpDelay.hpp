@@ -1,74 +1,81 @@
-/**
- * @file InterpDelay2.hpp
- * @author Dale Johnson, Valley Audio Soft
- * @brief A more optimised version of the linear interpolating delay.
- */
-
 #pragma once
 #include <vector>
 #include <cstdint>
 #include "../../utilities/Utilities.hpp"
 
-// float linterp(float a, float b, float f) {
-//     return a + f * (b - a);
-// }
-
 extern float DSY_SDRAM_BSS sdramData[32][200000];
-extern int count;
+extern unsigned int count;
+extern bool hold;
 
 class InterpDelay {
 public:
     float input = 0.;
     float output = 0.;
-    int bufferNumber;
+    int bufferNumber = 0;
+    int r = 0;
+    int upperR = 0;
+    int j = 0;
+    float dataR = 0.f;
+    float dataUpperR = 0.f;
 
-    InterpDelay(uint32_t maxLength = 512, uint32_t initDelayTime = 0) {
+    InterpDelay(unsigned int maxLength = 512, unsigned int initDelayTime = 0) {
         l = maxLength;
 
-        bufferNumber = count++;
+        bufferNumber = ++count;
 
         setDelayTime(initDelayTime);
     }
 
     void process() {
-        sdramData[bufferNumber][static_cast<size_t>(w)] = input;
-        int32_t r = w - t;
+        sdramData[bufferNumber][w] = input;
+        r = w - t;
         
         if (r < 0) {
             r += l;
         }
 
+        // if (r >= l) {
+        //     r -= l;
+        // }
+
         ++w;
-        if (w == l) {
+        if (w >= l) {
             w = 0;
         }
 
-        int32_t upperR = r - 1;
+        upperR = r - 1;
         if (upperR < 0) {
             upperR += l;
         }
 
-        output = sdramData[bufferNumber][static_cast<size_t>(r)] + f * (sdramData[bufferNumber][static_cast<size_t>(upperR)] - sdramData[bufferNumber][static_cast<size_t>(r)]);
-        // output = linterp(sdramData[bufferNumber][static_cast<size_t>(r)], sdramData[bufferNumber][static_cast<size_t>(upperR)], f);
+        // if (upperR >= l) {
+        //     upperR -= l;
+        // }
+
+        dataR = sdramData[bufferNumber][r];
+
+        dataUpperR = sdramData[bufferNumber][upperR];
+
+        output = hold * (dataR + f * (dataUpperR - dataR));
     }
 
-    float tap(int32_t i) const {
-        int32_t j = w - i;
+    float tap(int i) {
+        j = w - i;
         if (j < 0) {
             j += l;
         }
-        return sdramData[bufferNumber][static_cast<size_t>(j)];
+        return sdramData[bufferNumber][j];
     }
 
     void setDelayTime(float newDelayTime) {
         if (newDelayTime >= l) {
             newDelayTime = l - 1;
         }
-        if (newDelayTime < 0) {
-            newDelayTime = 0;
-        }
-        t = static_cast<int32_t>(newDelayTime);
-        f = newDelayTime - static_cast<float>(t);
+        // if (newDelayTime < 0) {
+        //     newDelayTime = 0;
+        // }
+        t = newDelayTime;
+        f = newDelayTime - t;
     }
 
     void clear() {
@@ -77,8 +84,8 @@ public:
     }
 
 private:
-    int32_t w = 0;
-    int32_t t = 0;
-    float f = 0.;
-    int32_t l = 512;
+    int  w = 0;
+    int t = 0;
+    float f = 0.f;
+    int l = 512;
 };

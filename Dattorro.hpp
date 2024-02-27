@@ -10,7 +10,7 @@
 
 class Dattorro1997Tank {
 public:
-    Dattorro1997Tank(const float initMaxSampleRate = 48000.0,
+    Dattorro1997Tank(const float initMaxSampleRate = 32000.0,
                      const float initMaxLfoDepth = 0.0,
                      const float initMaxTimeScale = 1.0);
 
@@ -34,6 +34,8 @@ public:
     void setDiffusion(const float diffusion);
 
     void clear();
+
+    int calcMaxTime(float delayTime);
 
 private:
     static constexpr float dattorroSampleRate = 29761.0;
@@ -77,7 +79,7 @@ private:
         L_DELAY_2_R_TAP
     };
 
-    const long kOutputTaps[7] = {266, 2974, 1913, 1996, 1990, 187, 1066};
+    const int kOutputTaps[7] = {266, 2974, 1913, 1996, 1990, 187, 1066};
 
     static constexpr float maxDiffusion1 = 0.7;
     static constexpr float maxDiffusion2 = 0.7;
@@ -102,9 +104,9 @@ private:
     float scaledRightApf2Time = rightApf2Time;
     float scaledRightDelay2Time = rightDelay2Time;
 
-    std::array<long, 7> scaledOutputTaps;
+    std::array<int, 7> scaledOutputTaps;
 
-    float maxSampleRate = 48000.0;
+    float maxSampleRate = 32000.0;
     float sampleRate = maxSampleRate;
     float sampleRateScale = sampleRate / dattorroSampleRate;
 
@@ -159,7 +161,7 @@ private:
 
 class Dattorro {
 public:
-    Dattorro(const float initMaxSampleRate = 48000.0,
+    Dattorro(const float initMaxSampleRate = 32000.0,
              const float initMaxLfoDepth = 16.0,
              const float initMaxTimeScale = 1.0);
     void process(float leftInput, float rightInput);
@@ -189,13 +191,13 @@ public:
 
 private:
     float preDelayTime = 0.0;
-    static constexpr long kInApf1Time = 141;
-    static constexpr long kInApf2Time = 107;
-    static constexpr long kInApf3Time = 379;
-    static constexpr long kInApf4Time = 277;
+    static constexpr int kInApf1Time = 141;
+    static constexpr int kInApf2Time = 107;
+    static constexpr int kInApf3Time = 379;
+    static constexpr int kInApf4Time = 277;
 
     static constexpr float dattorroSampleRate = 29761.0;
-    float sampleRate = 48000.0;
+    float sampleRate = 32000.0;
     float dattorroScaleFactor = sampleRate / dattorroSampleRate;
     float leftSum = 0.0;
     float rightSum = 0.0;

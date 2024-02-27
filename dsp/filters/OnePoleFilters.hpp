@@ -3,7 +3,7 @@
 #include <cstdint>
 
 #ifndef  M_PI
-#define  M_PI  3.1415926535897932384626433
+#define M_PI		3.14159265358979323846
 #endif
 
 #define _1_FACT_2 0.5
@@ -14,7 +14,7 @@
 
 class OnePoleLPFilter {
 public:
-    OnePoleLPFilter(float cutoffFreq = 22049.0, float initSampleRate = 48000.0);
+    OnePoleLPFilter(float cutoffFreq = 22049.0, float initSampleRate = 32000.0);
     float process();
     void clear();
     void setCutoffFreq(float cutoffFreq);
@@ -23,7 +23,7 @@ public:
     float input = 0.0;
     float output = 0.0;
 private:
-    float _sampleRate = 48000.0;
+    float _sampleRate = 32000.0;
     float _1_sampleRate = 1.0 / _sampleRate;
     float _cutoffFreq = 0.0;
     float _maxCutoffFreq = _sampleRate / 2.0;
@@ -36,7 +36,7 @@ private:
 
 class OnePoleHPFilter {
 public:
-    OnePoleHPFilter(float initCutoffFreq = 10.0, float initSampleRate = 48000.0);
+    OnePoleHPFilter(float initCutoffFreq = 10.0, float initSampleRate = 32000.0);
     float process();
     void clear();
     void setCutoffFreq(float cutoffFreq);

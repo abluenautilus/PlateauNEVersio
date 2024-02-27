@@ -1,5 +1,4 @@
 #include "Dattorro.hpp"
-#include <cassert>
 #include <algorithm>
 
 float scale(float a, float inMin, float inMax, float outMin, float outMax) {
@@ -85,9 +84,6 @@ void Dattorro1997Tank::process(const float leftIn, const float rightIn,
 
     fade += fadeStep * fadeDir;
     fade = (fade < 0.0) ? 0.0 : ((fade > 1.0) ? 1.0 : fade);
-
-    assert(fade >= 0.0);
-    assert(fade <= 1.0);
 }
 
 void Dattorro1997Tank::freeze(bool freezeFlag) {
@@ -120,8 +116,8 @@ void Dattorro1997Tank::setSampleRate(const float newSampleRate) {
 }
 
 void Dattorro1997Tank::setTimeScale(const float newTimeScale) {
-    timeScale = newTimeScale;
-    timeScale = timeScale < minTimeScale ? minTimeScale : timeScale;
+    // timeScale = newTimeScale;
+    timeScale = newTimeScale < minTimeScale ? minTimeScale : newTimeScale;
 
     rescaleApfAndDelayTimes();
 }
@@ -160,11 +156,12 @@ void Dattorro1997Tank::setLowCutFrequency(const float frequency) {
     rightLowCutFilter.setCutoffFreq(frequency);
 }
 
-void Dattorro1997Tank::setDiffusion(const float diffusion) {
-    assert(diffusion >= 0.0 && diffusion <= 10.0);
+float diffusion1 = 0.f;
+float diffusion2 = 0.f;
 
-    float diffusion1 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion1);
-    float diffusion2 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion2);
+void Dattorro1997Tank::setDiffusion(const float diffusion) {
+    diffusion1 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion1);
+    diffusion2 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion2);
 
     leftApf1.setGain(-diffusion1);
     leftApf2.setGain(diffusion2);
@@ -194,22 +191,32 @@ void Dattorro1997Tank::clear() {
     rightSum = 0.0;
 }
 
-void Dattorro1997Tank::initialiseDelaysAndApfs() {
-    auto maxScaledOutputTap = *std::max_element(scaledOutputTaps.begin(),
-                                                scaledOutputTaps.end());
-    auto calcMaxTime = [&](float delayTime) -> long {
-        return (long)(sampleRateScale * (delayTime * maxTimeScale + 
-                                         maxScaledOutputTap + timePadding));
-    };
+int maxScaledOutputTap = 0;
 
-    const long kLeftApf1MaxTime = calcMaxTime(leftApf1Time);
-    const long kLeftDelay1MaxTime = calcMaxTime(leftDelay1Time);
-    const long kLeftApf2MaxTime = calcMaxTime(leftApf2Time);
-    const long kLeftDelay2MaxTime = calcMaxTime(leftDelay2Time);
-    const long kRightApf1MaxTime = calcMaxTime(rightApf1Time);
-    const long kRightDelay1MaxTime = calcMaxTime(rightDelay1Time);
-    const long kRightApf2MaxTime = calcMaxTime(rightApf2Time);
-    const long kRightDelay2MaxTime = calcMaxTime(rightDelay2Time);
+int Dattorro1997Tank::calcMaxTime(float delayTime) {
+    maxScaledOutputTap = *std::max_element(scaledOutputTaps.begin(),
+                                                scaledOutputTaps.end());
+
+    return (int)(sampleRateScale * (delayTime * maxTimeScale + 
+                                         maxScaledOutputTap + timePadding));
+}
+
+void Dattorro1997Tank::initialiseDelaysAndApfs() {
+    // int maxScaledOutputTap = *std::max_element(scaledOutputTaps.begin(),
+    //                                             scaledOutputTaps.end());
+    // int calcMaxTime = [&](float delayTime) -> int {
+    //     return (int)(sampleRateScale * (delayTime * maxTimeScale + 
+    //                                      maxScaledOutputTap + timePadding));
+    // };
+
+    const int kLeftApf1MaxTime = calcMaxTime(leftApf1Time);
+    const int kLeftDelay1MaxTime = calcMaxTime(leftDelay1Time);
+    const int kLeftApf2MaxTime = calcMaxTime(leftApf2Time);
+    const int kLeftDelay2MaxTime = calcMaxTime(leftDelay2Time);
+    const int kRightApf1MaxTime = calcMaxTime(rightApf1Time);
+    const int kRightDelay1MaxTime = calcMaxTime(rightDelay1Time);
+    const int kRightApf2MaxTime = calcMaxTime(rightApf2Time);
+    const int kRightDelay2MaxTime = calcMaxTime(rightDelay2Time);
 
     leftApf1 = AllpassFilter(kLeftApf1MaxTime);
     leftDelay1 = InterpDelay(kLeftDelay1MaxTime);
@@ -228,8 +235,10 @@ void Dattorro1997Tank::tickApfModulation() {
     rightApf2.delay.setDelayTime(lfo4.process() * lfoExcursion + scaledRightApf2Time);
 }
 
+float scaleFactor = 0.f;
+
 void Dattorro1997Tank::rescaleApfAndDelayTimes() {
-    float scaleFactor = timeScale * sampleRateScale;
+    scaleFactor = timeScale * sampleRateScale;
 
     scaledLeftApf1Time = leftApf1Time * scaleFactor;
     scaledLeftDelay1Time = leftDelay1Time * scaleFactor;
@@ -249,7 +258,7 @@ void Dattorro1997Tank::rescaleApfAndDelayTimes() {
 
 void Dattorro1997Tank::rescaleTapTimes() {
     for (size_t i = 0; i < scaledOutputTaps.size(); ++i) {
-        scaledOutputTaps[i] = (long)((float)kOutputTaps[i] * sampleRateScale);
+        scaledOutputTaps[i] = (int)((float)kOutputTaps[i] * sampleRateScale);
     }
 }
 
@@ -275,6 +284,8 @@ Dattorro::Dattorro(const float initMaxSampleRate,
     rightInputDCBlock.setCutoffFreq(20.0);
 }
 
+float subApfOut = 0.f;
+
 void Dattorro::process(float leftInput, float rightInput) {
     leftInputDCBlock.input = leftInput;
     rightInputDCBlock.input = rightInput;
@@ -289,7 +300,8 @@ void Dattorro::process(float leftInput, float rightInput) {
     inApf2.input = inApf1.process();
     inApf3.input = inApf2.process();
     inApf4.input = inApf3.process();
-    tankFeed = preDelay.output * (1.0 - diffuseInput) + inApf4.process() * diffuseInput;
+    subApfOut = inApf4.process();
+    tankFeed = preDelay.output * (1.0 - diffuseInput) + subApfOut * diffuseInput;
 
     tank.process(tankFeed, tankFeed, &leftOut, &rightOut);
 }
@@ -311,18 +323,15 @@ void Dattorro::clear() {
 
 void Dattorro::setTimeScale(float timeScale) {
     constexpr float minTimeScale = 0.0001;
-    timeScale = timeScale < minTimeScale ? minTimeScale : timeScale;
+    timeScale = timeScale < 0.0001 ? 0.0001 : timeScale;
     tank.setTimeScale(timeScale);
 }
 
 void Dattorro::setPreDelay(float t) {
-    preDelayTime = t;
-    preDelay.setDelayTime(preDelayTime * sampleRate);
+    preDelay.setDelayTime(t * sampleRate);
 }
 
 void Dattorro::setSampleRate(float newSampleRate) {
-    assert(newSampleRate > 0.);
-
     sampleRate = newSampleRate;
     tank.setSampleRate(sampleRate);
     dattorroScaleFactor = sampleRate / dattorroSampleRate;
@@ -358,7 +367,6 @@ void Dattorro::enableInputDiffusion(bool enable) {
 
 void Dattorro::setDecay(float newDecay) {
     decay = newDecay;
-    assert(decay <= 1.0);
     tank.setDecay(decay);
 }
 
@@ -367,13 +375,13 @@ void Dattorro::setTankDiffusion(const float diffusion) {
 }
 
 void Dattorro::setTankFilterHighCutFrequency(const float pitch) {
-    auto frequency = 440.0 * std::pow(2.0, pitch - 5.0);
-    tank.setHighCutFrequency(frequency);
+    // auto frequency = 440.0 * std::pow(2.0, pitch - 5.0);
+    tank.setHighCutFrequency(440.0 * std::pow(2.0, pitch - 5.0));
 }
 
 void Dattorro::setTankFilterLowCutFrequency(const float pitch) {
-    auto frequency = 440.0 * std::pow(2.0, pitch - 5.0);
-    tank.setLowCutFrequency(frequency);
+    // auto frequency = 440.0 * std::pow(2.0, pitch - 5.0);
+    tank.setLowCutFrequency(440.0 * std::pow(2.0, pitch - 5.0));
 }
 
 void Dattorro::setTankModSpeed(const float modSpeed) {

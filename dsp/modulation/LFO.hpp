@@ -5,7 +5,7 @@
 #include <cstdint>
 
 #ifndef  M_PI
-#define  M_PI  3.1415926535897932384626433
+#define M_PI		3.14159265358979323846
 #endif
 
 class LFO {
@@ -15,7 +15,7 @@ public:
 
     LFO() {
         _frequency = 1.0;
-        _sampleRate = 48000.0;
+        _sampleRate = 32000.0;
         _stepSize = _frequency * (float)kTableLength / _sampleRate;
         for(auto i = 0; i < kTableLength; ++i) {
             _sine.push_back(sin(2.0 * M_PI * (float)i / (float)kTableLength));
@@ -32,7 +32,7 @@ public:
             _plusPhase -= kTableLength;
         }
 
-        _a = (long)_plusPhase;
+        _a = (int)_plusPhase;
         _frac = _plusPhase - _a;
         _b = _a + 1.0;
         _b %= kTableLength;
@@ -59,9 +59,9 @@ private:
     float _stepSize;
     float _phasor;
     float _plusPhase;
-    long _a, _b;
+    int _a, _b;
     float _frac;
-    const long kTableLength = 4096;
+    const int kTableLength = 4096;
     std::vector<float> _sine;
 
     void calcStepSize() {
@@ -71,7 +71,7 @@ private:
 
 class TriSawLFO {
 public:
-    TriSawLFO(float sampleRate = 48000.0, float frequency = 1.0) {
+    TriSawLFO(float sampleRate = 32000.0, float frequency = 1.0) {
         phase = 0.0;
         _output = 0.0;
         _sampleRate = sampleRate;
