@@ -4,7 +4,7 @@ Firmware port of Valley's Plateau for the Noise Engineering Versio product line.
 and output scaling to preserve the signal while it passes through output opamps no matter how much distortion is present.
 
 
-#Version 0.9a 02/27/2024
+Version 0.9a 02/27/2024
 
 Fixes: 
 Fixed loud initialization using hold boolean on the linear interpolating delay until the Dattorro has reached equilibrium
@@ -18,7 +18,7 @@ Implement low cut and high cut filters on the tank and on the inputs
 Implement freeze function
 
 
-#Version 0.8a, 02/25/2024:
+Version 0.8a, 02/25/2024:
 
 Working Plateau reverb code on Daisy Seed
 Bug where the output is extremely loud and distorted for 10 seconds
