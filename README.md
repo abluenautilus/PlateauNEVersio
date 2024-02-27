@@ -19,6 +19,7 @@ Fixed some heavy static as result of unoptimized code, unstable knobs, and sampl
 
 Longer predelay buffer
 
+
 To-do:
 
 Implement low cut and high cut filters on the tank and on the inputs
