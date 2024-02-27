@@ -3,9 +3,21 @@
 Firmware port of Valley's Plateau for the Noise Engineering Versio product line. Includes output threshold clipper 
 and output scaling to preserve the signal while it passes through output opamps no matter how much distortion is present.
 
+## To-do:
+
+Implement low cut and high cut filters on the tank and on the inputs
+
+Implement freeze function
+
 ## Build Log
 
-## Version 0.9a 02/27/2024
+## Version 0.91a, 02/27/2024
+
+Fixes:
+
+Removed an erroneous optimization in the interpolating delay that caused a loud burst and the Dattoro going out of equilibrium when the size knob was set all the way to zero with modulation up. This was due to an out of bounds access with one of the buffers.
+
+## Version 0.9a, 02/27/2024
 
 Fixes: 
 
@@ -18,13 +30,6 @@ Implemented CVs
 Fixed some heavy static as result of unoptimized code, unstable knobs, and sample rate choices.
 
 Longer predelay buffer
-
-
-To-do:
-
-Implement low cut and high cut filters on the tank and on the inputs
-
-Implement freeze function
 
 
 ## Version 0.8a, 02/25/2024:
