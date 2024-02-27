@@ -116,8 +116,7 @@ void Dattorro1997Tank::setSampleRate(const float newSampleRate) {
 }
 
 void Dattorro1997Tank::setTimeScale(const float newTimeScale) {
-    // timeScale = newTimeScale;
-    timeScale = newTimeScale < minTimeScale ? minTimeScale : newTimeScale;
+    timeScale = newTimeScale < 0.0001 ? 0.0001 : newTimeScale;
 
     rescaleApfAndDelayTimes();
 }
@@ -322,7 +321,6 @@ void Dattorro::clear() {
 }
 
 void Dattorro::setTimeScale(float timeScale) {
-    constexpr float minTimeScale = 0.0001;
     timeScale = timeScale < 0.0001 ? 0.0001 : timeScale;
     tank.setTimeScale(timeScale);
 }

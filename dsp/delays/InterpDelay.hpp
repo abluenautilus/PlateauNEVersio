@@ -71,9 +71,9 @@ public:
         if (newDelayTime >= l) {
             newDelayTime = l - 1;
         }
-        // if (newDelayTime < 0) {
-        //     newDelayTime = 0;
-        // }
+        if (newDelayTime < 0) {
+            newDelayTime = 0;
+        }
         t = newDelayTime;
         f = newDelayTime - t;
     }
