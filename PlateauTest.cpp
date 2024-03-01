@@ -68,7 +68,7 @@ auto *LED3PtrRed = &hw.leds[3].r_;
 
 Dattorro reverb(32000, 16, sizeMax);
 
-// Fast hypobilc tangent function.
+// Fast hyperbolic tangent function.
 const float smoothness = 27.f;
 const float threshold = 9.f;
 inline float softLimiter(float x) {
