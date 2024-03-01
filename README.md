@@ -3,6 +3,17 @@
 Firmware port of Valley's Plateau for the Noise Engineering Versio product line. Includes output threshold clipper 
 and output scaling to preserve the signal while it passes through output opamps no matter how much distortion is present.
 
+If you're on WIndows, read this to reset your USB driver for use with programming the Versio:
+
+https://github.com/electro-smith/DaisyWiki/wiki/Using-Zadig-to-Reset-USB-Driver-(Windows-Only)
+
+See here to program your Versio:
+https://electro-smith.github.io/Programmer/
+
+There is also a help section on this page.
+
+See release section of the GitHub to see changes and to download the .hex to program your Versio!
+
 ## To-do:
 
 Save filter and gain settings on power down
@@ -12,11 +23,6 @@ Save filter and gain settings on power down
 ## Version 1.0 02/29/2024
 
 See release section of the GitHub to see changes and to download the .hex to program your Versio!
-
-See here to program your Versio:
-https://electro-smith.github.io/Programmer/
-
-There is also a help section on this page.
 
 ## Version 0.91a, 02/27/2024
 
