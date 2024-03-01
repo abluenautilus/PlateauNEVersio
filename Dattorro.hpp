@@ -37,7 +37,7 @@ public:
 
     int calcMaxTime(float delayTime);
 
-private:
+// private:
     static constexpr float dattorroSampleRate = 29761.0;
     static constexpr float dattorroSampleTime = 1.0 / dattorroSampleRate;
 
@@ -189,7 +189,7 @@ public:
     float getLeftOutput() const;
     float getRightOutput() const;
 
-private:
+// private:
     float preDelayTime = 0.0;
     static constexpr int kInApf1Time = 141;
     static constexpr int kInApf2Time = 107;

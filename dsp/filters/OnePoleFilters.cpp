@@ -24,6 +24,9 @@ void OnePoleLPFilter::setSampleRate(float sampleRate) {
     setCutoffFreq(_cutoffFreq);
 }
 
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void OnePoleLPFilter::setCutoffFreq(float cutoffFreq) {
     if (cutoffFreq == _cutoffFreq) {
         return;
@@ -33,6 +36,8 @@ void OnePoleLPFilter::setCutoffFreq(float cutoffFreq) {
     _b = expf(-_2M_PI * _cutoffFreq * _1_sampleRate);
     _a = 1.0 - _b;
 }
+
+#pragma GCC pop_options
 
 float OnePoleLPFilter::getMaxCutoffFreq() const {
     return _maxCutoffFreq;
@@ -64,6 +69,9 @@ void OnePoleHPFilter::clear() {
     _y1 = 0.0;
 }
 
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void OnePoleHPFilter::setCutoffFreq(float cutoffFreq) {
     if (cutoffFreq == _cutoffFreq) {
         return;
@@ -71,9 +79,12 @@ void OnePoleHPFilter::setCutoffFreq(float cutoffFreq) {
     
     _cutoffFreq = cutoffFreq;
     _b1 = expf(-_2M_PI * _cutoffFreq * _1_sampleRate);
-    _a0 = (1.0 + _b1) / 2.0;
+    // _a0 = (1.0f + _b1) / 2.0f;
+    _a0 = (1.0f + _b1) * 0.5f;
     _a1 = -_a0;
 }
+
+#pragma GCC pop_options
 
 void OnePoleHPFilter::setSampleRate(float sampleRate) {
     _sampleRate = sampleRate;

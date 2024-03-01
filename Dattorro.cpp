@@ -1,9 +1,9 @@
 #include "Dattorro.hpp"
 #include <algorithm>
 
-float scale(float a, float inMin, float inMax, float outMin, float outMax) {
-    return (a - inMin)/(inMax - inMin) * (outMax - outMin) + outMin;
-}
+// float scale(float a, float inMin, float inMax, float outMin, float outMax) {
+//     return (a - inMin)/(inMax - inMin) * (outMax - outMin) + outMin;
+// }
 
 Dattorro1997Tank::Dattorro1997Tank(const float initSampleRate,
                                    const float initMaxLfoDepth,
@@ -115,11 +115,16 @@ void Dattorro1997Tank::setSampleRate(const float newSampleRate) {
     clear();
 }
 
-void Dattorro1997Tank::setTimeScale(const float newTimeScale) {
-    timeScale = newTimeScale < 0.0001 ? 0.0001 : newTimeScale;
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
+void Dattorro1997Tank::setTimeScale(float newTimeScale) {
+    timeScale = newTimeScale < 0.0001f ? 0.0001f : newTimeScale;
 
     rescaleApfAndDelayTimes();
 }
+
+#pragma GCC pop_options
 
 void Dattorro1997Tank::setDecay(const float newDecay) {
     decayParam = (float)(newDecay > 1.0 ? 1.0 :
@@ -155,17 +160,22 @@ void Dattorro1997Tank::setLowCutFrequency(const float frequency) {
     rightLowCutFilter.setCutoffFreq(frequency);
 }
 
-float diffusion1 = 0.f;
-float diffusion2 = 0.f;
+// float diffusion1 = 0.f;
+// float diffusion2 = 0.f;
 
 void Dattorro1997Tank::setDiffusion(const float diffusion) {
-    diffusion1 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion1);
-    diffusion2 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion2);
+    // diffusion1 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion1);
+    // diffusion2 = scale(diffusion, 0.0, 10.0, 0.0, maxDiffusion2);
 
-    leftApf1.setGain(-diffusion1);
-    leftApf2.setGain(diffusion2);
-    rightApf1.setGain(-diffusion1);
-    rightApf2.setGain(diffusion2);
+    // leftApf1.setGain(-diffusion1);
+    // leftApf2.setGain(diffusion2);
+    // rightApf1.setGain(-diffusion1);
+    // rightApf2.setGain(diffusion2);
+
+    leftApf1.setGain(diffusion);
+    leftApf2.setGain(diffusion);
+    rightApf1.setGain(diffusion);
+    rightApf2.setGain(diffusion);
 }
 
 void Dattorro1997Tank::clear() {
@@ -236,6 +246,10 @@ void Dattorro1997Tank::tickApfModulation() {
 
 float scaleFactor = 0.f;
 
+
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void Dattorro1997Tank::rescaleApfAndDelayTimes() {
     scaleFactor = timeScale * sampleRateScale;
 
@@ -254,6 +268,8 @@ void Dattorro1997Tank::rescaleApfAndDelayTimes() {
     rightDelay1.setDelayTime(scaledRightDelay1Time);
     rightDelay2.setDelayTime(scaledRightDelay2Time);
 }
+
+#pragma GCC pop_options
 
 void Dattorro1997Tank::rescaleTapTimes() {
     for (size_t i = 0; i < scaledOutputTaps.size(); ++i) {
@@ -320,14 +336,23 @@ void Dattorro::clear() {
     tank.clear();
 }
 
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void Dattorro::setTimeScale(float timeScale) {
-    timeScale = timeScale < 0.0001 ? 0.0001 : timeScale;
+    timeScale = timeScale < 0.0001f ? 0.0001f : timeScale;
     tank.setTimeScale(timeScale);
 }
+
+#pragma GCC pop_options
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
 
 void Dattorro::setPreDelay(float t) {
     preDelay.setDelayTime(t * sampleRate);
 }
+
+#pragma GCC pop_options
 
 void Dattorro::setSampleRate(float newSampleRate) {
     sampleRate = newSampleRate;
@@ -351,13 +376,24 @@ void Dattorro::freeze(bool freezeFlag) {
     tank.freeze(freezeFlag);
 }
 
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void Dattorro::setInputFilterLowCutoffPitch(float pitch) {
-    inputLowCut = 440.0 * std::pow(2.0, pitch - 5.0);
+    // inputLowCut = 440.0 * std::pow(2.0, pitch - 5.0);
+    inputLowCut = pitch;
 }
 
+#pragma GCC pop_options
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void Dattorro::setInputFilterHighCutoffPitch(float pitch) {
-    inputHighCut = 440.0 * std::pow(2.0, pitch - 5.0);
+    // inputHighCut = 440.0 * std::pow(2.0, pitch - 5.0);
+    inputHighCut = pitch;
 }
+
+#pragma GCC pop_options
 
 void Dattorro::enableInputDiffusion(bool enable) {
     diffuseInput = enable ? 1.0 : 0.0;
@@ -372,15 +408,26 @@ void Dattorro::setTankDiffusion(const float diffusion) {
     tank.setDiffusion(diffusion);
 }
 
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
+
 void Dattorro::setTankFilterHighCutFrequency(const float pitch) {
     // auto frequency = 440.0 * std::pow(2.0, pitch - 5.0);
-    tank.setHighCutFrequency(440.0 * std::pow(2.0, pitch - 5.0));
+    // tank.setHighCutFrequency(440.0 * std::pow(2.0, pitch - 5.0));
+    tank.setHighCutFrequency(pitch);
 }
+
+#pragma GCC pop_options
+#pragma GCC push_options
+#pragma GCC optimize ("Ofast")
 
 void Dattorro::setTankFilterLowCutFrequency(const float pitch) {
     // auto frequency = 440.0 * std::pow(2.0, pitch - 5.0);
-    tank.setLowCutFrequency(440.0 * std::pow(2.0, pitch - 5.0));
+    // tank.setLowCutFrequency(440.0 * std::pow(2.0, pitch - 5.0));
+    tank.setLowCutFrequency(pitch);
 }
+
+#pragma GCC pop_options
 
 void Dattorro::setTankModSpeed(const float modSpeed) {
     tank.setModSpeed(modSpeed);

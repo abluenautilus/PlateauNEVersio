@@ -3,7 +3,7 @@
 #include <cstdint>
 #include "../../utilities/Utilities.hpp"
 
-extern float DSY_SDRAM_BSS sdramData[32][200000];
+extern float DSY_SDRAM_BSS sdramData[50][200000];
 extern unsigned int count;
 extern bool hold;
 
@@ -25,6 +25,9 @@ public:
 
         setDelayTime(initDelayTime);
     }
+
+    #pragma GCC push_options
+    #pragma GCC optimize ("Ofast")
 
     void process() {
         sdramData[bufferNumber][w] = input;
@@ -59,6 +62,10 @@ public:
         output = hold * (dataR + f * (dataUpperR - dataR));
     }
 
+    #pragma GCC pop_options
+    #pragma GCC push_options
+    #pragma GCC optimize ("Ofast")
+
     float tap(int i) {
         j = w - i;
         if (j < 0) {
@@ -66,6 +73,10 @@ public:
         }
         return sdramData[bufferNumber][j];
     }
+
+    #pragma GCC pop_options
+    #pragma GCC push_options
+    #pragma GCC optimize ("Ofast")
 
     void setDelayTime(float newDelayTime) {
         if (newDelayTime >= l) {
@@ -77,6 +88,8 @@ public:
         t = newDelayTime;
         f = newDelayTime - t;
     }
+
+    #pragma GCC pop_options
 
     void clear() {
         input = 0.;
