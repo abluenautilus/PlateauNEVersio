@@ -50,16 +50,20 @@ float modDepth = 0.f;
 float timeScale = 2.f;
 float previousTimeScale = timeScale;
 
+float volumeChange = 0.f;
+
 int holdCount = 0;
 
 float inputVolumeModifier = 1.f;
 float tempInputVolumeModifier = inputVolumeModifier;
+float wetOutputVolumeCurve = 0.f;
+float tempWetOutputVolumeCurve = wetOutputVolumeCurve;
 
 bool buttonState = false;
 bool previousButtonState = false;
 unsigned int buttonHoldTime = 0;
 
-bool leds = true;
+bool leds = false;
 
 auto *LED0PtrRed = &hw.leds[0].r_;
 auto *LED1PtrRed = &hw.leds[1].r_;
@@ -207,18 +211,28 @@ void AudioCallback(AudioHandle::InputBuffer in,
                 }
             }
             buttonHoldTime = 0;
+            if(!hw.sw[0].Read()) {
+                hw.knobs[2].SetCoeff(0.001f);
+                tempWetOutputVolumeCurve = hw.knobs[2].Value();
+                if(((tempWetOutputVolumeCurve - wetOutputVolumeCurve) < 0.01f) and ((tempWetOutputVolumeCurve - wetOutputVolumeCurve) > -0.01f)) {
+                    wetOutputVolumeCurve = tempWetOutputVolumeCurve;
+                    //setAndUpdateGainLeds(wetOutputVolumeCurve, wetOutputVolumeCurve, wetOutputVolumeCurve, wetOutputVolumeCurve);
+                }
+            }
         }
 
-        leftInput = in[0][i];
-        rightInput = in[1][i];
+        leftInput = in[0][i] * inputVolumeModifier;
+        rightInput = in[1][i] * inputVolumeModifier;
 
-        reverb.process(leftInput * minus18dBGain * inputVolumeModifier,
-                    rightInput * minus18dBGain * inputVolumeModifier);
+        reverb.process(leftInput * minus18dBGain ,
+                    rightInput * minus18dBGain);
+                    
+        volumeChange = 1.f + ((3.f - (3.f * reverb.tank.decay)) * wetOutputVolumeCurve);
 
-        leftOutput = (leftInput * dry * inputVolumeModifier) + 
-                    (reverb.getLeftOutput() * wet * 0.833f);
-        rightOutput = (rightInput * dry * inputVolumeModifier) + 
-                    (reverb.getRightOutput() * wet * 0.833f);
+        leftOutput = (leftInput * dry) + 
+                    (reverb.getLeftOutput() * wet * 0.833f * volumeChange);
+        rightOutput = (rightInput * dry) + 
+                    (reverb.getRightOutput() * wet * 0.833f * volumeChange);
 
         switch (gainMode)
         {
