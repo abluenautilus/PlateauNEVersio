@@ -13,6 +13,11 @@ Save filter and gain settings on power down
 
 See release section of the GitHub to see changes and to download the .hex to program your Versio!
 
+See here to program your Versio:
+https://electro-smith.github.io/Programmer/
+
+There is also a help section on this page.
+
 ## Version 0.91a, 02/27/2024
 
 Fixes:
