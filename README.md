@@ -5,11 +5,13 @@ and output scaling to preserve the signal while it passes through output opamps 
 
 ## To-do:
 
-Implement low cut and high cut filters on the tank and on the inputs
-
-Implement freeze function
+Save filter and gain settings on power down
 
 ## Build Log
+
+## Version 1.0 02/29/2024
+
+See release section of the GitHub to see changes and to download the .hex to program your Versio!
 
 ## Version 0.91a, 02/27/2024
 
