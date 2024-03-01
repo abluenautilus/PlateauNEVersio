@@ -68,7 +68,7 @@ auto *LED3PtrRed = &hw.leds[3].r_;
 
 Dattorro reverb(32000, 16, sizeMax);
 
-// Fast hyperbolic tangent function.
+// Fast hypobilc tangent function.
 const float smoothness = 27.f;
 const float threshold = 9.f;
 inline float softLimiter(float x) {
@@ -328,6 +328,7 @@ void AudioCallback(AudioHandle::InputBuffer in,
                 setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
             }
             break;
+        case 8:
             leftOutput = amp120_(leftOutput);
             rightOutput = amp120_(rightOutput);
             leftOutput = hardLimit85_(leftOutput);
