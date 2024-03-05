@@ -10,20 +10,20 @@
 
 class TriSawLFO {
 public:
-    TriSawLFO(float sampleRate = 32000.0, float frequency = 1.0) {
-        phase = 0.0;
-        _output = 0.0;
+    TriSawLFO(float sampleRate = 32000.0f, float frequency = 1.0f) {
+        phase = 0.0f;
+        _output = 0.0f;
         _sampleRate = sampleRate;
         _1_sampleRate = 1 / sampleRate;
-        _step = 0.0;
+        _step = 0.0f;
         _rising = true;
         setFrequency(frequency);
-        setRevPoint(0.5);
+        setRevPoint(0.5f);
     }
 
-    float process() {
-        if(_step > 1.0) {
-            _step -= 1.0;
+    inline float process() {
+        if(_step > 1.0f) {
+            _step -= 1.0f;
             _rising = true;
         }
 
@@ -39,12 +39,12 @@ public:
         }
 
         _step += _stepSize;
-        _output *= 2.0;
-        _output -= 1.0;
+        _output *= 2.0f;
+        _output -= 1.0f;
         return _output;
     }
 
-    void setFrequency(float frequency) {
+    inline void setFrequency(const float &frequency) {
         if (frequency == _frequency) {
             return;
         }
@@ -52,17 +52,17 @@ public:
         calcStepSize();
     }
 
-    void setRevPoint(float revPoint) {
+    inline void setRevPoint(const float &revPoint) {
         _revPoint = revPoint;
-        if(_revPoint < 0.0001) {
-            _revPoint = 0.0001;
+        if(_revPoint < 0.0001f) {
+            _revPoint = 0.0001f;
         }
-        if(_revPoint > 0.999) {
-            _revPoint = 0.999;
+        if(_revPoint > 0.999f) {
+            _revPoint = 0.999f;
         }
 
-        _riseRate = 1.0 / _revPoint;
-        _fallRate = -1.0 / (1.0 - _revPoint);
+        _riseRate = 1.0f / _revPoint;
+        _fallRate = -1.0f / (1.0f - _revPoint);
     }
 
     void setSamplerate(float sampleRate) {
@@ -71,7 +71,7 @@ public:
         calcStepSize();
     }
 
-    float getOutput() const {
+    inline float getOutput() const {
         return _output;
     }
 
@@ -81,7 +81,7 @@ private:
     float _output;
     float _sampleRate;
     float _1_sampleRate;
-    float _frequency = 0.0;
+    float _frequency = 0.0f;
     float _revPoint;
     float _riseRate;
     float _fallRate;
@@ -89,7 +89,7 @@ private:
     float _stepSize;
     bool _rising;
 
-    void calcStepSize() {
+    inline void calcStepSize() {
         // _stepSize = _frequency / _sampleRate;
         _stepSize = _frequency * _1_sampleRate;
     }

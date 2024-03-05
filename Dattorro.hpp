@@ -202,8 +202,8 @@ public:
     float leftSum = 0.0;
     float rightSum = 0.0;
 
-    float rightOut = 0.0;
-    float leftOut = 0.0;
+    float rightOut = 0.0f;
+    float leftOut = 0.0f;
     float inputLowCut = 0.0;
     float inputHighCut = 10000.0;
     float reverbHighCut = 10000.0;

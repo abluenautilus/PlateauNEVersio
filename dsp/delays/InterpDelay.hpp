@@ -3,14 +3,14 @@
 #include <cstdint>
 #include "../../utilities/Utilities.hpp"
 
-extern float DSY_SDRAM_BSS sdramData[50][200000];
+extern float DSY_SDRAM_BSS sdramData[50][144000];
 extern unsigned int count;
-extern bool hold;
+extern float hold;
 
 class InterpDelay {
 public:
-    float input = 0.;
-    float output = 0.;
+    float input = 0.f;
+    float output = 0.f;
     int bufferNumber = 0;
     int r = 0;
     int upperR = 0;
@@ -18,28 +18,36 @@ public:
     float dataR = 0.f;
     float dataUpperR = 0.f;
 
-    InterpDelay(unsigned int maxLength = 512, unsigned int initDelayTime = 0) {
+    //InterpDelay () {}
+
+    InterpDelay(unsigned int maxLength = 512, float initDelayTime = 0.f) {
         l = maxLength;
+        lFloat = static_cast<float>(maxLength);
 
         bufferNumber = ++count;
 
         setDelayTime(initDelayTime);
     }
 
+    // inline void initializeDelay(const unsigned int &length = 512, const float &delayTime = 0.f) {
+    //     l = length;
+    //     lFloat = static_cast<float>(length);
+
+    //     bufferNumber = ++count;
+
+    //     setDelayTime(delayTime);
+    // }
+
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    void process() {
+    inline void process() {
         sdramData[bufferNumber][w] = input;
         r = w - t;
         
         if (r < 0) {
             r += l;
         }
-
-        // if (r >= l) {
-        //     r -= l;
-        // }
 
         ++w;
         if (w >= l) {
@@ -51,22 +59,16 @@ public:
             upperR += l;
         }
 
-        // if (upperR >= l) {
-        //     upperR -= l;
-        // }
-
         dataR = sdramData[bufferNumber][r];
 
-        dataUpperR = sdramData[bufferNumber][upperR];
-
-        output = hold * (dataR + f * (dataUpperR - dataR));
+        output = hold * (dataR + f * (sdramData[bufferNumber][upperR] - dataR));
     }
 
     #pragma GCC pop_options
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    float tap(int i) {
+    inline float tap(const int &i) {
         j = w - i;
         if (j < 0) {
             j += l;
@@ -78,22 +80,22 @@ public:
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    void setDelayTime(float newDelayTime) {
-        if (newDelayTime >= l) {
-            newDelayTime = l - 1;
+    inline void setDelayTime(float newDelayTime) {
+        if (newDelayTime >= lFloat) {
+            newDelayTime = lFloat - 1.f;
         }
-        if (newDelayTime < 0) {
-            newDelayTime = 0;
+        if (newDelayTime < 0.f) {
+            newDelayTime = 0.f;
         }
-        t = newDelayTime;
-        f = newDelayTime - t;
+        t = static_cast<int>(newDelayTime);
+        f = newDelayTime - static_cast<float>(t);
     }
 
     #pragma GCC pop_options
 
     void clear() {
-        input = 0.;
-        output = 0.;
+        input = 0.f;
+        output = 0.f;
     }
 
 private:
@@ -101,4 +103,5 @@ private:
     int t = 0;
     float f = 0.f;
     int l = 512;
+    float lFloat = 512.f;
 };
