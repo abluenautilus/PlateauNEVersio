@@ -20,7 +20,7 @@ Save filter and gain settings on power down
 
 ## Build Log
 
-## Version 1.0 03/05/2024
+## Version 1.1 03/05/2024
 
 See release section of the GitHub to see changes and to download the .bin to program your Versio!
 
