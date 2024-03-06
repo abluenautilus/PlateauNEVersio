@@ -1,4 +1,4 @@
-## "Campestria Versio" - Dale Johnsons Valley Plateau for Noise Engineering's Versio
+## "Campestria Versio" - Dale Johnson's Valley Plateau for Noise Engineering's Versio
 
 Firmware port of Valley's Plateau for the Noise Engineering Versio product line. Includes output threshold clipper 
 and output scaling to preserve the signal while it passes through output opamps no matter how much distortion is present.
