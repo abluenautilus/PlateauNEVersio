@@ -13,6 +13,9 @@ const float minus20dBGain = 0.1f;
 float wet = 0.5f;
 float dry = 0.5f;
 
+float diffusion = 1.f;
+float tempDiffusion = 1.f;
+
 float inputDampLow = 0.f;
 float inputDampHigh = 0.f;
 
@@ -27,7 +30,7 @@ float previousReverbDampHigh = 0.f;
 
 unsigned int gainMode = 0;
 unsigned int gainModeLedTimer = 0;
-unsigned int gainModeLedOnTime = 32000;
+const unsigned int gainModeLedOnTime = 32000;
 
 float leftInput = 0.f;
 float rightInput = 0.f;
@@ -40,12 +43,18 @@ unsigned int holdCount = 0;
 
 float inputVolumeModifier = 1.f;
 float tempInputVolumeModifier = inputVolumeModifier;
-float wetOutputVolumeCurve = 0.f;
-float tempWetOutputVolumeCurve = wetOutputVolumeCurve;
+// float diffusion = 0.f;
+// float tempDiffusion = diffusion;
 
 bool buttonState = false;
 bool previousButtonState = false;
 unsigned int buttonHoldTime = 0;
+
+unsigned int toneKnobLedTimer = 0;
+const unsigned int toneKnobLedOnTime = 32000;
+bool toneKnobIsMoving = false;
+float toneKnobValue = 0.f;
+float previousToneKnobValue = 0.f;
 
 bool leds = true;
 
@@ -55,6 +64,8 @@ auto *LED2PtrRed = &hw.leds[2].r_;
 auto *LED3PtrRed = &hw.leds[3].r_;
 
 Dattorro reverb(32000, 16, 4.0f);
+
+bool diffusionEnabled = true;
 
 // Fast hyperbolic tangent function.
 inline float softLimiter(const float &x) {
@@ -90,10 +101,22 @@ struct KnobOnePoleFilter {
     }
 };
 
+
+inline void checkIfToneKnobIsMoving(float currentValue) {
+    if (((currentValue - previousToneKnobValue) > 0.001f) or ((currentValue - previousToneKnobValue) < -0.001f)) {
+        previousToneKnobValue = currentValue;
+        toneKnobIsMoving = true;
+    } else {
+        toneKnobIsMoving = false;
+    }
+
+}
+
 KnobOnePoleFilter mixKnobLPF;
 KnobOnePoleFilter modDepthKnobLPF;
 KnobOnePoleFilter preDelayKnobLPF;
 KnobOnePoleFilter timeScaleKnobLPF;
+KnobOnePoleFilter toneKnobLPF;
 
 inline void setAndUpdateGainLeds(const float &w, const float &x, const float &y, const float &z) {
     LED0PtrRed->Set(w);
@@ -135,6 +158,10 @@ inline void getParameters() {
     
     hw.ProcessAnalogControls();
 
+
+    toneKnobValue = toneKnobLPF.processLowpass(KNOB2Ptr->Value());
+    checkIfToneKnobIsMoving(toneKnobValue);
+
     wet = mixKnobLPF.processLowpass(KNOB0Ptr->Value());
     dry = 1.f - wet;
 
@@ -156,46 +183,86 @@ inline void getParameters() {
 
     if(switchState0 == 2) {
         if(switchState1 == 1) {
-            inputDampHigh = KNOB2Ptr->Value();
-            if(((inputDampHigh - previousInputDampHigh) < 0.1f) and ((inputDampHigh - previousInputDampHigh) > -0.1f)) {
+            inputDampHigh = toneKnobValue;
+            if(((inputDampHigh - previousInputDampHigh) < 0.01f) and ((inputDampHigh - previousInputDampHigh) > -0.01f)) {
                 previousInputDampHigh = inputDampHigh;
                 reverb.setInputFilterHighCutoffPitch(-1.f - (-1.f * inputDampHigh));
-                if(leds) {
-                    LED1PtrRed->Set(inputDampHigh);
-                    LED1PtrRed->Update();
+                if(toneKnobIsMoving) {
+                    toneKnobLedTimer = 0;
                 }
+                if(toneKnobLedTimer < toneKnobLedOnTime) {
+                    ++toneKnobLedTimer;
+                    setAndUpdateGainLeds(0.f,inputDampHigh,0.f,0.f);
+                } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                    toneKnobLedTimer = toneKnobLedOnTime + 1;
+                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                }
+                // if(leds) {
+                //     LED1PtrRed->Set(inputDampHigh);
+                //     LED1PtrRed->Update();
+                // }
             }
         } else if (switchState1 == 2) {
-            reverbDampHigh = KNOB2Ptr->Value();
-            if(((reverbDampHigh - previousReverbDampHigh) < 0.1f) and ((reverbDampHigh - previousReverbDampHigh) > -0.1f)) {
+            reverbDampHigh = toneKnobValue;
+            if(((reverbDampHigh - previousReverbDampHigh) < 0.01f) and ((reverbDampHigh - previousReverbDampHigh) > -0.01f)) {
                 previousReverbDampHigh = reverbDampHigh;
                 reverb.setTankFilterHighCutFrequency(-1.f - (-1.f * reverbDampHigh));
-                if(leds) {
-                    LED3PtrRed->Set(reverbDampHigh);
-                    LED3PtrRed->Update();
+                if(toneKnobIsMoving) {
+                    toneKnobLedTimer = 0;
                 }
+                if(toneKnobLedTimer < toneKnobLedOnTime) {
+                    ++toneKnobLedTimer;
+                    setAndUpdateGainLeds(0.f,0.f,0.f,reverbDampHigh);
+                } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                    toneKnobLedTimer = toneKnobLedOnTime + 1;
+                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                }
+                // if(leds) {
+                //     LED3PtrRed->Set(reverbDampHigh);
+                //     LED3PtrRed->Update();
+                // }
             }
         }
     } else if(switchState0 == 1) {
         if(switchState1 == 1) {
-            inputDampLow = KNOB2Ptr->Value();
-            if(((inputDampLow - previousInputDampLow) < 0.1f) and ((inputDampLow - previousInputDampLow) > -0.1f)) {
+            inputDampLow = toneKnobValue;
+            if(((inputDampLow - previousInputDampLow) < 0.01f) and ((inputDampLow - previousInputDampLow) > -0.01f)) {
                 previousInputDampLow = inputDampLow;
                 reverb.setInputFilterLowCutoffPitch(-1.f * inputDampLow);
-                if(leds) {
-                    LED0PtrRed->Set(inputDampLow);
-                    LED0PtrRed->Update();
+                if(toneKnobIsMoving) {
+                    toneKnobLedTimer = 0;
+                }   
+                if(toneKnobLedTimer < toneKnobLedOnTime) {
+                    ++toneKnobLedTimer;
+                    setAndUpdateGainLeds(inputDampLow,0.f,0.f,0.f);
+                } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                    toneKnobLedTimer = toneKnobLedOnTime + 1;
+                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
                 }
+                // if(leds) {
+                //     LED0PtrRed->Set(inputDampLow);
+                //     LED0PtrRed->Update();
+                // }
             }
         } else if (switchState1 == 2) {
-            reverbDampLow = KNOB2Ptr->Value();
-            if(((reverbDampLow - previousReverbDampLow) < 0.1f) and ((reverbDampLow - previousReverbDampLow) > -0.1f)) {
+            reverbDampLow = toneKnobValue;
+            if(((reverbDampLow - previousReverbDampLow) < 0.01f) and ((reverbDampLow - previousReverbDampLow) > -0.01f)) {
                 previousReverbDampLow = reverbDampLow;
                 reverb.setTankFilterLowCutFrequency(-1.f * reverbDampLow);
-                if(leds) {
-                    LED2PtrRed->Set(reverbDampLow);
-                    LED2PtrRed->Update();
+                if(toneKnobIsMoving) {
+                    toneKnobLedTimer = 0;
                 }
+                if(toneKnobLedTimer < toneKnobLedOnTime) {
+                    ++toneKnobLedTimer;
+                    setAndUpdateGainLeds(0.f,0.f,reverbDampLow,0.f);
+                } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                    toneKnobLedTimer = toneKnobLedOnTime + 1;
+                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                }
+                // if(leds) {
+                //     LED2PtrRed->Set(reverbDampLow);
+                //     LED2PtrRed->Update();
+                // }
             }
         }
     }
@@ -203,6 +270,11 @@ inline void getParameters() {
     if(buttonState) {
         gainModeLedTimer = 0;
         ++buttonHoldTime;
+        // if(buttonHoldTime > 128000) {
+        //     toneKnobLedTimer = 0;
+        //     diffusionEnabled = !diffusionEnabled;
+        //     reverb.enableInputDiffusion(diffusionEnabled);
+        // }
     } else {
         if(buttonHoldTime < 8000) {
             if(previousButtonState) {
@@ -213,21 +285,52 @@ inline void getParameters() {
         if(switchState1 == 0) {
             switch(switchState0) {
                 case 0:
-                    tempWetOutputVolumeCurve = KNOB2Ptr->Value();
-                    if(((tempWetOutputVolumeCurve - wetOutputVolumeCurve) < 0.01f) and ((tempWetOutputVolumeCurve - wetOutputVolumeCurve) > -0.01f)) {
-                        wetOutputVolumeCurve = tempWetOutputVolumeCurve;
+                    tempDiffusion = toneKnobValue;
+                    if(((tempDiffusion - diffusion) < 0.01f) and ((tempDiffusion - diffusion) > -0.01f)) {
+                        diffusion = tempDiffusion;
+                        reverb.setTankDiffusion(diffusion * 0.7f);
+                        if(toneKnobIsMoving) {
+                            toneKnobLedTimer = 0;
+                        }
+                        if(toneKnobLedTimer < toneKnobLedOnTime) {
+                            ++toneKnobLedTimer;
+                            setAndUpdateGainLeds(diffusion,diffusion,diffusion,diffusion);
+                        } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                            toneKnobLedTimer = toneKnobLedOnTime + 1;
+                            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                        }
                     }
                     break;
                 case 1:
-                    tempInputAmplification = KNOB2Ptr->Value();
+                    tempInputAmplification = toneKnobValue;
                     if(((tempInputAmplification - inputAmplification) < 0.01f) and ((tempInputAmplification - inputAmplification) > -0.01f)) {
                         inputAmplification = tempInputAmplification;
+                        if(toneKnobIsMoving) {
+                            toneKnobLedTimer = 0;
+                        }
+                        if(toneKnobLedTimer < toneKnobLedOnTime) {
+                            ++toneKnobLedTimer;
+                            setAndUpdateGainLeds(inputAmplification,inputAmplification,inputAmplification,inputAmplification);
+                        } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                            toneKnobLedTimer = toneKnobLedOnTime + 1;
+                            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                        }
                     }
                     break;
                 case 2:
-                    tempOutputAmplification = KNOB2Ptr->Value();
+                    tempOutputAmplification = toneKnobValue;
                     if(((tempOutputAmplification - outputAmplification) < 0.01f) and ((tempOutputAmplification - outputAmplification) > -0.01f)) {
                         outputAmplification = tempOutputAmplification;
+                        if(toneKnobIsMoving) {
+                            toneKnobLedTimer = 0;
+                        }
+                        if(toneKnobLedTimer < toneKnobLedOnTime) {
+                            ++toneKnobLedTimer;
+                            setAndUpdateGainLeds(outputAmplification,outputAmplification,outputAmplification,outputAmplification);
+                        } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                            toneKnobLedTimer = toneKnobLedOnTime + 1;
+                            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                        }
                     }
                     break;
             }
@@ -410,12 +513,12 @@ void AudioCallback(AudioHandle::InputBuffer in,
         reverb.process(leftInput * minus18dBGain * minus20dBGain * (1.0f + inputAmplification * 7.f),
                     rightInput * minus18dBGain * minus20dBGain * (1.0f + inputAmplification * 7.f));
 
-        volumeChange = (1-0.5*wetOutputVolumeCurve)*(1+(3-3*reverb.tank.decay)*wetOutputVolumeCurve);
+        // volumeChange = (1-0.5*diffusion)*(1+(3-3*reverb.tank.decay)*diffusion);
 
         leftOutput = ((leftInput * dry * 0.1f) + 
-                    (reverb.getLeftOutput() * wet * 2.f * volumeChange)) * (0.25f + outputAmplification * 0.75f);
+                    (reverb.getLeftOutput() * wet * 2.f /* * volumeChange*/)) * (0.25f + outputAmplification * 0.75f);
         rightOutput = ((rightInput * dry * 0.1f) + 
-                    (reverb.getRightOutput() * wet * 2.f * volumeChange)) * (0.25f + outputAmplification * 0.75f);
+                    (reverb.getRightOutput() * wet * 2.f /* * volumeChange*/)) * (0.25f + outputAmplification * 0.75f);
 
         gainControl(leftOutput, rightOutput);
 
@@ -447,7 +550,7 @@ int main(void)
     
     reverb.setInputFilterLowCutoffPitch(-1.f * inputDampLow);
     reverb.setInputFilterHighCutoffPitch(-1.f - (-1.f * inputDampHigh));
-    reverb.enableInputDiffusion(true);
+    reverb.enableInputDiffusion(diffusionEnabled);
     reverb.setDecay(0.847f);
     reverb.setTankDiffusion(0.7f);
     reverb.setTankFilterLowCutFrequency(-1.f * reverbDampLow);
