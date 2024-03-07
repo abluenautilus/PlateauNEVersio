@@ -358,6 +358,7 @@ inline void processSwitches() {
 }
 
 inline void processButton() {
+    checkButton();
     if(buttonState) {
         gainModeLedTimer = 0;
         ++buttonHoldTime;
@@ -421,7 +422,7 @@ inline void processAllParameters() {
 }
 
 inline void getParameters() {
-    checkButton();
+    //checkButton();
     checkSwitches();
     hw.ProcessAnalogControls();
     knobValue0 = KNOB0Ptr->Value();
