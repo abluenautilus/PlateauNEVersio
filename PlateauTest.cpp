@@ -10,8 +10,8 @@ DaisyVersio hw;
 const float minus18dBGain = 0.12589254f;
 const float minus20dBGain = 0.1f;
 
-float wet = 0.5f;
-float dry = 0.5f;
+float wet = 1.0f;
+float dry = 0.0f;
 
 float diffusion = 1.f;
 float tempDiffusion = 1.f;
@@ -56,6 +56,8 @@ bool toneKnobIsMoving = false;
 float toneKnobValue = 0.f;
 float previousToneKnobValue = 0.f;
 
+bool lockModDepthTo3_125_ = false;
+
 bool leds = true;
 
 auto *LED0PtrRed = &hw.leds[0].r_;
@@ -66,6 +68,9 @@ auto *LED3PtrRed = &hw.leds[3].r_;
 Dattorro reverb(32000, 16, 4.0f);
 
 bool diffusionEnabled = true;
+
+float preDelay = 0.f;
+float previousPreDelay = 0.f;
 
 // Fast hyperbolic tangent function.
 inline float softLimiter(const float &x) {
@@ -96,7 +101,7 @@ struct KnobOnePoleFilter {
     }
 
     float processLowpass(const float &x) {
-        tmp = 0.001f * x + 0.999f * tmp;
+        tmp = 0.0005f * x + 0.9995f * tmp;
         return tmp;
     }
 };
@@ -148,6 +153,8 @@ float tempOutputAmplification = outputAmplification;
 float inputAmplification = 0.0f;
 float tempInputAmplification = inputAmplification;
 
+float modDepthValue = 0.f;
+
 inline void getParameters() {
     previousButtonState = buttonState;
     hw.tap.Debounce();
@@ -167,19 +174,36 @@ inline void getParameters() {
 
     reverb.setTankModSpeed(1.f + (KNOB1Ptr->Value() * 100.f));
 
-    reverb.setTankModDepth(0.5f + (modDepthKnobLPF.processLowpass(KNOB3Ptr->Value()) * 16.f));
+    modDepthValue = KNOB3Ptr->Value();
+
+    // Instead of stopping at minimum 0.5f, user has the option to lock to 0.5f
+    // or turn it all the way to 0. This is useful in conjunction with zero diffusion.
+    if(lockModDepthTo3_125_) {
+        reverb.setTankModDepth(0.5f);
+    } else {
+        if(modDepthValue < 0.01f) {
+            reverb.setTankModDepth(0.f);
+        } else {
+            reverb.setTankModDepth(modDepthKnobLPF.processLowpass(modDepthValue) * 16.0f);
+        }
+    }
 
     reverb.setDecay(0.1f + (KNOB4Ptr->Value() * 0.8999f));
 
     reverb.setTimeScale(timeScaleKnobLPF.processLowpass(KNOB5Ptr->Value()) * 4.f);
     
-    // preDelay = KNOB6Ptr->Value();
+    preDelay = preDelayKnobLPF.processLowpass(KNOB6Ptr->Value());
     // if(((preDelay - previousPreDelay) > 0.001f) or ((preDelay - previousPreDelay) < -0.001f)) {
     //     previousPreDelay = preDelay;
-    //     reverb.setPreDelay(static_cast<float>(static_cast<int>(preDelay * 32000.f)));
-    // }
+        if(preDelay < 0.01f) {
+            reverb.setPreDelay(0.f);
+        } else {
+            reverb.setPreDelay(preDelay * 4.f);
+        }
+        
+    //}
 
-    reverb.setPreDelay(preDelayKnobLPF.processLowpass(KNOB6Ptr->Value()) * 4.f);
+    // reverb.setPreDelay(preDelayKnobLPF.processLowpass(KNOB6Ptr->Value()) * 4.f);
 
     if(switchState0 == 2) {
         if(switchState1 == 1) {
@@ -270,11 +294,10 @@ inline void getParameters() {
     if(buttonState) {
         gainModeLedTimer = 0;
         ++buttonHoldTime;
-        // if(buttonHoldTime > 128000) {
-        //     toneKnobLedTimer = 0;
-        //     diffusionEnabled = !diffusionEnabled;
-        //     reverb.enableInputDiffusion(diffusionEnabled);
-        // }
+        if(buttonHoldTime == 128000) {
+            toneKnobLedTimer = 0;
+            lockModDepthTo3_125_ = !lockModDepthTo3_125_;
+        }
     } else {
         if(buttonHoldTime < 8000) {
             if(previousButtonState) {
@@ -288,7 +311,18 @@ inline void getParameters() {
                     tempDiffusion = toneKnobValue;
                     if(((tempDiffusion - diffusion) < 0.01f) and ((tempDiffusion - diffusion) > -0.01f)) {
                         diffusion = tempDiffusion;
-                        reverb.setTankDiffusion(diffusion * 0.7f);
+                        if(diffusion < 0.01f) {
+                            if(diffusionEnabled) {
+                                diffusionEnabled = false;
+                                reverb.enableInputDiffusion(diffusionEnabled);
+                            }
+                        } else {
+                            if(!diffusionEnabled) {
+                                diffusionEnabled = true;
+                                reverb.enableInputDiffusion(diffusionEnabled);
+                            }
+                            reverb.setTankDiffusion(diffusion * 0.7f);
+                        }
                         if(toneKnobIsMoving) {
                             toneKnobLedTimer = 0;
                         }
@@ -546,17 +580,17 @@ int main(void)
     reverb.setSampleRate(32000);
 
     reverb.setTimeScale(4.0f);
-    reverb.setPreDelay(0.345f);
+    reverb.setPreDelay(0.f);
     
     reverb.setInputFilterLowCutoffPitch(-1.f * inputDampLow);
     reverb.setInputFilterHighCutoffPitch(-1.f - (-1.f * inputDampHigh));
-    reverb.enableInputDiffusion(diffusionEnabled);
-    reverb.setDecay(0.847f);
-    reverb.setTankDiffusion(0.7f);
+    reverb.enableInputDiffusion(false);
+    reverb.setDecay(0.5f);
+    reverb.setTankDiffusion(0.f);
     reverb.setTankFilterLowCutFrequency(-1.f * reverbDampLow);
     reverb.setTankFilterHighCutFrequency(-1.f - (-1.f * reverbDampHigh));
-    reverb.setTankModSpeed(1.f);
-    reverb.setTankModDepth(0.5f);
+    reverb.setTankModSpeed(0.5f);
+    reverb.setTankModDepth(8.f);
     reverb.setTankModShape(0.5f);
 
     hw.SetAudioBlockSize(1);
@@ -564,12 +598,13 @@ int main(void)
     hw.seed.audio_handle.SetPostGain(1.0f);
     hw.seed.audio_handle.SetOutputCompensation(1.0f);
 
+    hw.knobs[0].SetCoeff(0.001f);
     hw.knobs[1].SetCoeff(0.01f);
     hw.knobs[2].SetCoeff(0.01f);
-    hw.knobs[3].SetCoeff(0.01f);
+    hw.knobs[3].SetCoeff(0.001f);
     hw.knobs[4].SetCoeff(0.01f);
     hw.knobs[5].SetCoeff(0.01f);
-    hw.knobs[6].SetCoeff(0.01f);
+    hw.knobs[6].SetCoeff(0.001f);
     
     hw.StartAudio(AudioCallback);
 
