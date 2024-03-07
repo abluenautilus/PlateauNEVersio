@@ -29,7 +29,7 @@ float previousReverbDampLow = 0.f;
 float previousReverbDampHigh = 0.f;
 
 unsigned int gainMode = 0;
-unsigned int gainModeLedTimer = 0;
+unsigned int gainModeLedTimer = 32001;
 const unsigned int gainModeLedOnTime = 32000;
 
 float leftInput = 0.f;
@@ -50,7 +50,7 @@ bool buttonState = false;
 bool previousButtonState = false;
 unsigned int buttonHoldTime = 0;
 
-unsigned int toneKnobLedTimer = 0;
+unsigned int toneKnobLedTimer = 32001;
 const unsigned int toneKnobLedOnTime = 32000;
 bool toneKnobIsMoving = false;
 float toneKnobValue = 0.f;
@@ -59,6 +59,11 @@ float previousToneKnobValue = 0.f;
 bool lockModDepthTo3_125_ = false;
 
 bool leds = true;
+
+auto *LED0PtrRed = &hw.leds[0].r_;
+auto *LED1PtrRed = &hw.leds[1].r_;
+auto *LED2PtrRed = &hw.leds[2].r_;
+auto *LED3PtrRed = &hw.leds[3].r_;
 
 Dattorro reverb(32000, 16, 4.0f);
 
@@ -151,12 +156,16 @@ KnobOnePoleFilter preDelayKnobLPF;
 KnobOnePoleFilter timeScaleKnobLPF;
 KnobOnePoleFilter toneKnobLPF;
 
+//These pointers are necessary to speed up the code, otherwise severe crackling occurs.
 inline void setAndUpdateGainLeds(const float &w, const float &x, const float &y, const float &z) {
-    hw.leds[0].Set(w, 0.0, 0.0);
-    hw.leds[1].Set(x, 0.0, 0.0);
-    hw.leds[2].Set(y, 0.0, 0.0);
-    hw.leds[3].Set(z, 0.0, 0.0);
-    hw.UpdateLeds();
+    LED0PtrRed->Set(w);
+    LED1PtrRed->Set(x);
+    LED2PtrRed->Set(y);
+    LED3PtrRed->Set(z);
+    LED0PtrRed->Update();
+    LED1PtrRed->Update();
+    LED2PtrRed->Update();
+    LED3PtrRed->Update();
 }
 
 auto *SWITCH0Ptr = &hw.sw[0];
@@ -180,55 +189,38 @@ float tempInputAmplification = inputAmplification;
 
 float modDepthValue = 0.f;
 
-inline void getParameters() {
+float led1 = 0.f;
+float led2 = 0.f;
+float led3 = 0.f;
+float led4 = 0.f;
+
+inline void prepareLeds(const float &w, const float &x, const float &y, const float &z) {
+    led1 = w;
+    led2 = x;
+    led3 = y;
+    led4 = z;
+}
+
+inline void checkButton() {
     previousButtonState = buttonState;
     hw.tap.Debounce();
     buttonState = hw.tap.Pressed();
+}
 
+inline void checkSwitches() {
     switchState0 = SWITCH0Ptr->Read();
     switchState1 = SWITCH1Ptr->Read();
-    
-    hw.ProcessAnalogControls();
+}
 
-    toneKnobValue = toneKnobLPF.processLowpass(KNOB2Ptr->Value());
-    checkIfToneKnobIsMoving(toneKnobValue);
+float knobValue0 = 0.f;
+float knobValue1 = 0.f;
+float knobValue2 = 0.f;
+float knobValue3 = 0.f;
+float knobValue4 = 0.f;
+float knobValue5 = 0.f;
+float knobValue6 = 0.f;
 
-    wet = mixKnobLPF.processLowpass(KNOB0Ptr->Value());
-    dry = 1.f - wet;
-
-    reverb.setTankModSpeed(1.f + (KNOB1Ptr->Value() * 100.f));
-
-    modDepthValue = KNOB3Ptr->Value();
-
-    // Instead of stopping at minimum 0.5f, user has the option to lock to 0.5f
-    // or turn it all the way to 0. This is useful in conjunction with zero diffusion.
-    if(lockModDepthTo3_125_) {
-        reverb.setTankModDepth(0.5f);
-    } else {
-        if(modDepthValue < 0.01f) {
-            reverb.setTankModDepth(0.f);
-        } else {
-            reverb.setTankModDepth(modDepthKnobLPF.processLowpass(modDepthValue) * 16.0f);
-        }
-    }
-
-    reverb.setDecay(0.1f + (KNOB4Ptr->Value() * 0.8999f));
-
-    reverb.setTimeScale(timeScaleKnobLPF.processLowpass(KNOB5Ptr->Value()) * 4.f);
-    
-    preDelay = preDelayKnobLPF.processLowpass(KNOB6Ptr->Value());
-    // if(((preDelay - previousPreDelay) > 0.001f) or ((preDelay - previousPreDelay) < -0.001f)) {
-    //     previousPreDelay = preDelay;
-        if(preDelay < 0.01f) {
-            reverb.setPreDelay(0.f);
-        } else {
-            reverb.setPreDelay(preDelay * 4.f);
-        }
-        
-    //}
-
-    // reverb.setPreDelay(preDelayKnobLPF.processLowpass(KNOB6Ptr->Value()) * 4.f);
-
+inline void processSwitches() {
     if(switchState0 == 2) {
         if(switchState1 == 1) {
             inputDampHigh = toneKnobValue;
@@ -240,15 +232,11 @@ inline void getParameters() {
                 }
                 if(toneKnobLedTimer < toneKnobLedOnTime) {
                     ++toneKnobLedTimer;
-                    setAndUpdateGainLeds(0.f,inputDampHigh,0.f,0.f);
+                    prepareLeds(0.f,inputDampHigh,0.f,0.f);
                 } else if (toneKnobLedTimer == toneKnobLedOnTime) {
                     toneKnobLedTimer = toneKnobLedOnTime + 1;
-                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                    prepareLeds(0.f,0.f,0.f,0.f);
                 }
-                // if(leds) {
-                //     LED1PtrRed->Set(inputDampHigh);
-                //     LED1PtrRed->Update();
-                // }
             }
         } else if (switchState1 == 2) {
             reverbDampHigh = toneKnobValue;
@@ -260,15 +248,11 @@ inline void getParameters() {
                 }
                 if(toneKnobLedTimer < toneKnobLedOnTime) {
                     ++toneKnobLedTimer;
-                    setAndUpdateGainLeds(0.f,0.f,0.f,reverbDampHigh);
+                    prepareLeds(0.f,0.f,0.f,reverbDampHigh);
                 } else if (toneKnobLedTimer == toneKnobLedOnTime) {
                     toneKnobLedTimer = toneKnobLedOnTime + 1;
-                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                    prepareLeds(0.f,0.f,0.f,0.f);
                 }
-                // if(leds) {
-                //     LED3PtrRed->Set(reverbDampHigh);
-                //     LED3PtrRed->Update();
-                // }
             }
         }
     } else if(switchState0 == 1) {
@@ -282,15 +266,11 @@ inline void getParameters() {
                 }   
                 if(toneKnobLedTimer < toneKnobLedOnTime) {
                     ++toneKnobLedTimer;
-                    setAndUpdateGainLeds(inputDampLow,0.f,0.f,0.f);
+                    prepareLeds(inputDampLow,0.f,0.f,0.f);
                 } else if (toneKnobLedTimer == toneKnobLedOnTime) {
                     toneKnobLedTimer = toneKnobLedOnTime + 1;
-                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                    prepareLeds(0.f,0.f,0.f,0.f);
                 }
-                // if(leds) {
-                //     LED0PtrRed->Set(inputDampLow);
-                //     LED0PtrRed->Update();
-                // }
             }
         } else if (switchState1 == 2) {
             reverbDampLow = toneKnobValue;
@@ -302,22 +282,86 @@ inline void getParameters() {
                 }
                 if(toneKnobLedTimer < toneKnobLedOnTime) {
                     ++toneKnobLedTimer;
-                    setAndUpdateGainLeds(0.f,0.f,reverbDampLow,0.f);
+                    prepareLeds(0.f,0.f,reverbDampLow,0.f);
                 } else if (toneKnobLedTimer == toneKnobLedOnTime) {
                     toneKnobLedTimer = toneKnobLedOnTime + 1;
-                    setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+                    prepareLeds(0.f,0.f,0.f,0.f);
                 }
-                // if(leds) {
-                //     LED2PtrRed->Set(reverbDampLow);
-                //     LED2PtrRed->Update();
-                // }
             }
         }
     }
 
+    if(switchState1 == 0) {
+        switch(switchState0) {
+            case 0:
+                tempDiffusion = toneKnobValue;
+                if(((tempDiffusion - diffusion) < 0.01f) and ((tempDiffusion - diffusion) > -0.01f)) {
+                    diffusion = tempDiffusion;
+                    if(diffusion < 0.01f) {
+                        if(diffusionEnabled) {
+                            diffusionEnabled = false;
+                            reverb.enableInputDiffusion(diffusionEnabled);
+                        }
+                    } else {
+                        if(!diffusionEnabled) {
+                            diffusionEnabled = true;
+                            reverb.enableInputDiffusion(diffusionEnabled);
+                        }
+                        reverb.setTankDiffusion(diffusion * 0.7f);
+                    }
+                    if(toneKnobIsMoving) {
+                        toneKnobLedTimer = 0;
+                    }
+                    if(toneKnobLedTimer < toneKnobLedOnTime) {
+                        ++toneKnobLedTimer;
+                        prepareLeds(diffusion,diffusion,diffusion,diffusion);
+                    } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                        toneKnobLedTimer = toneKnobLedOnTime + 1;
+                        prepareLeds(0.f,0.f,0.f,0.f);
+                    }
+                }
+                break;
+            case 1:
+                tempInputAmplification = toneKnobValue;
+                if(((tempInputAmplification - inputAmplification) < 0.01f) and ((tempInputAmplification - inputAmplification) > -0.01f)) {
+                    inputAmplification = tempInputAmplification;
+                    if(toneKnobIsMoving) {
+                        toneKnobLedTimer = 0;
+                    }
+                    if(toneKnobLedTimer < toneKnobLedOnTime) {
+                        ++toneKnobLedTimer;
+                        prepareLeds(inputAmplification,inputAmplification,inputAmplification,inputAmplification);
+                    } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                        toneKnobLedTimer = toneKnobLedOnTime + 1;
+                        prepareLeds(0.f,0.f,0.f,0.f);
+                    }
+                }
+                break;
+            case 2:
+                tempOutputAmplification = toneKnobValue;
+                if(((tempOutputAmplification - outputAmplification) < 0.01f) and ((tempOutputAmplification - outputAmplification) > -0.01f)) {
+                    outputAmplification = tempOutputAmplification;
+                    if(toneKnobIsMoving) {
+                        toneKnobLedTimer = 0;
+                    }
+                    if(toneKnobLedTimer < toneKnobLedOnTime) {
+                        ++toneKnobLedTimer;
+                        prepareLeds(outputAmplification,outputAmplification,outputAmplification,outputAmplification);
+                    } else if (toneKnobLedTimer == toneKnobLedOnTime) {
+                        toneKnobLedTimer = toneKnobLedOnTime + 1;
+                        prepareLeds(0.f,0.f,0.f,0.f);
+                    }
+                }
+                break;
+        }
+    }
+}
+
+inline void processButton() {
     if(buttonState) {
         gainModeLedTimer = 0;
-        if(buttonHoldTime >= 128000) {
+        ++buttonHoldTime;
+        if(buttonHoldTime == 128000) {
             toneKnobLedTimer = 0;
             lockModDepthTo3_125_ = !lockModDepthTo3_125_;
         }
@@ -329,71 +373,64 @@ inline void getParameters() {
             }
         }
         buttonHoldTime = 0;
-        if(switchState1 == 0) {
-            switch(switchState0) {
-                case 0:
-                    tempDiffusion = toneKnobValue;
-                    if(((tempDiffusion - diffusion) < 0.01f) and ((tempDiffusion - diffusion) > -0.01f)) {
-                        diffusion = tempDiffusion;
-                        if(diffusion < 0.01f) {
-                            if(diffusionEnabled) {
-                                diffusionEnabled = false;
-                                reverb.enableInputDiffusion(diffusionEnabled);
-                            }
-                        } else {
-                            if(!diffusionEnabled) {
-                                diffusionEnabled = true;
-                                reverb.enableInputDiffusion(diffusionEnabled);
-                            }
-                            reverb.setTankDiffusion(diffusion * 0.7f);
-                        }
-                        if(toneKnobIsMoving) {
-                            toneKnobLedTimer = 0;
-                        }
-                        if(toneKnobLedTimer < toneKnobLedOnTime) {
-                            ++toneKnobLedTimer;
-                            setAndUpdateGainLeds(diffusion,diffusion,diffusion,diffusion);
-                        } else if (toneKnobLedTimer == toneKnobLedOnTime) {
-                            toneKnobLedTimer = toneKnobLedOnTime + 1;
-                            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
-                        }
-                    }
-                    break;
-                case 1:
-                    tempInputAmplification = toneKnobValue;
-                    if(((tempInputAmplification - inputAmplification) < 0.01f) and ((tempInputAmplification - inputAmplification) > -0.01f)) {
-                        inputAmplification = tempInputAmplification;
-                        if(toneKnobIsMoving) {
-                            toneKnobLedTimer = 0;
-                        }
-                        if(toneKnobLedTimer < toneKnobLedOnTime) {
-                            ++toneKnobLedTimer;
-                            setAndUpdateGainLeds(inputAmplification,inputAmplification,inputAmplification,inputAmplification);
-                        } else if (toneKnobLedTimer == toneKnobLedOnTime) {
-                            toneKnobLedTimer = toneKnobLedOnTime + 1;
-                            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
-                        }
-                    }
-                    break;
-                case 2:
-                    tempOutputAmplification = toneKnobValue;
-                    if(((tempOutputAmplification - outputAmplification) < 0.01f) and ((tempOutputAmplification - outputAmplification) > -0.01f)) {
-                        outputAmplification = tempOutputAmplification;
-                        if(toneKnobIsMoving) {
-                            toneKnobLedTimer = 0;
-                        }
-                        if(toneKnobLedTimer < toneKnobLedOnTime) {
-                            ++toneKnobLedTimer;
-                            setAndUpdateGainLeds(outputAmplification,outputAmplification,outputAmplification,outputAmplification);
-                        } else if (toneKnobLedTimer == toneKnobLedOnTime) {
-                            toneKnobLedTimer = toneKnobLedOnTime + 1;
-                            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
-                        }
-                    }
-                    break;
-            }
+    }
+}
+
+inline void processAllParameters() {
+    if ((gainModeLedTimer > gainModeLedOnTime) and (!toneKnobIsMoving)) {
+        prepareLeds(leftInput * minus20dBGain, rightInput * minus20dBGain, leftOutput, rightOutput);
+    }
+
+    toneKnobValue = toneKnobLPF.processLowpass(knobValue2);
+    checkIfToneKnobIsMoving(toneKnobValue);
+
+    wet = mixKnobLPF.processLowpass(knobValue0);
+    dry = 1.f - wet;
+
+    reverb.setTankModSpeed(0.5f + (knobValue1 * 100.f));
+
+    modDepthValue = knobValue3;
+
+    // Instead of stopping at minimum 0.5f, user has the option to lock to 0.5f
+    // or turn it all the way to 0. This is useful in conjunction with zero diffusion.
+    if(lockModDepthTo3_125_) {
+        reverb.setTankModDepth(0.5f);
+    } else {
+        if(modDepthValue < 0.01f) {
+            reverb.setTankModDepth(0.f);
+        } else {
+            reverb.setTankModDepth(modDepthKnobLPF.processLowpass(modDepthValue) * 16.0f);
         }
     }
+
+    reverb.setDecay(0.1f + (knobValue4 * 0.8999f));
+
+    reverb.setTimeScale(timeScaleKnobLPF.processLowpass(knobValue5) * 4.f);
+    
+    preDelay = preDelayKnobLPF.processLowpass(knobValue6);
+
+    if(preDelay < 0.01f) {
+        reverb.setPreDelay(0.f);
+    } else {
+        reverb.setPreDelay(preDelay * 4.f);
+    }
+
+    processSwitches();
+
+    processButton();
+}
+
+inline void getParameters() {
+    checkButton();
+    checkSwitches();
+    hw.ProcessAnalogControls();
+    knobValue0 = KNOB0Ptr->Value();
+    knobValue1 = KNOB1Ptr->Value();
+    knobValue2 = KNOB2Ptr->Value();
+    knobValue3 = KNOB3Ptr->Value();
+    knobValue4 = KNOB4Ptr->Value();
+    knobValue5 = KNOB5Ptr->Value();
+    knobValue6 = KNOB6Ptr->Value();
 }
 
 // Is mutating the output this way a mortal sin?
@@ -404,10 +441,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = softLimiter(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,1.f);
+            prepareLeds(0.f,0.f,0.f,1.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 1:
@@ -417,10 +454,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = hardLimit77_8_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,1.f,0.f);
+            prepareLeds(0.f,0.f,1.f,0.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 2:
@@ -428,10 +465,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = hardLimit100_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,1.f,1.f);
+            prepareLeds(0.f,0.f,1.f,1.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 3:
@@ -439,10 +476,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = hardLimit85_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,1.f,0.f,0.f);
+            prepareLeds(0.f,1.f,0.f,0.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 4:
@@ -454,10 +491,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = softLimiter(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,1.f,0.f,1.f);
+            prepareLeds(0.f,1.f,0.f,1.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 5:
@@ -469,10 +506,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = softLimiter(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,1.f,1.f,0.f);
+            prepareLeds(0.f,1.f,1.f,0.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 6:
@@ -484,10 +521,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = hardLimit77_8_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,1.f,1.f,1.f);
+            prepareLeds(0.f,1.f,1.f,1.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 7:
@@ -499,10 +536,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = softLimiter(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(1.f,0.f,0.f,0.f);
+            prepareLeds(1.f,0.f,0.f,0.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 8:
@@ -514,10 +551,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = softLimiter(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(1.f,0.f,0.f,1.f);
+            prepareLeds(1.f,0.f,0.f,1.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 9:
@@ -527,10 +564,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = hardLimit100_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(1.f,0.f,1.f,0.f);
+            prepareLeds(1.f,0.f,1.f,0.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 10:
@@ -540,10 +577,10 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
         rightOutput = hardLimit85_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(1.f,0.f,1.f,1.f);
+            prepareLeds(1.f,0.f,1.f,1.f);
         } else if (gainModeLedTimer == gainModeLedOnTime) {
             ++gainModeLedTimer;
-            setAndUpdateGainLeds(0.f,0.f,0.f,0.f);
+            prepareLeds(0.f,0.f,0.f,0.f);
         }
         break;
     case 11:
@@ -557,10 +594,7 @@ void AudioCallback(AudioHandle::InputBuffer in,
               size_t size)
 {
     for(size_t i = 0; i < size; i += 1) {
-
-        if (buttonState) {
-            ++buttonHoldTime;
-        }
+        processAllParameters();
 
         if(holdCount < 192000)
             ++holdCount;
@@ -573,12 +607,10 @@ void AudioCallback(AudioHandle::InputBuffer in,
         reverb.process(leftInput * minus18dBGain * minus20dBGain * (1.0f + inputAmplification * 7.f),
                     rightInput * minus18dBGain * minus20dBGain * (1.0f + inputAmplification * 7.f));
 
-        // volumeChange = (1-0.5*diffusion)*(1+(3-3*reverb.tank.decay)*diffusion);
-
         leftOutput = ((leftInput * dry * 0.1f) + 
-                    (reverb.getLeftOutput() * wet * 2.f /* * volumeChange*/)) * (0.25f + outputAmplification * 0.75f);
+                    (reverb.getLeftOutput() * wet * 2.f)) * (0.25f + outputAmplification * 0.75f);
         rightOutput = ((rightInput * dry * 0.1f) + 
-                    (reverb.getRightOutput() * wet * 2.f /* * volumeChange*/)) * (0.25f + outputAmplification * 0.75f);
+                    (reverb.getRightOutput() * wet * 2.f)) * (0.25f + outputAmplification * 0.75f);
 
         gainControl(leftOutput, rightOutput);
 
@@ -643,7 +675,7 @@ int main(void)
 
     hw.StartAdc();
 
-    // LEDs indicate that we are ready to go
+	// LEDs indicate that we are ready to go
     hw.leds[0].Set(1, 0, 0);
     hw.leds[1].Set(1, 1, 0);
     hw.leds[2].Set(0, 1, 0);
@@ -656,17 +688,8 @@ int main(void)
     hw.leds[3].Set(0, 0, 0);
     hw.UpdateLeds();
 
-
 	while(1) {
-
         getParameters();
-
-        if (!buttonState) {
-            hw.leds[0].Set(leftInput,leftInput/2,0.f);
-            hw.leds[1].Set(leftInput,leftInput/2,0.f);
-            hw.leds[2].Set(leftOutput,leftOutput/2,0.f);
-            hw.leds[3].Set(leftOutput,leftOutput/2,0.f);
-            hw.UpdateLeds();
-        }
+        setAndUpdateGainLeds(led1, led2, led3, led4);
     }
 }
