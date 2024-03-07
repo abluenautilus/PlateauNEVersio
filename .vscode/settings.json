@@ -1,0 +1,16 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "${workspaceFolder}/build",
+            "binaryPath": "${workspaceFolder}/build/PlateauTest.elf",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "cstring": "cpp",
+        "random": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp"
+    }
+}

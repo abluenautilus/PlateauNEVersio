@@ -60,17 +60,45 @@ bool lockModDepthTo3_125_ = false;
 
 bool leds = true;
 
-auto *LED0PtrRed = &hw.leds[0].r_;
-auto *LED1PtrRed = &hw.leds[1].r_;
-auto *LED2PtrRed = &hw.leds[2].r_;
-auto *LED3PtrRed = &hw.leds[3].r_;
-
 Dattorro reverb(32000, 16, 4.0f);
 
 bool diffusionEnabled = true;
 
 float preDelay = 0.f;
 float previousPreDelay = 0.f;
+
+// Persistence
+struct Settings {
+    int gainMode;
+    bool operator!=(const Settings& a) {
+        return a.gainMode != gainMode;
+    }
+};
+Settings& operator* (const Settings& settings) { return *settings; }
+PersistentStorage<Settings> storage(hw.seed.qspi);
+
+inline void saveData() {
+
+    //
+    // Save settings to QSPI
+    //
+
+    Settings &localSettings = storage.GetSettings();
+    localSettings.gainMode = gainMode;
+    storage.Save();
+}
+
+inline void loadData() {
+
+    //
+    // Load settings from QSPI
+    //
+
+    Settings &localSettings = storage.GetSettings();
+    gainMode = localSettings.gainMode;
+
+}
+
 
 // Fast hyperbolic tangent function.
 inline float softLimiter(const float &x) {
@@ -124,14 +152,11 @@ KnobOnePoleFilter timeScaleKnobLPF;
 KnobOnePoleFilter toneKnobLPF;
 
 inline void setAndUpdateGainLeds(const float &w, const float &x, const float &y, const float &z) {
-    LED0PtrRed->Set(w);
-    LED1PtrRed->Set(x);
-    LED2PtrRed->Set(y);
-    LED3PtrRed->Set(z);
-    LED0PtrRed->Update();
-    LED1PtrRed->Update();
-    LED2PtrRed->Update();
-    LED3PtrRed->Update();
+    hw.leds[0].Set(w, 0.0, 0.0);
+    hw.leds[1].Set(x, 0.0, 0.0);
+    hw.leds[2].Set(y, 0.0, 0.0);
+    hw.leds[3].Set(z, 0.0, 0.0);
+    hw.UpdateLeds();
 }
 
 auto *SWITCH0Ptr = &hw.sw[0];
@@ -164,7 +189,6 @@ inline void getParameters() {
     switchState1 = SWITCH1Ptr->Read();
     
     hw.ProcessAnalogControls();
-
 
     toneKnobValue = toneKnobLPF.processLowpass(KNOB2Ptr->Value());
     checkIfToneKnobIsMoving(toneKnobValue);
@@ -293,8 +317,7 @@ inline void getParameters() {
 
     if(buttonState) {
         gainModeLedTimer = 0;
-        ++buttonHoldTime;
-        if(buttonHoldTime == 128000) {
+        if(buttonHoldTime >= 128000) {
             toneKnobLedTimer = 0;
             lockModDepthTo3_125_ = !lockModDepthTo3_125_;
         }
@@ -302,6 +325,7 @@ inline void getParameters() {
         if(buttonHoldTime < 8000) {
             if(previousButtonState) {
                 ++gainMode;
+                saveData();
             }
         }
         buttonHoldTime = 0;
@@ -534,7 +558,9 @@ void AudioCallback(AudioHandle::InputBuffer in,
 {
     for(size_t i = 0; i < size; i += 1) {
 
-        getParameters();
+        if (buttonState) {
+            ++buttonHoldTime;
+        }
 
         if(holdCount < 192000)
             ++holdCount;
@@ -565,17 +591,24 @@ int main(void)
 {
 	hw.Init(true);
 
+    // LEDs indicate we are starting up
+    hw.leds[0].Set(1, 0, 0);
+    hw.leds[1].Set(1, 0, 0);
+    hw.leds[2].Set(1, 0, 0);
+    hw.leds[3].Set(1, 0, 0);
+    hw.UpdateLeds();
+
     for(int i = 0; i < 50; i++) {
         for(int j = 0; j < 144000; j++) {
             sdramData[i][j] = 0.f;
         }
     }
 
-    hw.leds[0].Set(0, 0, 0);
-    hw.leds[0].Set(0, 0, 0);
-    hw.leds[0].Set(0, 0, 0);
-    hw.leds[0].Set(0, 0, 0);
-    hw.UpdateLeds();
+    // Setup default settings and load saved data
+    Settings defaults;
+    defaults.gainMode = 0;
+    storage.Init(defaults);
+    loadData();
 
     reverb.setSampleRate(32000);
 
@@ -610,5 +643,30 @@ int main(void)
 
     hw.StartAdc();
 
-	while(1) {}
+    // LEDs indicate that we are ready to go
+    hw.leds[0].Set(1, 0, 0);
+    hw.leds[1].Set(1, 1, 0);
+    hw.leds[2].Set(0, 1, 0);
+    hw.leds[3].Set(0, 0, 1);
+    hw.UpdateLeds();
+    System::Delay(500);
+    hw.leds[0].Set(0, 0, 0);
+    hw.leds[1].Set(0, 0, 0);
+    hw.leds[2].Set(0, 0, 0);
+    hw.leds[3].Set(0, 0, 0);
+    hw.UpdateLeds();
+
+
+	while(1) {
+
+        getParameters();
+
+        if (!buttonState) {
+            hw.leds[0].Set(leftInput,leftInput/2,0.f);
+            hw.leds[1].Set(leftInput,leftInput/2,0.f);
+            hw.leds[2].Set(leftOutput,leftOutput/2,0.f);
+            hw.leds[3].Set(leftOutput,leftOutput/2,0.f);
+            hw.UpdateLeds();
+        }
+    }
 }
