@@ -1,11 +1,78 @@
 #define DSJ_PLATEAU_HPP
 
 #include "Dattorro.hpp"
+#include "signalsmith/envelopes.h"
+#include "signalsmith/delay.h"
 
 using namespace daisy;
 using namespace daisysp;
 
+struct ExponentialRelease {
+	float releaseSlew;
+	float output = 1;
+	
+	ExponentialRelease(float releaseSamples = 1280) {
+		// The exact value is `1 - exp(-1/releaseSamples)`
+		// but this is a decent approximation
+		releaseSlew = 1/(releaseSamples + 1);
+	}
+	
+	float step(float input) {
+		// Move towards input
+		output += (input - output)*releaseSlew;
+		output = std::min(output, input);
+		return output;
+	}
+};
+
+struct LimiterAttackHoldRelease {
+    // Desired dB limit is -10dB -> e^(-10dB / 20) = x = 0.6065
+	float limit = 0.6065f;
+	float attackMs = 150;
+	float holdMs = 0;
+	float releaseMs = 600;
+	
+	signalsmith::envelopes::PeakHold<float> peakHold{0};
+	signalsmith::envelopes::BoxStackFilter<float> smoother{0};
+	// We don't need fractional delays, so this could be nearest-sample
+	signalsmith::delay::Delay<float> delay;
+	ExponentialRelease release; // see the previous example code
+	
+	int attackSamples = 0;
+	void configure(float sampleRate) {
+		attackSamples = attackMs*0.001*sampleRate;
+		int holdSamples = holdMs*0.001*sampleRate;
+		float releaseSamples = releaseMs*0.001*sampleRate;
+		release = ExponentialRelease(releaseSamples);
+
+		peakHold.resize(attackSamples + holdSamples);
+		smoother.resize(attackSamples, 3);
+		smoother.reset(1);
+		
+		delay.resize(attackSamples + 1);
+	}
+	int latencySamples() {
+		return attackSamples;
+	}
+	
+	inline float gain(const float &v) {
+		float maxGain = 1;
+		if (std::abs(v) > limit) {
+			maxGain = limit/std::abs(v);
+		}
+        
+		return smoother(release.step(-peakHold(-maxGain)));
+
+	}
+
+	float sample(const float &v) {
+		return delay.write(v).read(attackSamples) * gain(v);
+	}
+};
+
 DaisyVersio hw;
+
+LimiterAttackHoldRelease limiter;
 
 const float minus18dBGain = 0.12589254f;
 const float minus20dBGain = 0.1f;
@@ -28,7 +95,7 @@ float previousInputDampHigh = 0.f;
 float previousReverbDampLow = 0.f;
 float previousReverbDampHigh = 0.f;
 
-unsigned int gainMode = 0;
+uint32_t gainMode = 0;
 unsigned int gainModeLedTimer = 32001;
 const unsigned int gainModeLedOnTime = 32000;
 
@@ -43,8 +110,6 @@ unsigned int holdCount = 0;
 
 float inputVolumeModifier = 1.f;
 float tempInputVolumeModifier = inputVolumeModifier;
-// float diffusion = 0.f;
-// float tempDiffusion = diffusion;
 
 bool buttonState = false;
 bool previousButtonState = false;
@@ -113,71 +178,76 @@ unsigned int saveTimer = 0;
 bool saveToggle = false; 
 unsigned int saveTime = 32000;
 
-// Persistence
-struct Settings {
-    int gainMode;
-    float inputDampLow;
-    float inputDampHigh;
-    float reverbDampLow;
-    float reverbDampHigh;
-    float diffusion;
-    float inputAmplification;
-    float outputAmplification;
-    bool operator!=(const Settings& a) {
-        return (a.gainMode != gainMode)
-        and (a.inputDampLow != inputDampLow)
-        and (a.inputDampHigh != inputDampHigh)
-        and (a.reverbDampLow != reverbDampLow)
-        and (a.reverbDampHigh != reverbDampHigh)
-        and (a.diffusion != diffusion)
-        and (a.inputAmplification != inputAmplification)
-        and (a.outputAmplification != outputAmplification);
-    }
-};
-Settings& operator* (const Settings& settings) { return *settings; }
-PersistentStorage<Settings> storage(hw.seed.qspi);
+bool clear = false;
+bool triggerClear = false;
 
-inline void saveData() {
+// // Persistence
+// struct Settings {
+//     uint32_t gainMode;
+//     float inputDampLow;
+//     float inputDampHigh;
+//     float reverbDampLow;
+//     float reverbDampHigh;
+//     float diffusion;
+//     float inputAmplification;
+//     float outputAmplification;
+//     bool operator!=(const Settings& a) {
+//         return (a.gainMode != gainMode)
+//         and (a.inputDampLow != inputDampLow)
+//         and (a.inputDampHigh != inputDampHigh)
+//         and (a.reverbDampLow != reverbDampLow)
+//         and (a.reverbDampHigh != reverbDampHigh)
+//         and (a.diffusion != diffusion)
+//         and (a.inputAmplification != inputAmplification)
+//         and (a.outputAmplification != outputAmplification);
+//     }
+// }
+//  __attribute__((aligned(4)));
 
-    //
-    // Save settings to QSPI
-    //
+// Settings& operator* (const Settings& settings) { return *settings; }
+// PersistentStorage<Settings> storage(hw.seed.qspi);
 
-    Settings &localSettings = storage.GetSettings();
-    localSettings.gainMode = gainMode;
-    localSettings.inputDampLow = inputDampLow;
-    localSettings.inputDampHigh = inputDampHigh;
-    localSettings.reverbDampLow = reverbDampLow;
-    localSettings.reverbDampHigh = reverbDampHigh;
-    localSettings.diffusion = diffusion;
-    localSettings.inputAmplification = inputAmplification;
-    localSettings.outputAmplification = outputAmplification;
+// inline void saveData() {
 
-    storage.Save();
-}
+//     //
+//     // Save settings to QSPI
+//     //
 
-inline void loadData() {
+//     Settings &localSettings = storage.GetSettings();
+//     localSettings.gainMode = gainMode;
+//     localSettings.inputDampLow = inputDampLow;
+//     localSettings.inputDampHigh = inputDampHigh;
+//     localSettings.reverbDampLow = reverbDampLow;
+//     localSettings.reverbDampHigh = reverbDampHigh;
+//     localSettings.diffusion = diffusion;
+//     localSettings.inputAmplification = inputAmplification;
+//     localSettings.outputAmplification = outputAmplification;
 
-    //
-    // Load settings from QSPI
-    //
+//     storage.Save();
+// }
 
-    Settings &localSettings = storage.GetSettings();
-    gainMode = localSettings.gainMode;
-    inputDampLow = localSettings.inputDampLow;
-    inputDampHigh = localSettings.inputDampHigh;
-    reverbDampLow = localSettings.reverbDampLow;
-    reverbDampHigh = localSettings.reverbDampHigh;
-    diffusion = localSettings.diffusion;
-    inputAmplification = localSettings.inputAmplification;
-    outputAmplification = localSettings.outputAmplification;
+// inline void loadData() {
 
-}
+//     //
+//     // Load settings from QSPI
+//     //
+
+//     Settings &localSettings = storage.GetSettings();
+//     gainMode = localSettings.gainMode;
+//     inputDampLow = localSettings.inputDampLow;
+//     inputDampHigh = localSettings.inputDampHigh;
+//     reverbDampLow = localSettings.reverbDampLow;
+//     reverbDampHigh = localSettings.reverbDampHigh;
+//     diffusion = localSettings.diffusion;
+//     inputAmplification = localSettings.inputAmplification;
+//     outputAmplification = localSettings.outputAmplification;
+
+// }
 
 
 // Fast hyperbolic tangent function.
 inline float softLimiter(const float &x) {
-    return x * (27.f + x * x) / (27.f + 9.f * x * x);
+   return limiter.sample(x);
 }
 
 inline float hardLimit77_8_(const float &x) {
@@ -394,7 +464,6 @@ inline void processSwitches() {
 }
 
 inline void processButton() {
-    checkButton();
     if(buttonState) {
         gainModeLedTimer = 0;
         if(buttonHoldTime == 128000) {
@@ -425,6 +494,18 @@ inline void interpolatingDelayHold() {
 }
 
 inline void processAllParameters() {
+
+    // Putting this here for larger audio block sizes.
+    // Quick knob update times means less noise
+    hw.ProcessAnalogControls();
+    knobValue0 = KNOB0Ptr->Value();
+    knobValue1 = KNOB1Ptr->Value();
+    knobValue2 = KNOB2Ptr->Value();
+    knobValue3 = KNOB3Ptr->Value();
+    knobValue4 = KNOB4Ptr->Value();
+    knobValue5 = KNOB5Ptr->Value();
+    knobValue6 = KNOB6Ptr->Value();
+
     // If the tone knob is not moving and the mode LEDs are not shining, show audio IO levels on LEDs
     if ((gainModeLedTimer > gainModeLedOnTime) and (!toneKnobIsMoving)) {
         prepareLeds(leftInput * minus20dBGain, rightInput * minus20dBGain, leftOutput, rightOutput);
@@ -438,9 +519,9 @@ inline void processAllParameters() {
         toneKnobZeroLockValue = 0.f;
     }
 
-    // Mix knob can be more free. Mix knob is very susceptible to noise along with pre-delay, mod depth, and time scale
+    // Mix knob locks to zero and one. Mix knob is very susceptible to noise along with pre-delay, mod depth, and time scale
     // These knobs are thus ran through one pole LPFs. It is important these 1 pole LPFs are evaluated at audio rate.
-    wet = mixKnobLPF.processLowpass(knobValue0);
+    wet = mixKnobLPF.processLowpass((knobValue0 > 0.99f) * 1.f + (knobValue0 >= 0.01f) * knobValue0 * (knobValue0 <= 0.99f));
     dry = 1.f - wet;
 
     // As with mix, mod speed need not be locked to zero. Mod speed is not succeptible to noise
@@ -473,19 +554,6 @@ inline void processAllParameters() {
     reverb.setPreDelay(preDelay);
 
     processSwitches();
-}
-
-inline void getParameters() {
-    //checkButton();
-    checkSwitches();
-    hw.ProcessAnalogControls();
-    knobValue0 = KNOB0Ptr->Value();
-    knobValue1 = KNOB1Ptr->Value();
-    knobValue2 = KNOB2Ptr->Value();
-    knobValue3 = KNOB3Ptr->Value();
-    knobValue4 = KNOB4Ptr->Value();
-    knobValue5 = KNOB5Ptr->Value();
-    knobValue6 = KNOB6Ptr->Value();
 }
 
 inline void saveCounterAudioRate() {
@@ -667,6 +735,18 @@ void AudioCallback(AudioHandle::InputBuffer in,
 
         saveCounterAudioRate();
 
+        // Didn't work... Project for later
+        // // Clear buffers. Fingers crossed it works.
+        // if(triggerClear) {
+        //     reverb.clear();
+        //         for(int i = 0; i < 50; i++) {
+        //             for(int j = 0; j < 144000; j++) {
+        //                 sdramData[i][j] = 0.f;
+        //             }
+        //         }   
+        //     triggerClear = false;
+        // }
+
         leftInput = in[0][i] * 10.f;
         rightInput = in[1][i] * 10.f;
 
@@ -685,9 +765,13 @@ void AudioCallback(AudioHandle::InputBuffer in,
     }
 };
 
+float maxLoad = 0.f;
+
 int main(void)
 {
 	hw.Init(true);
+
+    limiter.configure(32000);
 
     // LEDs indicate we are starting up
     hw.leds[0].Set(1, 0, 0);
@@ -702,18 +786,19 @@ int main(void)
         }
     }
 
-    // Setup default settings and load saved data
-    Settings defaults;
-    defaults.gainMode = gainMode;
-    defaults.inputDampLow = inputDampLow;
-    defaults.inputDampHigh = inputDampHigh;
-    defaults.reverbDampLow = reverbDampLow;
-    defaults.reverbDampHigh = reverbDampHigh;
-    defaults.diffusion = diffusion;
-    defaults.inputAmplification = inputAmplification;
-    defaults.outputAmplification = outputAmplification;
-    storage.Init(defaults);
-    loadData();
+    // // Setup default settings and load saved data
+    // Settings defaults;
+    // defaults.gainMode = 0;
+    // defaults.inputDampLow = 0.f;
+    // defaults.inputDampHigh = 0.f;
+    // defaults.reverbDampLow = 0.f;
+    // defaults.reverbDampHigh = 0.f;
+    // defaults.diffusion = 0.f;
+    // defaults.inputAmplification = 0.f;
+    // defaults.outputAmplification = 0.f;
+    // storage.Init(defaults);
+    // storage.RestoreDefaults();
+    // loadData();
 
     reverb.setSampleRate(32000);
 
@@ -722,7 +807,7 @@ int main(void)
     
     reverb.setInputFilterLowCutoffPitch(-1.f * inputDampLow);
     reverb.setInputFilterHighCutoffPitch(-1.f - (-1.f * inputDampHigh));
-    reverb.enableInputDiffusion(false);
+    reverb.enableInputDiffusion(true);
     reverb.setDecay(0.5f);
     reverb.setTankDiffusion(diffusion * 0.7f);
     reverb.setTankFilterLowCutFrequency(-1.f * reverbDampLow);
@@ -731,7 +816,7 @@ int main(void)
     reverb.setTankModDepth(8.f);
     reverb.setTankModShape(0.5f);
 
-    hw.SetAudioBlockSize(1);
+    hw.SetAudioBlockSize(32);
 	hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_32KHZ);
     hw.seed.audio_handle.SetPostGain(1.0f);
     hw.seed.audio_handle.SetOutputCompensation(1.0f);
@@ -762,12 +847,15 @@ int main(void)
     hw.UpdateLeds();
 
 	while(1) {
-        getParameters();
+        checkSwitches();
+        // Process switches occurs at audio rate in the callback
+        checkButton();
         processButton();
+        // The button LED counter occurs at audio rate
         setAndUpdateGainLeds(led1, led2, led3, led4);
-        if(saveToggle) {
-            saveData();
-            saveToggle = false;
-        }
+        // if(saveToggle) {
+        //     saveData();
+        //     saveToggle = false;
+        // }
     }
 }
