@@ -43,7 +43,8 @@ void Dattorro1997Tank::process(const float leftIn, const float rightIn,
                                float* leftOut, float* rightOut) {
     tickApfModulation();
 
-    decay = frozen ? 1.f : decayParam;
+    //decay = frozen ? 1.f : decayParam;
+    decay = decayParam;
 
     leftSum += leftIn;
     rightSum += rightIn;
@@ -98,11 +99,11 @@ void Dattorro1997Tank::freeze(bool freezeFlag) {
     frozen = freezeFlag;
     if (frozen) {
         fadeDir = -1.f;
-        decay = 1.f;
+        //decay = 1.f;
     }
     else {
         fadeDir = 1.f;
-        decay = decayParam;
+        //decay = decayParam;
     }
 }
 

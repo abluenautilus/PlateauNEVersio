@@ -7,7 +7,7 @@
 using namespace daisy;
 using namespace daisysp;
 
-uint32_t *sdramPtr = (uint32_t *)0xC0000000;
+
 
 struct ExponentialRelease {
 	float releaseSlew;
@@ -28,9 +28,8 @@ struct ExponentialRelease {
 };
 
 struct LimiterAttackHoldRelease {
-    // Desired dB limit is -10dB -> e^(-10dB / 20) = x = 0.6065
-	float limit = 0.6065f;
-	float attackMs = 150;
+	float limit = 0.85f;
+	float attackMs = 10;
 	float holdMs = 0;
 	float releaseMs = 600;
 	
@@ -115,7 +114,17 @@ float tempInputVolumeModifier = inputVolumeModifier;
 
 bool buttonState = false;
 bool previousButtonState = false;
-unsigned int buttonHoldTime = 0;
+unsigned int buttonHoldTimer = 0;
+unsigned int buttonOffTimer = 0;
+unsigned int buttonConfirmTime = 32000;
+
+bool confirmationSequence = false;
+bool confirmationSequenceOne = false;
+bool confirmationSequenceTwo = false;
+unsigned int confirmationSequenceCounter = 0;
+unsigned int confirmationSequenceTimer = 0;
+unsigned int buttonMode = 0;
+
 
 unsigned int toneKnobLedTimer = 32001;
 const unsigned int toneKnobLedOnTime = 32000;
@@ -181,7 +190,9 @@ bool saveToggle = false;
 unsigned int saveTime = 32000;
 
 bool clear = false;
-bool triggerClear = false;
+
+// bool clear = false;
+// bool triggerClear = false;
 
 // // Persistence
 // struct Settings {
@@ -287,9 +298,10 @@ KnobOnePoleFilter preDelayKnobLPF;
 KnobOnePoleFilter timeScaleKnobLPF;
 KnobOnePoleFilter toneKnobLPF;
 KnobOnePoleFilter toneKnobZeroLockLPF;
+KnobOnePoleFilter decayKnobLPF;
 
 unsigned int lockModDepthTime = 320000;
-unsigned int bufferClearTriggerWindow = 8000;
+unsigned int bufferClearTriggerWindow = 32000;
 
 unsigned int genericLedOnTime = 32000;
 unsigned int genericLedTimer = genericLedOnTime + 1;
@@ -336,7 +348,7 @@ inline void prepareGenericLed() {
 inline void checkButton() {
     previousButtonState = buttonState;
     hw.tap.Debounce();
-    buttonState = hw.tap.Pressed();
+    buttonState = hw.tap.Pressed() or !hw.gate.State();
 }
 
 inline void checkSwitches() {
@@ -481,6 +493,7 @@ inline void processSwitches() {
     }
 }
 
+bool freeze = false;
 
 // On falling edge, if button or cv is released within 0.25s
 // buffers are cleared, otherwise if button is released before 10
@@ -488,28 +501,56 @@ inline void processSwitches() {
 // mod depth is locked/unlocked to 3.125%.
 inline void processButton() {
     if(buttonState) {
-        if (buttonHoldTime == lockModDepthTime) {
-            buttonHoldTime = lockModDepthTime + 1;
+        if(buttonHoldTimer == 320000) {
+            ++buttonHoldTimer;
             genericLedTimer = 0;
-            lockModDepthTo3_125_ = !lockModDepthTo3_125_;
+        } 
+        if(buttonMode == 2) {
+            freeze = true;
+        }
+        if(!previousButtonState) {
+            if(confirmationSequence) {
+                if(genericLedTimer < genericLedOnTime) {
+                    if(buttonMode == 2) {
+                        buttonMode = 0;
+                    } else {
+                        ++buttonMode;
+                    }
+                    confirmationSequence = false;
+                } else {
+                    if(buttonMode == 0) {
+                        lockModDepthTo3_125_ = !lockModDepthTo3_125_;
+                    }
+                    confirmationSequence = false;
+                }
+            }
+            if(buttonMode == 1) {
+                genericLedTimer = 0;
+                clear = true;
+            }
         }
     } else {
-        if(buttonHoldTime < bufferClearTriggerWindow) {
-            if(previousButtonState) {
-                genericLedTimer = 0;
-                triggerClear = true;
-            }
-        } else if(buttonHoldTime < lockModDepthTime) {
-            gainModeLedTimer = 0;
-            ++gainMode;
+        if(buttonMode == 2) {
+            freeze = false;
         }
-        buttonHoldTime = 0;
+        if(previousButtonState) {
+            if((buttonHoldTimer > 320000) and (buttonHoldTimer < 352000)) {
+                confirmationSequence = true;
+            }
+            if(buttonMode == 0) {
+                if (buttonHoldTimer < 320000) {
+                    gainModeLedTimer = 0;
+                    ++gainMode;
+                }
+            }
+        }
+        buttonHoldTimer = 0;
     }
 }
 
 inline void incrementButtonHoldCounterAudioRate() {
     if(buttonState) {
-        ++buttonHoldTime;
+        ++buttonHoldTimer;
     }
 }
 
@@ -568,7 +609,9 @@ inline void processAllParameters() {
     }
 
     // Minimum value in VCV rack is 0.1f. In addition, the decay setting is not succeptible to noise.
-    reverb.setDecay(0.1f + (knobValue4 * 0.8999f));
+    // In order for the freeze parameter to not cause any noise, a low pass filter must be applied
+    // to the decay param to smoothly move from 100% decay to whatever value is present on the knob.
+    reverb.setDecay(decayKnobLPF.processLowpass(freeze?1.f:(0.1f + (knobValue4 * 0.8999f))));
 
     // Time scale is very succeptible to noise. It need not be locked to zero though.
     reverb.setTimeScale(timeScaleKnobLPF.processLowpass(knobValue5) * 4.f);
@@ -755,8 +798,8 @@ void AudioCallback(AudioHandle::InputBuffer in,
               size_t size)
 {
     for(size_t i = 0; i < size; i += 1) { 
-
-
+        reverb.freeze(freeze);
+        
         processAllParameters();
 
         incrementButtonHoldCounterAudioRate();
@@ -767,6 +810,8 @@ void AudioCallback(AudioHandle::InputBuffer in,
 
         prepareGenericLed();
 
+
+    
         leftInput = in[0][i] * 10.f;
         rightInput = in[1][i] * 10.f;
 
@@ -782,6 +827,11 @@ void AudioCallback(AudioHandle::InputBuffer in,
 
         out[0][i] = leftOutput;
         out[1][i] = rightOutput;
+
+        if(clear) {
+            triggerClear = true;
+            clear = false;
+        }
     }
 };
 
