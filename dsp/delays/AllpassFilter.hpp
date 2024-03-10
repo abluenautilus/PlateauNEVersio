@@ -4,12 +4,12 @@
 class AllpassFilter {
 public:
     AllpassFilter() {
-        clear();
+        //clear();
         gain = 0.f;
     }
 
     AllpassFilter(int maxDelay, int initDelay = 0, float gain = 0.f) {
-        clear();
+        //clear();
         delay = InterpDelay(maxDelay, initDelay);
         this->gain = gain;
     }

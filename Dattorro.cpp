@@ -120,7 +120,7 @@ void Dattorro1997Tank::setSampleRate(const float newSampleRate) {
     rescaleTapTimes();
     setTimeScale(timeScale);
     initialiseDelaysAndApfs();
-    clear();
+    //clear();
 }
 
 #pragma GCC push_options
@@ -395,7 +395,7 @@ void Dattorro::setSampleRate(float newSampleRate) {
     inputLpf.setSampleRate(sampleRate);
     inputHpf.setSampleRate(sampleRate);
 
-    clear();
+    //clear();
 }
 
 void Dattorro::freeze(bool freezeFlag) {

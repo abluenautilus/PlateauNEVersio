@@ -7,6 +7,8 @@
 using namespace daisy;
 using namespace daisysp;
 
+uint32_t *sdramPtr = (uint32_t *)0xC0000000;
+
 struct ExponentialRelease {
 	float releaseSlew;
 	float output = 1;
@@ -286,6 +288,12 @@ KnobOnePoleFilter timeScaleKnobLPF;
 KnobOnePoleFilter toneKnobLPF;
 KnobOnePoleFilter toneKnobZeroLockLPF;
 
+unsigned int lockModDepthTime = 320000;
+unsigned int bufferClearTriggerWindow = 8000;
+
+unsigned int genericLedOnTime = 32000;
+unsigned int genericLedTimer = genericLedOnTime + 1;
+
 inline void checkIfToneKnobIsMoving(float currentValue) {
     if (((currentValue - previousToneKnobValue) > 0.001f) or ((currentValue - previousToneKnobValue) < -0.001f)) {
         previousToneKnobValue = currentValue;
@@ -313,6 +321,16 @@ inline void prepareLeds(const float &w, const float &x, const float &y, const fl
     led2 = x;
     led3 = y;
     led4 = z;
+}
+
+inline void prepareGenericLed() {
+    if(genericLedTimer < genericLedOnTime) {
+        ++genericLedTimer;
+        prepareLeds(1.f,1.f,1.f,1.f);
+    } else if (genericLedTimer == genericLedOnTime) {
+        genericLedTimer = genericLedOnTime + 1;
+        prepareLeds(0.f,0.f,0.f,0.f);
+    }
 }
 
 inline void checkButton() {
@@ -463,18 +481,27 @@ inline void processSwitches() {
     }
 }
 
+
+// On falling edge, if button or cv is released within 0.25s
+// buffers are cleared, otherwise if button is released before 10
+// seconds, gain mode is changed. If button is held for 10 seconds
+// mod depth is locked/unlocked to 3.125%.
 inline void processButton() {
     if(buttonState) {
-        gainModeLedTimer = 0;
-        if(buttonHoldTime == 128000) {
-            toneKnobLedTimer = 0;
+        if (buttonHoldTime == lockModDepthTime) {
+            buttonHoldTime = lockModDepthTime + 1;
+            genericLedTimer = 0;
             lockModDepthTo3_125_ = !lockModDepthTo3_125_;
         }
     } else {
-        if(buttonHoldTime < 8000) {
+        if(buttonHoldTime < bufferClearTriggerWindow) {
             if(previousButtonState) {
-                ++gainMode;
+                genericLedTimer = 0;
+                triggerClear = true;
             }
+        } else if(buttonHoldTime < lockModDepthTime) {
+            gainModeLedTimer = 0;
+            ++gainMode;
         }
         buttonHoldTime = 0;
     }
@@ -722,11 +749,14 @@ inline void gainControl(float &leftOutput, float &rightOutput) {
     }
 }
 
+//unsigned int counter = 0;
 void AudioCallback(AudioHandle::InputBuffer in,
               AudioHandle::OutputBuffer out,
               size_t size)
 {
-    for(size_t i = 0; i < size; i += 1) {
+    for(size_t i = 0; i < size; i += 1) { 
+
+
         processAllParameters();
 
         incrementButtonHoldCounterAudioRate();
@@ -735,17 +765,7 @@ void AudioCallback(AudioHandle::InputBuffer in,
 
         saveCounterAudioRate();
 
-        // Didn't work... Project for later
-        // // Clear buffers. Fingers crossed it works.
-        // if(triggerClear) {
-        //     reverb.clear();
-        //         for(int i = 0; i < 50; i++) {
-        //             for(int j = 0; j < 144000; j++) {
-        //                 sdramData[i][j] = 0.f;
-        //             }
-        //         }   
-        //     triggerClear = false;
-        // }
+        prepareGenericLed();
 
         leftInput = in[0][i] * 10.f;
         rightInput = in[1][i] * 10.f;
@@ -857,5 +877,11 @@ int main(void)
         //     saveData();
         //     saveToggle = false;
         // }
+
+        // Clear buffers. Fingers crossed it works.
+        if(triggerClear) {
+            reverb.clear();
+            triggerClear = false;
+        }
     }
 }
