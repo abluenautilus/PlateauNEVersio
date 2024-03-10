@@ -94,6 +94,9 @@ public:
     #pragma GCC pop_options
 
     void clear() {
+        // for(int i = 0; i < l; ++i) {
+        //     sdramData[bufferNumber][i] = 0;
+        // }
         input = 0.f;
         output = 0.f;
     }
