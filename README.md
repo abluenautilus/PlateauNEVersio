@@ -1,15 +1,36 @@
-## Plateau for Nosie Engineering's Versio
+## "Campestria Versio" - Dale Johnson's Valley Plateau for Noise Engineering's Versio
 
 Firmware port of Valley's Plateau for the Noise Engineering Versio product line. Includes output threshold clipper 
 and output scaling to preserve the signal while it passes through output opamps no matter how much distortion is present.
 
+If you're on WIndows, read this to reset your USB driver for use with programming the Versio:
+
+https://github.com/electro-smith/DaisyWiki/wiki/Using-Zadig-to-Reset-USB-Driver-(Windows-Only)
+
+See here to program your Versio:
+https://electro-smith.github.io/Programmer/
+
+There is also a help section on this page.
+
+See release section of the GitHub to see changes and to download the .bin to program your Versio!
+
 ## To-do:
 
-Implement low cut and high cut filters on the tank and on the inputs
-
-Implement freeze function
+Save filter and gain settings on power down
 
 ## Build Log
+
+## Version 1.11 & 1.111 03/06/2024
+
+See release section of the GitHub to see changes and to download the .bin to program your Versio!
+
+## Version 1.1 03/05/2024
+
+See release section of the GitHub to see changes and to download the .bin to program your Versio!
+
+## Version 1.0 02/29/2024
+
+See release section of the GitHub to see changes and to download the .bin to program your Versio!
 
 ## Version 0.91a, 02/27/2024
 
