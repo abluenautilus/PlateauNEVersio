@@ -24,26 +24,26 @@ namespace envelopes {
 			\diagram{cubic-lfo-spectrum-pure.svg}
 	*/
 	class CubicLfo {
-		float ratio = 0;
-		float ratioStep = 0;
+		double ratio = 0;
+		double ratioStep = 0;
 		
-		float valueFrom = 0, valueTo = 1, valueRange = 1;
-		float targetLow = 0, targetHigh = 1;
-		float targetRate = 0;
-		float rateRandom = 0.5, depthRandom = 0;
+		double valueFrom = 0, valueTo = 1, valueRange = 1;
+		double targetLow = 0, targetHigh = 1;
+		double targetRate = 0;
+		double rateRandom = 0.5, depthRandom = 0;
 		bool freshReset = true;
 		
 		std::default_random_engine randomEngine;
-		std::uniform_real_distribution<float> randomUnit;
-		float random() {
+		std::uniform_real_distribution<double> randomUnit;
+		double random() {
 			return randomUnit(randomEngine);
 		}
-		float randomRate() {
+		double randomRate() {
 			return targetRate*exp(rateRandom*(random() - 0.5));
 		}
-		float randomTarget(float previous) {
-			float randomOffset = depthRandom*random()*(targetLow - targetHigh);
-			if (previous < (targetLow + targetHigh)*0.5f) {
+		double randomTarget(double previous) {
+			double randomOffset = depthRandom*random()*(targetLow - targetHigh);
+			if (previous < (targetLow + targetHigh)*0.5) {
 				return targetHigh + randomOffset;
 			} else {
 				return targetLow - randomOffset;
@@ -82,28 +82,28 @@ namespace envelopes {
 		`depthVariation` must be in the range [0, 1], where ≤ 0.5 produces random amplitude but still alternates up/down.
 			\diagram{cubic-lfo-spectrum.svg,Spectra for the two types of randomisation - note the jump as depth variation goes past 50%}
 		*/
-		void set(float low, float high, float rate, float rateVariation=0, float depthVariation=0) {
+		void set(double low, double high, double rate, double rateVariation=0, double depthVariation=0) {
 			rate *= 2; // We want to go up and down during this period
 			targetRate = rate;
 			targetLow = std::min(low, high);
 			targetHigh = std::max(low, high);
 			rateRandom = rateVariation;
-			depthRandom = std::min<float>(1, std::max<float>(0, depthVariation));
+			depthRandom = std::min<double>(1, std::max<double>(0, depthVariation));
 			
 			// If we haven't called .next() yet, don't bother being smooth.
 			if (freshReset) return reset();
 
 			// Only update the current rate if it's outside our new random-variation range
-			float maxRandomRatio = exp((float)0.5*rateRandom);
+			double maxRandomRatio = exp((double)0.5*rateRandom);
 			if (ratioStep > rate*maxRandomRatio || ratioStep < rate/maxRandomRatio) {
 				ratioStep = randomRate();
 			}
 		}
 		
 		/// Returns the next output sample
-		float next() {
+		double next() {
 			freshReset = false;
-			float result = ratio*ratio*(3 - 2*ratio)*valueRange + valueFrom;
+			double result = ratio*ratio*(3 - 2*ratio)*valueRange + valueFrom;
 
 			ratio += ratioStep;
 			while (ratio >= 1) {

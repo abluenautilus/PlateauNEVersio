@@ -14,9 +14,9 @@
 
 class OnePoleLPFilter {
 public:
-    // OnePoleLPFilter(float cutoffFreq = 22049.0, float initSampleRate = 32000.0);
-    // OnePoleLPFilter(float cutoffFreq = 14080.0, float initSampleRate = 32000.0);
-    OnePoleLPFilter(float cutoffFreq = -1.f, float initSampleRate = 32000.0f) {
+    // OnePoleLPFilter(double cutoffFreq = 22049.0, double initSampleRate = 32000.0);
+    // OnePoleLPFilter(double cutoffFreq = 14080.0, double initSampleRate = 32000.0);
+    OnePoleLPFilter(double cutoffFreq = 22049.0, double initSampleRate = 32000.0) {
         setSampleRate(initSampleRate);
         setCutoffFreq(cutoffFreq);
     }
@@ -24,7 +24,7 @@ public:
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    inline float process() {
+    inline double process() {
         _z =  _a * input + _z * _b;
         output = _z;
         return output;
@@ -33,57 +33,67 @@ public:
     #pragma GCC pop_options
 
     void clear() {
-        input = 0.0f;
-        _z = 0.0f;
-        output = 0.0f;
+        input = 0.0;
+        _z = 0.0;
+        output = 0.0;
     }
 
-    void setSampleRate(float sampleRate) {
+    void setSampleRate(double sampleRate) {
         _sampleRate = sampleRate;
-        _1_sampleRate_pi = (1.0f / sampleRate) * -_2M_PI;
-        _maxCutoffFreq = sampleRate / 2.0f - 1.0f;
+        _1_sampleRate_pi = (1.0 / sampleRate) * -_2M_PI;
+        _maxCutoffFreq = sampleRate / 2.0 - 1.0;
         setCutoffFreq(_cutoffFreq);
     }
 
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    inline void setCutoffFreq(const float &cutoffFreq) {
-        // if (cutoffFreq == _cutoffFreq) {
-        //     return;
-        // }
+    // inline void setCutoffFreq(const double &cutoffFreq) {
+    //     // if (cutoffFreq == _cutoffFreq) {
+    //     //     return;
+    //     // }
+
+    //     _cutoffFreq = cutoffFreq;
+    //     // _b = expf(-_2M_PI * _cutoffFreq * _1_sampleRate);
+    //     // Using a linear equation instead of exponential because
+    //     // it uses less operations. Not sure if it will make any
+    //     // difference. This holds for the expected {-1 < x < 0}
+    //     // _b = (0.361 * _cutoffFreq) + 1.;
+    //     _b = _cutoffFreq + 1.;
+    //     // _b = (0.361 * -_cutoffFreq * _1_sampleRate_pi) + 1;
+    //     _a = 1.0 - _b;
+    // }
+
+    inline void setCutoffFreq(double cutoffFreq) {
+        if (cutoffFreq == _cutoffFreq) {
+            return;
+        }
 
         _cutoffFreq = cutoffFreq;
-        // _b = expf(-_2M_PI * _cutoffFreq * _1_sampleRate);
-        // Using a linear equation instead of exponential because
-        // it uses less operations. Not sure if it will make any
-        // difference. This holds for the expected {-1 < x < 0}
-        // _b = (0.361f * _cutoffFreq) + 1.f;
-        _b = _cutoffFreq + 1.f;
-        // _b = (0.361 * -_cutoffFreq * _1_sampleRate_pi) + 1;
-        _a = 1.0f - _b;
+        _b = expf(_cutoffFreq * _1_sampleRate_pi);
+        _a = 1.0 - _b;
     }
 
     #pragma GCC pop_options
 
-    float input = 0.0f;
-    float output = 0.0f;
+    double input = 0.0;
+    double output = 0.0;
 private:
-    float _sampleRate = 32000.0f;
-    float _1_sampleRate_pi = (1.0f / _sampleRate) * -_2M_PI;
-    float _cutoffFreq = 0.0f;
-    float _maxCutoffFreq = _sampleRate / 2.0f;
-    float _a = 0.0f;
-    float _b = 0.0f;
-    float _z = 0.0f;
+    double _sampleRate = 32000.0;
+    double _1_sampleRate_pi = (1.0 / _sampleRate) * -_2M_PI;
+    double _cutoffFreq = 0.0;
+    double _maxCutoffFreq = _sampleRate / 2.0;
+    double _a = 0.0;
+    double _b = 0.0;
+    double _z = 0.0;
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 class OnePoleHPFilter {
 public:
-    // OnePoleHPFilter(float initCutoffFreq = 10.0, float initSampleRate = 32000.0);
-    OnePoleHPFilter(float initCutoffFreq = 0.0f, float initSampleRate = 32000.0f) {
+    // OnePoleHPFilter(double initCutoffFreq = 10.0, double initSampleRate = 32000.0);
+    OnePoleHPFilter(double initCutoffFreq = 10.0, double initSampleRate = 32000.0) {
         setSampleRate(initSampleRate);
         setCutoffFreq(initCutoffFreq);
         clear();
@@ -92,7 +102,7 @@ public:
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    inline float process() {
+    inline double process() {
         _x0 = input;
         _y0 = _a0 * _x0 + _a1 * _x1 + _b1 * _y1;
         _y1 = _y0;
@@ -104,55 +114,66 @@ public:
     #pragma GCC pop_options
 
     void clear() {
-        input = 0.0f;
-        output = 0.0f;
-        _x0 = 0.0f;
-        _x1 = 0.0f;
-        _y0 = 0.0f;
-        _y1 = 0.0f;
+        input = 0.0;
+        output = 0.0;
+        _x0 = 0.0;
+        _x1 = 0.0;
+        _y0 = 0.0;
+        _y1 = 0.0;
     }
 
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    inline void setCutoffFreq(const float &cutoffFreq) {
-        // if (cutoffFreq == _cutoffFreq) {
-        //     return;
-        // }
+    // inline void setCutoffFreq(const double &cutoffFreq) {
+    //     // if (cutoffFreq == _cutoffFreq) {
+    //     //     return;
+    //     // }
         
+    //     _cutoffFreq = cutoffFreq;
+    //     // See above.
+    //     _b1 = _cutoffFreq + 1.;
+    //     // _b1 = (0.361 * _cutoffFreq) + 1.;
+    //     // _b1 = (0.361 * _cutoffFreq * _1_sampleRate_pi) + 1;
+    //     // _b1 = expf(-_2M_PI * _cutoffFreq * _1_sampleRate);
+    //     // _a0 = (1.0 + _b1) / 2.0;
+    //     _a0 = (1.0 + _b1) * 0.5;
+    //     _a1 = -_a0;
+    // }
+
+    void setCutoffFreq(double cutoffFreq) {
+        if (cutoffFreq == _cutoffFreq) {
+            return;
+        }
+
         _cutoffFreq = cutoffFreq;
-        // See above.
-        _b1 = _cutoffFreq + 1.f;
-        // _b1 = (0.361f * _cutoffFreq) + 1.f;
-        // _b1 = (0.361 * _cutoffFreq * _1_sampleRate_pi) + 1;
-        // _b1 = expf(-_2M_PI * _cutoffFreq * _1_sampleRate);
-        // _a0 = (1.0f + _b1) / 2.0f;
-        _a0 = (1.0f + _b1) * 0.5f;
+        _b1 = expf(_cutoffFreq * _1_sampleRate_pi);
+        _a0 = (1.0 + _b1) / 2.0;
         _a1 = -_a0;
     }
 
     #pragma GCC pop_options
 
-    void setSampleRate(float sampleRate) {
+    void setSampleRate(double sampleRate) {
         _sampleRate = sampleRate;
-        _1_sampleRate_pi = (1.0f / sampleRate) * -_2M_PI;
-        _maxCutoffFreq = sampleRate / 2.0f - 1.0f;
+        _1_sampleRate_pi = (1.0 / sampleRate) * -_2M_PI;
+        _maxCutoffFreq = sampleRate / 2.0 - 1.0;
         setCutoffFreq(_cutoffFreq);
         clear();
     }
 
-    float input = 0.0f;
-    float output = 0.0f;
+    double input = 0.0;
+    double output = 0.0;
 private:
-    float _sampleRate = 32000.0f;
-    float _1_sampleRate_pi = (1.0f / _sampleRate) * -_2M_PI;
-    float _cutoffFreq = 0.0f;
-    float _maxCutoffFreq = _sampleRate / 2.0f - 1.0f;
-    float _y0 = 0.0f;
-    float _y1 = 0.0f;
-    float _x0 = 0.0f;
-    float _x1 = 0.0f;
-    float _a0 = 0.0f;
-    float _a1 = 0.0f;
-    float _b1 = 0.0f;
+    double _sampleRate = 32000.0;
+    double _1_sampleRate_pi = (1.0 / _sampleRate) * -_2M_PI;
+    double _cutoffFreq = 0.0;
+    double _maxCutoffFreq = _sampleRate / 2.0 - 1.0;
+    double _y0 = 0.0;
+    double _y1 = 0.0;
+    double _x0 = 0.0;
+    double _x1 = 0.0;
+    double _a0 = 0.0;
+    double _a1 = 0.0;
+    double _b1 = 0.0;
 };

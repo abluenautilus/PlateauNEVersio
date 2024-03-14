@@ -54,7 +54,7 @@ namespace rates {
 			
 			// Modify the contents at the higher rate
 			for (int c = 0; c < 2; ++c) {
-				float *channel = oversampler[c];
+				double *channel = oversampler[c];
 				for (int i = 0; i < bufferLength*2; ++i) {
 					channel[i] = std::abs(channel[i]);
 				}

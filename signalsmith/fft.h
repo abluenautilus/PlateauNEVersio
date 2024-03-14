@@ -70,9 +70,9 @@ namespace signalsmith { namespace fft {
 		};
 	}
 
-	/** Floating-point FFT implementation.
+	/** doubleing-point FFT implementation.
 	It is fast for 2^a * 3^b.
-	Here are the peak and RMS errors for `float`/`double` computation:
+	Here are the peak and RMS errors for `double`/`double` computation:
 	\diagram{fft-errors.svg Simulated errors for pure-tone harmonic inputs\, compared to a theoretical upper bound from "Roundoff error analysis of the fast Fourier transform" (G. Ramos, 1971)}
 	*/
 	template<typename V=double>
