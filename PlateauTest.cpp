@@ -316,7 +316,7 @@ inline void rippedSpeakerLeft(double& x, double threshold) {
     if(rippedCountLeft < holdSamples) {
         ++rippedCountLeft;
         leftValue = 0.;
-    } else {
+    } else if (rippedCountLeft == holdSamples) {
         rippedCountLeft = holdSamples + 1;
         leftValue = 1.;
     }
@@ -331,7 +331,7 @@ inline void rippedSpeakerRight(double& x, double threshold) {
     if(rippedCountRight < holdSamples) {
         ++rippedCountRight;
         rightValue = 0.;
-    } else {
+    } else if (rippedCountRight == holdSamples) {
         rippedCountRight = holdSamples + 1;
         rightValue = 1.;
     }
@@ -936,6 +936,31 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
     softLimiter(leftOutput, rightOutput);
 }
 
+struct PopFilter {
+	double tmp = 0.;
+
+	PopFilter() {
+        inline double processLowpass(const double &x);
+    }
+
+    double processLowpass(const double &x) {
+        tmp = 0.1 * x + 0.9 * tmp;
+        return tmp;
+    }
+};
+
+PopFilter clearPopFilter;
+double clearPopCancelValue = 1.f;
+
+inline void prepareToClear() {
+    if(clear) {
+        triggerClear = true;
+        clear = false;
+    }
+
+    clearPopCancelValue = clearPopFilter.processLowpass(!triggerClear);
+}
+
 //unsigned int counter = 0;
 void AudioCallback(AudioHandle::InputBuffer x,
               AudioHandle::OutputBuffer out,
@@ -950,10 +975,10 @@ void AudioCallback(AudioHandle::InputBuffer x,
 
         interpolatingDelayHold();
 
-        // saveCounterAudioRate();
-
         prepareGenericLed();
-    
+
+        prepareToClear();
+        
         leftInput = hardLimit100_(x[0][i]) * 10.;
         rightInput = hardLimit100_(x[1][i]) * 10.;
 
@@ -961,19 +986,14 @@ void AudioCallback(AudioHandle::InputBuffer x,
                     rightInput * minus18dBGain * minus20dBGain * (1.0 + inputAmplification * 7.));
 
         leftOutput = ((leftInput * dry * 0.1) + 
-                    (reverb.getLeftOutput() * wet));
+                    (reverb.getLeftOutput() * wet * clearPopCancelValue));
         rightOutput = ((rightInput * dry * 0.1) + 
-                    (reverb.getRightOutput() * wet));
+                    (reverb.getRightOutput() * wet * clearPopCancelValue));
 
         gainControl(leftOutput, rightOutput);
 
         out[0][i] = leftOutput;
         out[1][i] = rightOutput;
-
-        if(clear) {
-            triggerClear = true;
-            clear = false;
-        }
     }
 };
 
@@ -1007,16 +1027,6 @@ int main(void)
     defaults.gainMode = 0;
     storage.Init(defaults);
     loadData();
-    
-    //hw.seed.system.GetMemoryRegion();
-    //*qspiPtr = gainMode;
-
-    // // Setup default settings and load saved data
-    // Settings defaults;
-    // defaults.gainMode = 0;
-    // storage.Init(defaults);
-    // storage.RestoreDefaults();
-    // loadData();
 
     reverb.setSampleRate(32000);
 
@@ -1065,11 +1075,6 @@ int main(void)
     hw.UpdateLeds();
 
 	while(1) {
-        // if(saveTrigger) {
-        //     saveData();
-        //     saveTrigger = false;
-        // }
-
         checkSwitches();
         // Process switches occurs at audio rate x the callback
         checkButton();
@@ -1079,7 +1084,9 @@ int main(void)
 
         // Clear buffers. Fingers crossed it works.
         if(triggerClear) {
+            hw.seed.system.Delay(50);
             reverb.clear();
+            hw.seed.system.Delay(50);
             triggerClear = false;
         }
     }
