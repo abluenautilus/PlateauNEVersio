@@ -949,13 +949,12 @@ struct PopFilter {
     }
 
     double processLowpass(const double &x) {
-        tmp = 0.1 * x + 0.9 * tmp;
+        tmp = 0.01 * x + 0.99 * tmp;
         return tmp;
     }
 };
 
 PopFilter clearPopFilter;
-double clearPopCancelValue = 1.f;
 
 inline void prepareToClear() {
     if(clear) {
@@ -964,6 +963,11 @@ inline void prepareToClear() {
     }
 
     clearPopCancelValue = clearPopFilter.processLowpass(!triggerClear);
+
+    if(clearPopCancelValue > 1 - 1e-30) {
+        clearPopFilter.tmp = 1.;
+        clearPopCancelValue = 1.;
+    }
 }
 
 //unsigned int counter = 0;
@@ -987,8 +991,8 @@ void AudioCallback(AudioHandle::InputBuffer x,
         leftInput = hardLimit100_(x[0][i]) * 10.;
         rightInput = hardLimit100_(x[1][i]) * 10.;
 
-        reverb.process(leftInput * minus18dBGain * minus20dBGain * (1.0 + inputAmplification * 7.),
-                    rightInput * minus18dBGain * minus20dBGain * (1.0 + inputAmplification * 7.));
+        reverb.process(leftInput * minus18dBGain * minus20dBGain * (1.0 + inputAmplification * 7.) * clearPopCancelValue,
+                    rightInput * minus18dBGain * minus20dBGain * (1.0 + inputAmplification * 7.) * clearPopCancelValue);
 
         leftOutput = ((leftInput * dry * 0.1) + 
                     (reverb.getLeftOutput() * wet * clearPopCancelValue));
@@ -1087,12 +1091,20 @@ int main(void)
         // The button LED counter occurs at audio rate
         setAndUpdateGainLeds(led1, led2, led3, led4);
 
-        // Clear buffers. Fingers crossed it works.
-        if(triggerClear) {
-            hw.seed.system.Delay(50);
-            reverb.clear();
-            hw.seed.system.Delay(50);
-            triggerClear = false;
+        if(clearPopCancelValue < 1e-30) {
+            if(triggerClear) {
+                clearPopFilter.tmp = 0.;
+                clearPopCancelValue = 0.;
+                reverb.clear();
+                triggerClear = false;
+            }
         }
+        // Clear buffers. Fingers crossed it works.
+        // if(triggerClear) {
+        //     if(clearPopCancelValue < 0.0001) {
+        //         reverb.clear();
+        //     }
+            
+        // }
     }
 }

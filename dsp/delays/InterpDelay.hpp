@@ -7,6 +7,7 @@ extern float DSY_SDRAM_BSS sdramData[50][144000];
 extern unsigned int count;
 extern double hold;
 extern bool triggerClear;
+extern double clearPopCancelValue;
 
 class InterpDelay {
 public:
@@ -43,7 +44,7 @@ public:
     #pragma GCC optimize ("Ofast")
 
     inline void process() {
-        if(!triggerClear) {
+        //if(!triggerClear) {
             sdramData[bufferNumber][w] = input;
             r = w - t;
             
@@ -62,9 +63,13 @@ public:
             }
 
             dataR = sdramData[bufferNumber][r];
+            dataUpperR = sdramData[bufferNumber][upperR];
+            
+            dataR *= clearPopCancelValue;
+            dataUpperR *= clearPopCancelValue;
 
-            output = hold * (dataR + f * (sdramData[bufferNumber][upperR] - dataR));
-        }
+            output = hold * (dataR + f * (dataUpperR - dataR));
+        //}
     }
 
     #pragma GCC pop_options
@@ -97,7 +102,7 @@ public:
     #pragma GCC pop_options
 
     void clear() {
-        //uint32_t **tempPtr = (uint32_t**)sdramData;
+        // uint32_t **tempPtr = (uint32_t**)sdramData;
         for(int i = 0; i < l; ++i) {
             sdramData[bufferNumber][i] = uint32_t(0);
         }
