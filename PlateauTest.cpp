@@ -568,6 +568,11 @@ inline void processSwitches() {
 // In freeze mode, holding the button will freeze the buffers.
 inline void processButton() {
     if(buttonState) {
+        if(buttonMode == 0) { 
+            if(buttonHoldTimer < 160000) {
+                gainModeLedTimer = 0;
+            }
+        }
         if(buttonHoldTimer == 320000) {
             ++buttonHoldTimer;
             genericLedTimer = 0;
@@ -619,7 +624,7 @@ inline void processButton() {
                 confirmationSequence = true;
             }
             if(buttonMode == 0) {
-                if (buttonHoldTimer < 320000) {
+                if (buttonHoldTimer < 8000) {
                     gainModeLedTimer = 0;
                     ++gainMode;
                     saveData();
