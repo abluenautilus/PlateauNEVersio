@@ -248,7 +248,7 @@ inline void loadData() {
 }
 
 inline void saturation(double &x) {
-    x = x * ( 27. + x * x ) / ( 27. + 9. * x * x );;
+    x = x * ( 27. + x * x ) / ( 27. + 9. * x * x );
 }
 
 // Fast hyperbolic tangent function.
@@ -779,10 +779,11 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Same clipper as VCV rack. Lower clip threshold by turning tone knob up with output dynamic setting selected.
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
-        hardClipGain = (1. - outputAmplification);
+        hardClipGain = (1. - outputAmplification) * (1. - outputAmplification);
         leftOutput = hardClip(leftOutput);
         rightOutput = hardClip(rightOutput);
-        modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        // modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        modifier = 1. + ((1. / (hardClipGain + 0.000000001)) * (1.2 - outputAmplification));
         leftOutput *= modifier;
         rightOutput *= modifier;
         if(gainModeLedTimer < gainModeLedOnTime) {
@@ -797,18 +798,22 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Same as last but with saturation
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
-        hardClipGain = (1. - outputAmplification);
+        hardClipGain = (1. - outputAmplification) * (1. - outputAmplification);
         leftOutput = hardClip(leftOutput);
         rightOutput = hardClip(rightOutput);
-        saturatedLeft = leftOutput;
-        saturatedRight = rightOutput;
-        saturatedLeft *= 1. + outputAmplification * outputAmplification * 3.;
-        saturatedRight *= 1. + outputAmplification * outputAmplification * 3.;
-        saturation(saturatedLeft);
-        saturation(saturatedRight);
-        modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        modifier = 1. + ((1. / (hardClipGain + 0.000000001)) * (1.2 - outputAmplification));
         leftOutput *= modifier;
         rightOutput *= modifier;
+
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
+        saturatedLeft *= 1. + outputAmplification * 20.;
+        saturatedRight *= 1. + outputAmplification * 20.;
+        saturation(saturatedLeft);
+        saturation(saturatedRight);
+        saturatedLeft *= 1 - 1.6 * mix + 0.83 * mix * mix;
+        saturatedRight *= 1 - 1.6 * mix + 0.83 * mix * mix;
+
         leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
         rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
         limiter.engine.thresholdDb = -24.;
@@ -827,16 +832,18 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         softerLimiterRight.limit = 0.85;
         saturatedLeft = leftOutput;
         saturatedRight = rightOutput;
-        saturatedLeft *= 1. + outputAmplification * 6.;
-        saturatedRight *= 1. + outputAmplification * 6.;
+        saturatedLeft *= 1. + outputAmplification * 20.;
+        saturatedRight *= 1. + outputAmplification * 20.;
         saturation(saturatedLeft);
         saturation(saturatedRight);
-        saturatedLeft *= 1 - 0.5 * outputAmplification;
-        saturatedRight *= 1 - 0.5 * outputAmplification;
-        limiter.engine.thresholdDb = -24.;
-        hardLimiter(saturatedLeft, saturatedRight);
+        saturatedLeft *= 1 - 1.6 * mix + 0.83 * mix * mix;
+        saturatedRight *= 1 - 1.6 * mix + 0.83 * mix * mix;
+        // saturatedLeft *= 1. + mix * mix * mix * mix;
+        // saturatedRight *= 1. + mix * mix * mix * mix;
         leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
         rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
+        limiter.engine.thresholdDb = -24.;
+        hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(0.,1.,0.,0.);
@@ -846,15 +853,18 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         }
         break;
     case 4:
-        // Stock VCV clip then Bogaudio LMTR. Control threshold with tone knob again
+        // Bogaudio LMTR then stock VCV clip
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
         limiter.engine.thresholdDb = -24.;
         hardLimiter(leftOutput, rightOutput);
-        hardClipGain = (1. - outputAmplification);
+        softerLimiterLeft.limit = 0.85;
+        softerLimiterRight.limit = 0.85;
+        hardClipGain = (1. - outputAmplification) * (1. - outputAmplification);
         leftOutput = hardClip(leftOutput);
         rightOutput = hardClip(rightOutput);
-        modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        // modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        modifier = 1. + ((1. / (hardClipGain + 0.000000001)) * (1.2 - outputAmplification));
         leftOutput *= modifier;
         rightOutput *= modifier;
         if(gainModeLedTimer < gainModeLedOnTime) {
@@ -866,10 +876,19 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         }
         break;
     case 5:
-        // Bogaudio LMTR with soft limiter
+        // Stock VCV clip then Bogaudio LMTR
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
-        limiter.engine.thresholdDb = -30. + outputAmplification * 20;
+        softerLimiterLeft.limit = 0.85;
+        softerLimiterRight.limit = 0.85;
+        hardClipGain = (1. - outputAmplification) * (1. - outputAmplification);
+        leftOutput = hardClip(leftOutput);
+        rightOutput = hardClip(rightOutput);
+        // modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        modifier = 1. + ((1. / (hardClipGain + 0.000000001)) * (1.2 - outputAmplification));
+        leftOutput *= modifier;
+        rightOutput *= modifier;
+        limiter.engine.thresholdDb = -24.;
         hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
@@ -885,7 +904,7 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Foldback distortion. Full wave rectifier that folds back on itself
         foldbackDistortion(leftOutput, 1. - outputAmplification);
         foldbackDistortion(rightOutput, 1. - outputAmplification);
-        limiter.engine.thresholdDb = -30.;
+        limiter.engine.thresholdDb = -24.;
         hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
@@ -901,8 +920,8 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         saturatedLeft = leftOutput;
         saturatedRight = rightOutput;
         // Output to zero once past threshold. Simulates ripped speaker
-        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        rippedSpeakerLeft(saturatedLeft, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
+        rippedSpeakerRight(saturatedRight, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
         mix *= 2;
         if(mix > 1.){
             mix = 1.;
@@ -925,12 +944,14 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         softerLimiterRight.limit = 0.85;
         saturatedLeft = leftOutput;
         saturatedRight = rightOutput;
-        saturatedLeft *= 1. + outputAmplification * outputAmplification * 3.;
-        saturatedRight *= 1. + outputAmplification * outputAmplification * 3.;
+        rippedSpeakerLeft(saturatedLeft, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
+        rippedSpeakerRight(saturatedRight, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
+        saturatedLeft *= 1. + outputAmplification * 15.;
+        saturatedRight *= 1. + outputAmplification * 15.;
         saturation(saturatedLeft);
         saturation(saturatedRight);
-        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        saturatedLeft *= 1 - 1.6 * mix + 0.83 * mix * mix;
+        saturatedRight *= 1 - 1.6 * mix + 0.83 * mix * mix;
         mix *= 2;
         if(mix > 1.){
             mix = 1.;
@@ -951,23 +972,32 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Same as last but in addition to saturation there is also a hard clipper
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
-        hardClipGain = 2. - outputAmplification * 2. + 0.1;
+        hardClipGain = (1. - outputAmplification) * (1. - outputAmplification) + 0.1;
         leftOutput = hardClip(leftOutput);
         rightOutput = hardClip(rightOutput);
+        modifier = 1. + ((1. / (hardClipGain - 0.1 + 0.000000001)) * (1.2 - outputAmplification));
+        leftOutput *= modifier;
+        rightOutput *= modifier;
+
         saturatedLeft = leftOutput;
         saturatedRight = rightOutput;
-        saturatedLeft *= 1. + outputAmplification * outputAmplification * 3.;
-        saturatedRight *= 1. + outputAmplification * outputAmplification * 3.;
+        
+        rippedSpeakerLeft(saturatedLeft, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
+        rippedSpeakerRight(saturatedRight, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
+        saturatedLeft *= 1. + outputAmplification * 15.;
+        saturatedRight *= 1. + outputAmplification * 15.;
         saturation(saturatedLeft);
         saturation(saturatedRight);
-        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        saturatedLeft *= 1 - 1.6 * mix + 0.83 * mix * mix;
+        saturatedRight *= 1 - 1.6 * mix + 0.83 * mix * mix;
+
         mix *= 2;
         if(mix > 1.){
             mix = 1.;
         }
         leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
         rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
+        
         limiter.engine.thresholdDb = -24.;
         hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
@@ -986,8 +1016,8 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         hardLimiter(leftOutput, rightOutput);
         saturatedLeft = leftOutput;
         saturatedRight = rightOutput;
-        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        rippedSpeakerLeft(saturatedLeft, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
+        rippedSpeakerRight(saturatedRight, (2. + 2. * outputAmplification * outputAmplification - 4. * outputAmplification));
         mix *= 2;
         if(mix > 1.){
             mix = 1.;
