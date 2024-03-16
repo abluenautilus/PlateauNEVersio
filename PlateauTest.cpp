@@ -759,6 +759,9 @@ double modifier = 0.f;
 
 // Is mutating the output this way a mortal sin?
 inline void gainControl(double &leftOutput, double &rightOutput) {
+    double saturatedLeft = leftOutput;
+    double saturatedRight = rightOutput;
+    double mix = 1. - ((1. - outputAmplification) * (1. - outputAmplification) * (1. - outputAmplification));
     switch (gainMode) {
     case 0:
         // Regular soft limiter. Rarely clips. Lower limit threshold by turning tone knob up output dynamic setting selected.
@@ -791,16 +794,25 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         }
         break;
     case 2:
-        // Same as last but with saturation instead of gain to sound a little softer
+        // Same as last but with saturation
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
         hardClipGain = (1. - outputAmplification);
         leftOutput = hardClip(leftOutput);
         rightOutput = hardClip(rightOutput);
-        leftOutput *= 1. + outputAmplification * outputAmplification * 3.;
-        rightOutput *= 1. + outputAmplification * outputAmplification * 3.;
-        saturation(leftOutput);
-        saturation(rightOutput);
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
+        saturatedLeft *= 1. + outputAmplification * outputAmplification * 3.;
+        saturatedRight *= 1. + outputAmplification * outputAmplification * 3.;
+        saturation(saturatedLeft);
+        saturation(saturatedRight);
+        modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        leftOutput *= modifier;
+        rightOutput *= modifier;
+        leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
+        rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
+        limiter.engine.thresholdDb = -24.;
+        hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(0.,0.,1.,1.);
@@ -813,12 +825,18 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Just saturation. Control gain going into saturation with tone knob output dynamic setting
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
-        leftOutput *= 1. + outputAmplification * 6.;
-        rightOutput *= 1. + outputAmplification * 6.;
-        saturation(leftOutput);
-        saturation(rightOutput);
-        leftOutput *= 1 - 0.5 * outputAmplification;
-        rightOutput *= 1 - 0.5 * outputAmplification;
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
+        saturatedLeft *= 1. + outputAmplification * 6.;
+        saturatedRight *= 1. + outputAmplification * 6.;
+        saturation(saturatedLeft);
+        saturation(saturatedRight);
+        saturatedLeft *= 1 - 0.5 * outputAmplification;
+        saturatedRight *= 1 - 0.5 * outputAmplification;
+        limiter.engine.thresholdDb = -24.;
+        hardLimiter(saturatedLeft, saturatedRight);
+        leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
+        rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(0.,1.,0.,0.);
@@ -828,9 +846,17 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         }
         break;
     case 4:
-        // Bogaudio LMTR. Control threshold with tone knob again
-        limiter.engine.thresholdDb = -30. + outputAmplification * 20;
+        // Stock VCV clip then Bogaudio LMTR. Control threshold with tone knob again
+        softerLimiterLeft.limit = 0.85;
+        softerLimiterRight.limit = 0.85;
+        limiter.engine.thresholdDb = -24.;
         hardLimiter(leftOutput, rightOutput);
+        hardClipGain = (1. - outputAmplification);
+        leftOutput = hardClip(leftOutput);
+        rightOutput = hardClip(rightOutput);
+        modifier = (-9.8 / (-40.5 + (40. * outputAmplification))) + 0.758;
+        leftOutput *= modifier;
+        rightOutput *= modifier;
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(0.,1.,0.,1.);
@@ -840,11 +866,11 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         }
         break;
     case 5:
-        // Bogaudio LMTR but clipped to 50% because it can get fairly loud sometimes. Control threshold with tone knob again
+        // Bogaudio LMTR with soft limiter
+        softerLimiterLeft.limit = 0.85;
+        softerLimiterRight.limit = 0.85;
         limiter.engine.thresholdDb = -30. + outputAmplification * 20;
         hardLimiter(leftOutput, rightOutput);
-        leftOutput = hardLimit50_(leftOutput);
-        rightOutput = hardLimit50_(rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(0.,1.,1.,0.);
@@ -859,6 +885,8 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Foldback distortion. Full wave rectifier that folds back on itself
         foldbackDistortion(leftOutput, 1. - outputAmplification);
         foldbackDistortion(rightOutput, 1. - outputAmplification);
+        limiter.engine.thresholdDb = -30.;
+        hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(0.,1.,1.,1.);
@@ -870,9 +898,19 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
     case 7:
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
         // Output to zero once past threshold. Simulates ripped speaker
-        rippedSpeakerLeft(leftOutput, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(rightOutput, 2. - outputAmplification * 2.);
+        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
+        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        mix *= 2;
+        if(mix > 1.){
+            mix = 1.;
+        }
+        leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
+        rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
+        limiter.engine.thresholdDb = -24.;
+        hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(1.,0.,0.,0.);
@@ -885,10 +923,22 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         // Same as last but saturation before ripped speaker
         softerLimiterLeft.limit = 0.85;
         softerLimiterRight.limit = 0.85;
-        saturation(leftOutput);
-        saturation(rightOutput);
-        rippedSpeakerLeft(leftOutput, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(rightOutput, 2. - outputAmplification * 2.);
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
+        saturatedLeft *= 1. + outputAmplification * outputAmplification * 3.;
+        saturatedRight *= 1. + outputAmplification * outputAmplification * 3.;
+        saturation(saturatedLeft);
+        saturation(saturatedRight);
+        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
+        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        mix *= 2;
+        if(mix > 1.){
+            mix = 1.;
+        }
+        leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
+        rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
+        limiter.engine.thresholdDb = -24.;
+        hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(1.,0.,0.,1.);
@@ -904,12 +954,22 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         hardClipGain = 2. - outputAmplification * 2. + 0.1;
         leftOutput = hardClip(leftOutput);
         rightOutput = hardClip(rightOutput);
-        leftOutput *= 1. + outputAmplification * outputAmplification * 3.;
-        rightOutput *= 1. + outputAmplification * outputAmplification * 3.;
-        saturation(leftOutput);
-        saturation(rightOutput);
-        rippedSpeakerLeft(leftOutput, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(rightOutput, 2. - outputAmplification * 2.);
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
+        saturatedLeft *= 1. + outputAmplification * outputAmplification * 3.;
+        saturatedRight *= 1. + outputAmplification * outputAmplification * 3.;
+        saturation(saturatedLeft);
+        saturation(saturatedRight);
+        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
+        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        mix *= 2;
+        if(mix > 1.){
+            mix = 1.;
+        }
+        leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
+        rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
+        limiter.engine.thresholdDb = -24.;
+        hardLimiter(leftOutput, rightOutput);
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(1.,0.,1.,0.);
@@ -924,8 +984,16 @@ inline void gainControl(double &leftOutput, double &rightOutput) {
         softerLimiterRight.limit = 0.85;
         limiter.engine.thresholdDb = -30.;
         hardLimiter(leftOutput, rightOutput);
-        rippedSpeakerLeft(leftOutput, 2. - outputAmplification * 2.);
-        rippedSpeakerRight(rightOutput, 2. - outputAmplification * 2.);
+        saturatedLeft = leftOutput;
+        saturatedRight = rightOutput;
+        rippedSpeakerLeft(saturatedLeft, 2. - outputAmplification * 2.);
+        rippedSpeakerRight(saturatedRight, 2. - outputAmplification * 2.);
+        mix *= 2;
+        if(mix > 1.){
+            mix = 1.;
+        }
+        leftOutput = leftOutput * (1. - mix) + saturatedLeft * mix;
+        rightOutput = rightOutput * (1. - mix) + saturatedRight * mix;
         if(gainModeLedTimer < gainModeLedOnTime) {
             ++gainModeLedTimer;
             prepareLeds(1.,0.,1.,1.);
