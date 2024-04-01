@@ -10,46 +10,46 @@
 
 class Dattorro1997Tank {
 public:
-    Dattorro1997Tank(const float initMaxSampleRate = 32000.0,
-                     const float initMaxLfoDepth = 0.0,
-                     const float initMaxTimeScale = 1.0);
+    Dattorro1997Tank(const double initMaxSampleRate = 32000.0,
+                     const double initMaxLfoDepth = 0.0,
+                     const double initMaxTimeScale = 1.0);
 
-    void process(const float leftInput, const float rightIn,
-                 float* leftOut, float* rightOut);
+    void process(const double leftInput, const double rightIn,
+                 double* leftOut, double* rightOut);
 
     void freeze(const bool freezeFlag);
 
-    void setSampleRate(const float newSampleRate);
-    void setTimeScale(const float newTimeScale);
+    void setSampleRate(const double newSampleRate);
+    void setTimeScale(const double newTimeScale);
 
-    void setDecay(const float newDecay);
+    void setDecay(const double newDecay);
 
-    void setModSpeed(const float newModSpeed);
-    void setModDepth(const float newModDepth);
-    void setModShape(const float shape);
+    void setModSpeed(const double newModSpeed);
+    void setModDepth(const double newModDepth);
+    void setModShape(const double shape);
 
-    void setHighCutFrequency(const float frequency);
-    void setLowCutFrequency(const float frequency);
+    void setHighCutFrequency(const double frequency);
+    void setLowCutFrequency(const double frequency);
 
-    void setDiffusion(const float diffusion);
+    void setDiffusion(const double diffusion);
 
     void clear();
 
-    int calcMaxTime(float delayTime);
+    int calcMaxTime(double delayTime);
 
 // private:
-    static constexpr float dattorroSampleRate = 29761.0;
-    static constexpr float dattorroSampleTime = 1.0 / dattorroSampleRate;
+    static constexpr double dattorroSampleRate = 29761.0;
+    static constexpr double dattorroSampleTime = 1.0 / dattorroSampleRate;
 
-    static constexpr float leftApf1Time = 672.0;
-    static constexpr float leftDelay1Time = 4453.0;
-    static constexpr float leftApf2Time = 1800.0;
-    static constexpr float leftDelay2Time = 3720.0;
+    static constexpr double leftApf1Time = 672.0;
+    static constexpr double leftDelay1Time = 4453.0;
+    static constexpr double leftApf2Time = 1800.0;
+    static constexpr double leftDelay2Time = 3720.0;
 
-    static constexpr float rightApf1Time = 908.0;
-    static constexpr float rightDelay1Time = 4217.0;
-    static constexpr float rightApf2Time = 2656.0;
-    static constexpr float rightDelay2Time = 3163.0;
+    static constexpr double rightApf1Time = 908.0;
+    static constexpr double rightDelay1Time = 4217.0;
+    static constexpr double rightApf2Time = 2656.0;
+    static constexpr double rightDelay2Time = 3163.0;
 
     static constexpr size_t leftDelay1RightTap1 = 266;
     static constexpr size_t leftDelay1RightTap2 = 2974;
@@ -81,58 +81,58 @@ public:
 
     const int kOutputTaps[7] = {266, 2974, 1913, 1996, 1990, 187, 1066};
 
-    static constexpr float maxDiffusion1 = 0.7;
-    static constexpr float maxDiffusion2 = 0.7;
+    static constexpr double maxDiffusion1 = 0.7;
+    static constexpr double maxDiffusion2 = 0.7;
 
-    static constexpr float lfoMaxExcursion = 16.0;
-    static constexpr float lfo1Freq = 0.10;
-    static constexpr float lfo2Freq = 0.150;
-    static constexpr float lfo3Freq = 0.120;
-    static constexpr float lfo4Freq = 0.180;
+    static constexpr double lfoMaxExcursion = 16.0;
+    static constexpr double lfo1Freq = 0.10;
+    static constexpr double lfo2Freq = 0.150;
+    static constexpr double lfo3Freq = 0.120;
+    static constexpr double lfo4Freq = 0.180;
 
-    static constexpr float minTimeScale = 0.0001;
+    static constexpr double minTimeScale = 0.0001;
 
-    float timePadding = 0.0;
+    double timePadding = 0.0;
 
-    float scaledLeftApf1Time = leftApf1Time;
-    float scaledLeftDelay1Time = leftDelay1Time;
-    float scaledLeftApf2Time = leftApf2Time;
-    float scaledLeftDelay2Time = leftDelay2Time;
+    double scaledLeftApf1Time = leftApf1Time;
+    double scaledLeftDelay1Time = leftDelay1Time;
+    double scaledLeftApf2Time = leftApf2Time;
+    double scaledLeftDelay2Time = leftDelay2Time;
 
-    float scaledRightApf1Time = rightApf1Time;
-    float scaledRightDelay1Time = rightDelay1Time;
-    float scaledRightApf2Time = rightApf2Time;
-    float scaledRightDelay2Time = rightDelay2Time;
+    double scaledRightApf1Time = rightApf1Time;
+    double scaledRightDelay1Time = rightDelay1Time;
+    double scaledRightApf2Time = rightApf2Time;
+    double scaledRightDelay2Time = rightDelay2Time;
 
     std::array<int, 7> scaledOutputTaps;
 
-    float maxSampleRate = 32000.0;
-    float sampleRate = maxSampleRate;
-    float sampleRateScale = sampleRate / dattorroSampleRate;
+    double maxSampleRate = 32000.0;
+    double sampleRate = maxSampleRate;
+    double sampleRateScale = sampleRate / dattorroSampleRate;
 
-    float maxTimeScale = 1.0;
-    float timeScale = 1.0;
+    double maxTimeScale = 1.0;
+    double timeScale = 1.0;
 
-    float modDepth = 0.0;
-    float decayParam = 0.0;
-    float decay = 0.0;
+    double modDepth = 0.0;
+    double decayParam = 0.0;
+    double decay = 0.0;
 
-    float lfoExcursion = 0.0;
+    double lfoExcursion = 0.0;
 
     // Freeze Cross fade
     bool frozen = false;
-    float fade = 1.0;
-    float fadeTime = 0.002;
-    float fadeStep = 1.0 / (fadeTime * sampleRate);
-    float fadeDir = 1.0;
+    double fade = 1.0;
+    double fadeTime = 0.002;
+    double fadeStep = 1.0 / (fadeTime * sampleRate);
+    double fadeDir = 1.0;
 
     TriSawLFO lfo1;
     TriSawLFO lfo2;
     TriSawLFO lfo3;
     TriSawLFO lfo4;
 
-    float leftSum = 0.0;
-    float rightSum = 0.0;
+    double leftSum = 0.0;
+    double rightSum = 0.0;
 
     AllpassFilter leftApf1;
     InterpDelay leftDelay1;
@@ -161,59 +161,59 @@ public:
 
 class Dattorro {
 public:
-    Dattorro(const float initMaxSampleRate = 32000.0,
-             const float initMaxLfoDepth = 16.0,
-             const float initMaxTimeScale = 1.0);
-    void process(float leftInput, float rightInput);
+    Dattorro(const double initMaxSampleRate = 32000.0,
+             const double initMaxLfoDepth = 16.0,
+             const double initMaxTimeScale = 1.0);
+    void process(double leftInput, double rightInput);
     void clear();
 
-    void setTimeScale(float timeScale);
-    void setPreDelay(float time);
-    void setSampleRate(float sampleRate);
+    void setTimeScale(double timeScale);
+    void setPreDelay(double time);
+    void setSampleRate(double sampleRate);
 
     void freeze(const bool freezeFlag);
 
-    void setInputFilterLowCutoffPitch(float pitch);
-    void setInputFilterHighCutoffPitch(float pitch);
+    void setInputFilterLowCutoffPitch(double pitch);
+    void setInputFilterHighCutoffPitch(double pitch);
     void enableInputDiffusion(bool enable);
 
-    void setDecay(float newDecay);
-    void setTankDiffusion(const float diffusion);
-    void setTankFilterHighCutFrequency(const float frequency);
-    void setTankFilterLowCutFrequency(const float frequency);
+    void setDecay(double newDecay);
+    void setTankDiffusion(const double diffusion);
+    void setTankFilterHighCutFrequency(const double frequency);
+    void setTankFilterLowCutFrequency(const double frequency);
 
-    void setTankModSpeed(const float modSpeed);
-    void setTankModDepth(const float modDepth);
-    void setTankModShape(const float modShape);
+    void setTankModSpeed(const double modSpeed);
+    void setTankModDepth(const double modDepth);
+    void setTankModShape(const double modShape);
 
-    float getLeftOutput() const;
-    float getRightOutput() const;
+    double getLeftOutput() const;
+    double getRightOutput() const;
 
 // private:
-    float preDelayTime = 0.0;
+    double preDelayTime = 0.0;
     static constexpr int kInApf1Time = 141;
     static constexpr int kInApf2Time = 107;
     static constexpr int kInApf3Time = 379;
     static constexpr int kInApf4Time = 277;
 
-    static constexpr float dattorroSampleRate = 29761.0;
-    float sampleRate = 32000.0;
-    float dattorroScaleFactor = sampleRate / dattorroSampleRate;
-    float leftSum = 0.0;
-    float rightSum = 0.0;
+    static constexpr double dattorroSampleRate = 29761.0;
+    double sampleRate = 32000.0;
+    double dattorroScaleFactor = sampleRate / dattorroSampleRate;
+    double leftSum = 0.0;
+    double rightSum = 0.0;
 
-    float rightOut = 0.0f;
-    float leftOut = 0.0f;
-    float inputLowCut = 0.0;
-    float inputHighCut = 10000.0;
-    float reverbHighCut = 10000.0;
-    float reverbLowCut = 0.0;
-    float modDepth = 1.0;
-    float inputDiffusion1 = 0.75;
-    float inputDiffusion2 = 0.625;
-    float decay = 0.9999;
-    float modSpeed = 1.0;
-    float diffuseInput = 0.0;
+    double rightOut = 0.0;
+    double leftOut = 0.0;
+    double inputLowCut = 0.0;
+    double inputHighCut = 10000.0;
+    double reverbHighCut = 10000.0;
+    double reverbLowCut = 0.0;
+    double modDepth = 1.0;
+    double inputDiffusion1 = 0.75;
+    double inputDiffusion2 = 0.625;
+    double decay = 0.9999;
+    double modSpeed = 1.0;
+    double diffuseInput = 0.0;
 
     OnePoleHPFilter leftInputDCBlock;
     OnePoleHPFilter rightInputDCBlock;
@@ -229,8 +229,8 @@ public:
 
     Dattorro1997Tank tank;
 
-    float tankFeed = 0.0;
+    double tankFeed = 0.0;
 
-    float dattorroScale(float delayTime);
+    double dattorroScale(double delayTime);
 };
 

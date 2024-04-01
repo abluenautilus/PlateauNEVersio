@@ -5,33 +5,35 @@
 
 extern float DSY_SDRAM_BSS sdramData[50][144000];
 extern unsigned int count;
-extern float hold;
+extern double hold;
+extern bool triggerClear;
+extern double clearPopCancelValue;
 
 class InterpDelay {
 public:
-    float input = 0.f;
-    float output = 0.f;
+    double input = 0.;
+    double output = 0.;
     int bufferNumber = 0;
     int r = 0;
     int upperR = 0;
     int j = 0;
-    float dataR = 0.f;
-    float dataUpperR = 0.f;
+    double dataR = 0.;
+    double dataUpperR = 0.;
 
     //InterpDelay () {}
 
-    InterpDelay(unsigned int maxLength = 512, float initDelayTime = 0.f) {
+    InterpDelay(unsigned int maxLength = 512, double initDelayTime = 0.) {
         l = maxLength;
-        lFloat = static_cast<float>(maxLength);
+        lDouble = static_cast<double>(maxLength);
 
         bufferNumber = ++count;
 
         setDelayTime(initDelayTime);
     }
 
-    // inline void initializeDelay(const unsigned int &length = 512, const float &delayTime = 0.f) {
+    // inline void initializeDelay(const unsigned int &length = 512, const double &delayTime = 0.) {
     //     l = length;
-    //     lFloat = static_cast<float>(length);
+    //     lDouble = static_cast<double>(length);
 
     //     bufferNumber = ++count;
 
@@ -42,33 +44,39 @@ public:
     #pragma GCC optimize ("Ofast")
 
     inline void process() {
-        sdramData[bufferNumber][w] = input;
-        r = w - t;
-        
-        if (r < 0) {
-            r += l;
-        }
+        //if(!triggerClear) {
+            sdramData[bufferNumber][w] = input;
+            r = w - t;
+            
+            if (r < 0) {
+                r += l;
+            }
 
-        ++w;
-        if (w >= l) {
-            w = 0;
-        }
+            ++w;
+            if (w >= l) {
+                w = 0;
+            }
 
-        upperR = r - 1;
-        if (upperR < 0) {
-            upperR += l;
-        }
+            upperR = r - 1;
+            if (upperR < 0) {
+                upperR += l;
+            }
 
-        dataR = sdramData[bufferNumber][r];
+            dataR = sdramData[bufferNumber][r];
+            dataUpperR = sdramData[bufferNumber][upperR];
+            
+            dataR *= clearPopCancelValue;
+            dataUpperR *= clearPopCancelValue;
 
-        output = hold * (dataR + f * (sdramData[bufferNumber][upperR] - dataR));
+            output = hold * (dataR + f * (dataUpperR - dataR));
+        //}
     }
 
     #pragma GCC pop_options
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    inline float tap(const int &i) {
+    inline double tap(const int &i) {
         j = w - i;
         if (j < 0) {
             j += l;
@@ -80,28 +88,32 @@ public:
     #pragma GCC push_options
     #pragma GCC optimize ("Ofast")
 
-    inline void setDelayTime(float newDelayTime) {
-        if (newDelayTime >= lFloat) {
-            newDelayTime = lFloat - 1.f;
+    inline void setDelayTime(double newDelayTime) {
+        if (newDelayTime >= lDouble) {
+            newDelayTime = lDouble - 1.;
         }
-        if (newDelayTime < 0.f) {
-            newDelayTime = 0.f;
+        if (newDelayTime < 0.) {
+            newDelayTime = 0.;
         }
         t = static_cast<int>(newDelayTime);
-        f = newDelayTime - static_cast<float>(t);
+        f = newDelayTime - static_cast<double>(t);
     }
 
     #pragma GCC pop_options
 
     void clear() {
-        input = 0.f;
-        output = 0.f;
+        // uint32_t **tempPtr = (uint32_t**)sdramData;
+        for(int i = 0; i < l; ++i) {
+            sdramData[bufferNumber][i] = uint32_t(0);
+        }
+        input = 0.;
+        output = 0.;
     }
 
 private:
     int  w = 0;
     int t = 0;
-    float f = 0.f;
+    double f = 0.;
     int l = 512;
-    float lFloat = 512.f;
+    double lDouble = 512.;
 };
